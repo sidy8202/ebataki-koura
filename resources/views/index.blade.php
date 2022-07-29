@@ -26,7 +26,8 @@
   }
 
   .uper{
-    background-image: url("{{asset('images/k.jpg')}}");
+    background-color: grey
+    ;
   }
 </style>
 

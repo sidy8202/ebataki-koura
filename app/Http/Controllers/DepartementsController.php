@@ -14,7 +14,7 @@ class DepartementsController extends Controller
      */
     public function index()
     {
-        $departements = Departement::all();
+        $departements = Departements::all();
 
     return view('index', compact('departements'));
     }
@@ -41,7 +41,7 @@ class DepartementsController extends Controller
             'nom' => 'required|max:255',
             ]);
 
-            $departement = Departement::create($validatedData);
+            $departement = Departements::create($validatedData);
     
         return redirect('/departement')->with('success', 'DEPARTEMENT AJOUTÉ AVEC SUCCES');
     }
@@ -54,7 +54,7 @@ class DepartementsController extends Controller
      */
     public function show($id)
     {
-        $departements = Departement::findOrFail($id);
+        $departements = Departements::findOrFail($id);
         return view('show', compact('departements'));
     }
 
@@ -66,7 +66,7 @@ class DepartementsController extends Controller
      */
     public function edit($id)
     {
-        $departement = Departement::findOrFail($id);
+        $departement = Departements::findOrFail($id);
 
         return view('edit', compact('departement'));
     }
@@ -97,7 +97,7 @@ class DepartementsController extends Controller
      */
     public function destroy($id)
     {
-        $departement = Departement::findOrFail($id);
+        $departement = Departements::findOrFail($id);
         $departement->delete();
     
         return redirect('/departements')->with('success', 'SUPPRESSION  REUSSIE');
