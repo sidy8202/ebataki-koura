@@ -41,9 +41,9 @@ class DepartementsController extends Controller
             'nom' => 'required|max:255',
             ]);
 
-            $departement = Departements::create($validatedData);
+            $departements = Departements::create($validatedData);
     
-        return redirect('/departement')->with('success', 'DEPARTEMENT AJOUTÉ AVEC SUCCES');
+        return redirect('/departements')->with('success', 'DEPARTEMENT AJOUTÉ AVEC SUCCES');
     }
 
     /**
@@ -66,9 +66,9 @@ class DepartementsController extends Controller
      */
     public function edit($id)
     {
-        $departement = Departements::findOrFail($id);
+        $departements = Departements::findOrFail($id);
 
-        return view('edit', compact('departement'));
+        return view('edit', compact('departements'));
     }
 
     /**
@@ -81,10 +81,10 @@ class DepartementsController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'NOM' => 'required',
+            'nom' => 'required',
             ]);
     
-        Departement::whereId($id)->update($validatedData);
+        Departements::whereId($id)->update($validatedData);
     
         return redirect('/departements')->with('success', 'MISE A JOUR REUSSIE');
     }

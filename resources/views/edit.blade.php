@@ -22,12 +22,12 @@
       </div><br />
     @endif
 
-      <form method="post" action="{{ route('departement.update', $departement->id ) }}" style="padding-top: 5px ;">
+      <form method="post" action="{{ route('departements.update', $departements->id ) }}" style="padding-top: 5px ;">
           <div class="form-group">
               @csrf
               @method('PATCH')
-              <label for="nom">Code_vol :</label>
-              <input type="text" class="form-control" name="nom" value="{{ $departement->nom }}"/>
+              <label for="nom">Logistique</label>
+              <input type="text" class="form-control" name="nom" value="{{ $departements->nom }}"/>
           </div>
 
           
