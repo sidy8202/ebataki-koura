@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\courriers_sortants;
+use App\Models\courriers_entrants;
+use App\Models\utilisateurs;
 use Illuminate\Http\Request;
 
 class CourriersSortantsController extends Controller
@@ -14,7 +16,9 @@ class CourriersSortantsController extends Controller
      */
     public function index()
     {
-        //
+        $crst = courriers_sortants::all();
+        return view('courriersmodalsortants', compact('crst'));
+
     }
 
     /**
@@ -24,7 +28,7 @@ class CourriersSortantsController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -35,7 +39,16 @@ class CourriersSortantsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'num_reference' => 'required',
+            'objet' => 'required',
+            'destinateur' => 'required',
+            'id_utilisateurs' => 'required',
+            'id_courriers_sortants' => 'required'
+        ]);
+    
+        // $crst = crs::create($validatedData);
+        // return redirect('/crs')->with('success', 'crs ajouter avec succèss!!!');
     }
 
     /**
@@ -46,7 +59,7 @@ class CourriersSortantsController extends Controller
      */
     public function show(courriers_sortants $courriers_sortants)
     {
-        //
+        
     }
 
     /**
