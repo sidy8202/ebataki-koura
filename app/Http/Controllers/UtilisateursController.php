@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\utilisateurs;
-
-
-
+use App\Models\departements;
 use Illuminate\Http\Request;
 
 class UtilisateursController extends Controller
@@ -27,8 +25,9 @@ class UtilisateursController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        
+    {  
+        $service = departements::all();
+        return view('utilisateurmodal')->with('service',$service);   
     }
 
     /**

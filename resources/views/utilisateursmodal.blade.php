@@ -66,8 +66,11 @@
 
                     <div class="mb-3">
                         <label for="" class="form-label">Departement</label>
-                        <select name="id_departement" id="">
-                            <option value=""></option>
+
+                        <select name="id_departement" id="id_departement">
+                            @foreach ($service as $dai)
+                            <option value="{{ $dai->id }}">{{ $dai->nom }}</option>
+                            @endforeach
                         </select>
                         
                     </div>
