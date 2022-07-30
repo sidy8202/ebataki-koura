@@ -14,9 +14,8 @@ class DepartementsController extends Controller
      */
     public function index()
     {
-        $departements = Departements::all();
-
-    return view('index', compact('departements'));
+        $service = departements::all();
+        return view('departementsmodal')->with('service',$service);
     }
 
     /**
@@ -37,13 +36,12 @@ class DepartementsController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'nom' => 'required|max:255',
+        $structure = $request->validate([
+            'nom' => 'required',
             ]);
 
-            $departements = Departements::create($validatedData);
-    
-        return redirect('/departements')->with('success', 'DEPARTEMENT AJOUTÉ AVEC SUCCES');
+        departements::create($structure);
+        return redirect('/departements')->with('success', 'Departement ajouté avec Succes!!');
     }
 
     /**

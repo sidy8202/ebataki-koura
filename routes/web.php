@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('/departements', 'DepartementsController');
+
 Route::resource('/utilisateurs', 'UtilisateursController');
 
 Route::resource('/departements', 'DepartementsController');
