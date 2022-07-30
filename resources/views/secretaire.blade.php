@@ -2,10 +2,6 @@
 @extends('layouts.master')
 @section('content')
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -16,7 +12,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">Veuillez renseigner les champs suivants Svp !</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{url('ajouter-secretaire')}}" method="get">
+            <form action="{{url('secretaire')}}" method="post">
                 @csrf
 
 
@@ -44,7 +40,7 @@
 
                     <div class="form-group">
                         <label for="name">Email</label>
-                        <input type="text" name="email" class="form-control">
+                        <input type="email" name="email" class="form-control">
                     </div>
 
                     <div class="form-group">
@@ -80,4 +76,72 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+<div class="container-fluid px-4">
+
+    <div class="card mt-5 ">
+
+        <div class="card-header">
+            <h4>La liste des secrétaires
+            <a href="" class="btn btn-primary btn-sm float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter</a>
+            </h4>
+            
+        </div>
+
+        <div class="card-body" >
+                    
+            <table id="myDataTable" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Modifier</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            
+                        </tr>
+                  
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @endsection

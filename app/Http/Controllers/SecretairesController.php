@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\secretaires;
 use Illuminate\Http\Request;
+use App\Http\Requests\SecretaireFormRequest;
 
 class SecretairesController extends Controller
 {
@@ -39,9 +40,24 @@ class SecretairesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SecretaireFormRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $secretaire = new secretaires;
+        $secretaire->nom = $data['nom'];
+        $secretaire->prenom = $data['prenom'];
+        $secretaire->adresse = $data['adresse'];
+        $secretaire->phone = $data['phone'];
+        $secretaire->email = $data['email'];
+        $secretaire->username = $data['username'];
+        $secretaire->password = $data['password'];
+       
+
+        $secretaire->save();
+        return redirect('secretaire')->with('message', 'Secrétaire ajouté avec succès');
+
+    
     }
 
     /**
