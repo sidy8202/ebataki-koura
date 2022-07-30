@@ -15,8 +15,9 @@ class SecretairesController extends Controller
 
     public function index()
     {
+        $secretaires = secretaires::all();
+        return view('createsecretaire', compact('$secretaires'));
         
-        return view('secretaire');
 
     }
 
@@ -27,7 +28,9 @@ class SecretairesController extends Controller
      */
     public function create()
     {
-        //
+        $secretaires = secretaires::all();
+        return view('createsecretaire', compact('$secretaires'));
+
     }
 
     /**

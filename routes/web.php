@@ -23,3 +23,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('secretaire',[App\Http\Controllers\SecretairesController::class, 'index']);
+Route::get('ajouter-secretaires',[App\Http\Controllers\SecretairesController::class, 'create']);
