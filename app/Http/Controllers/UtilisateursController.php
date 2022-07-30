@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\utilisateurs;
+use App\Models\departements;
+
+
 use Illuminate\Http\Request;
 
 class UtilisateursController extends Controller
@@ -14,7 +17,8 @@ class UtilisateursController extends Controller
      */
     public function index()
     {
-        //
+        $bara = utilisateurs::all();
+        return view('utilisateursmodal')->with('bara',$bara);;
     }
 
     /**
@@ -24,7 +28,7 @@ class UtilisateursController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +39,20 @@ class UtilisateursController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $barakaila = $request->validate([
+        'nom' => 'required',
+        'prenom' => 'required',
+        'adresse' => 'required',
+        'phone' => 'required',
+        'email' => 'required',
+        'username' => 'required',
+        'password' => 'required',
+        'poste' => 'required',
+        
+        ]);
+
+        utilisateurs::create($barakaila);
+        return redirect('/utilisateurs')->with('success', 'Utilisateur ajouté avec Succes!!');
     }
 
     /**
