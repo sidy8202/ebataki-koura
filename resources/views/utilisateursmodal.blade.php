@@ -57,10 +57,7 @@
                         <input type="text" class="form-control" name="username" >
                     </div>
                             
-                    <div class="mb-3">
-                        <label for="" class="form-label">Mot de passe </label>
-                        <input type="text" class="form-control" name="password" >
-                    </div>
+                  
 
                     <div class="mb-3">
                         <label for="" class="form-label">Poste</label>
@@ -102,52 +99,50 @@
         </div>
         <div class="modal-body">
           
-            <form action= "" method="POST">
+            <form action="/utilisateurs" id="editForm" method="POST">
                 {{ csrf_field() }}
+                {{ method_field('PUT') }}
+
                 <div class="modal-body">							
                     <div class="mb-3">
                         <label for="" class="form-label">Nom </label>
-                        <input type="text" class="form-control" name="nom" >
+                        <input type="text" class="form-control" id="nom" name="nom" >
                     </div>
                     
                     <div class="mb-3">
                         <label for="" class="form-label">Prenom </label>
-                        <input type="text" class="form-control" name="prenom" >
+                        <input type="text" class="form-control" id="prenom" name="prenom" >
                     </div>
 
                     <div class="mb-3">
                         <label for="" class="form-label">Adresse Physique </label>
-                        <input type="text" class="form-control" name="adresse" >
+                        <input type="text" class="form-control" id="adresse" name="adresse" >
                     </div>
 
                     <div class="mb-3">
                         <label for="" class="form-label">Telephone</label>
-                        <input type="text" class="form-control" name="phone" >
+                        <input type="text" class="form-control" id="phone" name="phone" >
                     </div>
 
                     <div class="mb-3">
                         <label for="" class="form-label">Adresse Email</label>
-                        <input type="email" class="form-control" name="email" >
+                        <input type="email" class="form-control" id="email" name="email" >
                     </div>
 
                     <div class="mb-3">
                         <label for="" class="form-label">Nom d'utilisateur</label>
-                        <input type="text" class="form-control" name="username" >
+                        <input type="text" class="form-control" id="username" name="username" >
                     </div>
-                            
-                    <div class="mb-3">
-                        <label for="" class="form-label">Mot de passe </label>
-                        <input type="text" class="form-control" name="password" >
-                    </div>
+
 
                     <div class="mb-3">
                         <label for="" class="form-label">Poste</label>
-                        <input type="text" class="form-control" name="poste" >
+                        <input type="text" class="form-control" id="poste" name="poste" >
                     </div>
 
                     <div class="mb-3">
                         <label for="" class="form-label">Departement</label>
-                        <select name="id_departement" id="">
+                        <select name="" id="">
                             <option value=""></option>
                         </select>
                         
@@ -180,8 +175,10 @@
                     <h5 class="modal-title" id="exampleModalLabel">Confirmer la suppression</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                    <form action="/vol" id="deleteForm" method="POST">
+                    <form action="/utilisateurs" id="deleteForm" method="POST">
                         {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+
                         
                         <div class="modal-body">
 
@@ -220,6 +217,8 @@
       </div> 
   @endif
 
+  {{-- CArd avec la table --}}
+
 <div class="container mt-5">
   <div class="card">
     <div class="card-header">
@@ -240,6 +239,7 @@
         <table id="datatable" class="table table-bordered">
             <thead>
               <tr>
+                <th scope="col" class="th_1">Id</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Prenom</th>
                 <th scope="col">Adresse</th>
@@ -257,6 +257,7 @@
                 @foreach ($bara as $gnouma)
                 
               <tr>
+                <th scope="row" class="th_1">{{ $gnouma->id }}</th>
                 <th scope="row">{{ $gnouma->nom }}</th>
                 <td>{{ $gnouma->prenom }}</td>
                 <td>{{ $gnouma->adresse }}</td>
@@ -281,6 +282,9 @@
   </div>
 
 </div>
+
+{{-- Fin du card --}}
+
  <!-- JavaScript Bundle with Popper -->
  
  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -294,6 +298,16 @@
         $('#datatable').DataTable();
     } );
 </script>
+
+{{-- Hide content of table --}}
+
+<script>
+    $(document).ready( function () {
+        $('.th_1').hide();
+    } );
+</script>
+
+{{-- End of hide --}}
 
 <script type="text/javascript">
     
@@ -312,16 +326,17 @@
         var data = table.row($tr).data();
         console.log(data);
     
-        $('#cod').val(data[1]);
-        $('#dest').val(data[2]);
-        $('#dates').val(data[3]);
-        $('#heures').val(data[4]);
-        $('#classa').val(data[5]);
-        $('#pclassa').val(data[6]);
-        $('#classb').val(data[7]);
-        $('#pclassb').val(data[8]);
+
+        $('#prenom').val(data[1]);
+        $('#nom').val(data[2]);
+        $('#adresse').val(data[3]);
+        $('#phone').val(data[4]);
+        $('#email').val(data[5]);
+        $('#username').val(data[6]);
+        $('#poste').val(data[7]);
+       
     
-        $('#editForm').attr('action', '/vol/'+data[0]);
+        $('#editForm').attr('action', '/utilisateurs/'+data[0]);
         $('#editModal').modal('show');
     });
 
@@ -336,13 +351,13 @@
 
         var data = table.row($tr).data();
         console.log(data);
-        $('#deleteForm').attr('action', '/vol/'+data[0]);
+        $('#deleteForm').attr('action', '/utilisateurs/'+data[0]);
         $('#deleteModal').modal('show');
     });
 
   //End Delete//
 
 });
-<script>
+</script>
 </body>
 </html>

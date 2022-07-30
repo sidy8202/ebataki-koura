@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\utilisateurs;
-
+use App\Models\departements;
 
 
 use Illuminate\Http\Request;
@@ -18,7 +18,7 @@ class UtilisateursController extends Controller
     public function index()
     {
         $bara = utilisateurs::all();
-        return view('utilisateursmodal')->with('bara',$bara);
+        return view('utilisateursmodal')->with('bara',$bara);;
     }
 
     /**
@@ -46,9 +46,7 @@ class UtilisateursController extends Controller
         'phone' => 'required',
         'email' => 'required',
         'username' => 'required',
-        'password' => 'required',
         'poste' => 'required',
-        
         ]);
 
         utilisateurs::create($barakaila);
@@ -63,7 +61,7 @@ class UtilisateursController extends Controller
      */
     public function show(utilisateurs $utilisateurs)
     {
-        
+        //
     }
 
     /**
@@ -72,7 +70,7 @@ class UtilisateursController extends Controller
      * @param  \App\Models\utilisateurs  $utilisateurs
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit( $id)
     {
         
     }
@@ -84,17 +82,28 @@ class UtilisateursController extends Controller
      * @param  \App\Models\utilisateurs  $utilisateurs
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
-        $barakaila = utilisateurs::find($id);
+        
+        $this->validate($request,[
+            'nom' => 'required',
+            'prenom' => 'required',
+            'adresse' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'poste' => 'required',
+            ]);
+    
+
+        $barakaila = utilisateurs::find($id) ;
         $barakaila->nom = $request->input('nom');
         $barakaila->prenom = $request->input('prenom');
         $barakaila->adresse = $request->input('adresse');
         $barakaila->phone = $request->input('phone');
         $barakaila->email = $request->input('email');
-        $barakaila->poste = $request->input('poste');
+        $barakaila->poste = $request->input('poste'); 
         $barakaila->save();
-        return redirect('/utilisateurs')->with('success', 'utilisateur Modifié avec Succes!!');
+        return redirect('/utilisateurs')->with('success', 'Utilisateur Modifié avec Succes!!');
     }
 
     /**
@@ -105,8 +114,9 @@ class UtilisateursController extends Controller
      */
     public function destroy($id)
     {
-        $barakaila = utilisateurs::find($id) ;
-        $barakaila->delete();
-        return redirect('/utilisateurs')->with('success', 'Utilisateurs Supprimé avec Succes!!');
+        $boug = utilisateurs::find($id) ;
+        $boug->delete();
+        // dd($boug);
+        return redirect('/utilisateurs')->with('success', 'Utilisateur  Supprimé avec Succes!!');
     }
 }
