@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class courriers_sortants extends Model
 {
     use HasFactory;
-    protected $fillable = ['num_reference', 'objet', 'destinateur', 'id_utilisateurs', 'id_courriers_entrants'];
+    protected $fillable = ['num_reference', 'objet', 'destinateur'];
 }

@@ -43,12 +43,11 @@ class CourriersSortantsController extends Controller
             'num_reference' => 'required',
             'objet' => 'required',
             'destinateur' => 'required',
-            'id_utilisateurs' => 'required',
-            'id_courriers_sortants' => 'required'
+            // 'id_utilisateurs' => 'required'
         ]);
     
-        // $crst = crs::create($validatedData);
-        // return redirect('/crs')->with('success', 'crs ajouter avec succèss!!!');
+        $crst = courriers_sortants::create($validatedData);
+        return redirect('/courriers_sortants')->with('success', 'courrier envoyé avec succèss!!!');
     }
 
     /**
@@ -70,7 +69,8 @@ class CourriersSortantsController extends Controller
      */
     public function edit(courriers_sortants $courriers_sortants)
     {
-        //
+        $crst = courriers_sortants::findOrFail();
+        return view('edit', compact('crst'));
     }
 
     /**
@@ -82,7 +82,14 @@ class CourriersSortantsController extends Controller
      */
     public function update(Request $request, courriers_sortants $courriers_sortants)
     {
-        //
+        $validatedData = $request->validate([
+            'num_reference' => 'required',
+            'objet' => 'required',
+            'destinateur' => 'required'
+        ]);
+
+        $crst = courriers_sortants::whereId()->update($validatedData);
+        return redirect('/courriers_sortants')->with('success', 'courrier mise à jour avec succèss!!!');
     }
 
     /**
@@ -93,6 +100,8 @@ class CourriersSortantsController extends Controller
      */
     public function destroy(courriers_sortants $courriers_sortants)
     {
-        //
+        $crst = courriers_sortants::findOrFail();
+        $crst->delete();
+        return redirect('/courriers_sortants')->with('success', 'courrier supprimer avec succèss!!!');
     }
 }

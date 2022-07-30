@@ -1,0 +1,71 @@
+                @foreach ($bara as $gnouma)
+
+
+                <th scope="row">{{ $voldata->nom }}</th>
+                <td>{{ $gnouma->prenom }}</td>
+                <td>{{ $gnouma->adresse }}</td>
+                <td>{{ $gnouma->phone }}</td>
+                <td>{{ $gnouma->email }}</td>
+                <td>{{ $gnouma->username }}</td>
+                <td>{{ $gnouma->password }}</td>
+                <td>{{ $gnouma->poste }}</td>
+                <td>{{ $gnouma->poste }}</td>
+
+
+
+
+                 <!-- JavaScript Bundle with Popper -->
+
+    
+<script>
+
+// Modifier utilisateur/
+
+$(document).ready(function() {
+
+var table = $('#datatable').DataTable();
+
+table.on('click','.edit', function() {
+
+
+$tr = $(this).closest('tr');
+if ($($tr).hasClass('child')){
+    $tr = $tr.prev('.parent');
+}
+var data = table.row($tr).data();
+console.log(data);
+
+$('#cod').val(data[1]);
+$('#dest').val(data[2]);
+$('#dates').val(data[3]);
+$('#heures').val(data[4]);
+$('#classa').val(data[5]);
+$('#pclassa').val(data[6]);
+$('#classb').val(data[7]);
+$('#pclassb').val(data[8]);
+
+$('#editForm').attr('action', '/vol/'+data[0]);
+$('#editModal').modal('show');
+});
+
+// Fin de modification
+
+
+   // Start Delete//
+   table.on('click','.delete', function()
+ {
+    $tr = $(this).closest('tr');
+        if ($($tr).hasClass('child'))
+        {
+            $tr = $tr.prev('.parent');
+        }
+
+    var data = table.row($tr).data();
+    console.log(data);
+    $('#deleteForm').attr('action', '/vol/'+data[0]);
+    $('#deleteModal').modal('show');
+});
+
+//End Delete//  
+
+</script> 

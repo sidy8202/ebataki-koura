@@ -35,7 +35,7 @@ class CourriersEntrantsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
