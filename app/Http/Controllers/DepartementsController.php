@@ -61,9 +61,11 @@ class DepartementsController extends Controller
      * @param  \App\Models\departements  $departements
      * @return \Illuminate\Http\Response
      */
-    public function edit(departements $departements)
+    public function edit($id)
     {
-        //
+        $departements = departements::findOrFail($id);
+
+    return view('edit', compact('departements'));
     }
 
     /**
@@ -73,9 +75,15 @@ class DepartementsController extends Controller
      * @param  \App\Models\departements  $departements
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, departements $departements)
+    public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'nom' => 'required',
+        ]);
+
+        departements::whereId($id)->update($validatedData);
+    
+        return redirect('/departements')->with('success', 'MISE A JOUR REUSSIE');
     }
 
     /**
@@ -84,8 +92,11 @@ class DepartementsController extends Controller
      * @param  \App\Models\departements  $departements
      * @return \Illuminate\Http\Response
      */
-    public function destroy(departements $departements)
+    public function destroy( $id)
     {
-        //
+        $departements = departements::findOrFail($id);
+        $departements->delete();
+    
+        return redirect('/departements')->with('success', 'SUPPRIMER  REUSSIE');
     }
 }
