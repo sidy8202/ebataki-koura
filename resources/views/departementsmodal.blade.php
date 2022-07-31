@@ -164,8 +164,8 @@
                     <th scope="row">{{ $depart->nom }}</td>
                 
                     <td>
-                    <a href="{ action('DepartementsController@update') }}" class="edit btn btn-primary btn-sm" >Modifier</a> 
-                    <a href="{ action('DepartementsController@destroy') }}" class="delete btn btn-danger btn-sm">Supprimer</a> 
+                    <a href="#" class="edit btn btn-primary btn-sm" >Modifier</a> 
+                    <a href="#" class="delete btn btn-danger btn-sm">Supprimer</a> 
                     
                     {{-- <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a> --}}
                 </td>
