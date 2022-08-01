@@ -29,8 +29,8 @@ class DepartementsController extends Controller
 
     public function create()
     {
-        $yes = utilisateurs::all();
-        return view('departementsmodal')->with('yes',$yes);
+       
+        return view('departementsmodal');
     }
 
     /**

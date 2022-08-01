@@ -70,7 +70,7 @@
                         <select name="id_departement" id="id_departement">
                             <option value="">Choisir</option>
 
-                            @foreach($departement as $dai)
+                            @foreach($departements as $dai)
                             <option value="{{ $dai->id }}">{{ $dai->nom }}</option>
                             @endforeach
                         </select>

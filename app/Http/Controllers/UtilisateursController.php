@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\utilisateurs;
 use App\Models\departements;
-use Illuminate\Http\Request;
 
 class UtilisateursController extends Controller
 {
@@ -25,7 +25,7 @@ class UtilisateursController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {  
+    {   
         $departements = departements::all();
         return view('utilisateursmodal',compact('departements'));   
     }
