@@ -15,8 +15,8 @@ class DepartementsController extends Controller
      */
     public function index()
     {
-        $service = departements::all();
-        return view('departementsmodal')->with('service',$service);
+        $departements = departements::all();
+        return view('departementsmodal')->with('departements',$departements);
     }
 
     /**
@@ -41,11 +41,11 @@ class DepartementsController extends Controller
      */
     public function store(Request $request)
     {
-        $structure = $request->validate([
+        $departements = $request->validate([
             'nom' => 'required',
             ]);
 
-        departements::create($structure);
+        departements::create($departements);
         return redirect('/departements')->with('success', 'Departement ajouté avec Succes!!');
     }
 
@@ -69,9 +69,9 @@ class DepartementsController extends Controller
      */
     public function edit($id)
     {
-        $departements = Departements::findOrFail($id);
+        $departements = departements::findOrFail($id);
 
-        return view('edit', compact('departements'));
+    return view('edit', compact('departements'));
     }
 
     /**
@@ -86,10 +86,6 @@ class DepartementsController extends Controller
         $validatedData = $request->validate([
             'nom' => 'required',
             ]);
-    
-        Departements::whereId($id)->update($validatedData);
-    
-        return redirect('/departements')->with('success', 'MISE A JOUR REUSSIE');
     }
 
     /**
@@ -100,9 +96,9 @@ class DepartementsController extends Controller
      */
     public function destroy($id)
     {
-        $departement = Departements::findOrFail($id);
-        $departement->delete();
+        $departements = departements::findOrFail($id);
+        $departements->delete();
     
-        return redirect('/departements')->with('success', 'SUPPRESSION  REUSSIE');
+        return redirect('/departements')->with('success', 'SUPPRIMER  REUSSIE');
     }
 }
