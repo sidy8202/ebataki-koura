@@ -58,7 +58,7 @@
         </div>
         <div class="modal-body">
           
-            <form action= "" method="POST">
+            <form action= "/departements" method="POST">
                 {{ csrf_field() }}
                 <div class="modal-body">							
                     <div class="mb-3">
@@ -157,11 +157,11 @@
             </thead>
 
             <tbody>
-                @foreach ($service as $depart)
+                @foreach ($departements as $depart)
                 
                 <tr>
                     <td scope="row">{{$depart->id}}</td>
-                    <th scope="row">{{ $depart->nom }}</td>
+                    <th scope="row">{{$depart->nom}}</td>
                 
                     <td>
                     <a href="#" class="edit btn btn-primary btn-sm" >Modifier</a> 

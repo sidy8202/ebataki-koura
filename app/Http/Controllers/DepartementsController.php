@@ -14,8 +14,8 @@ class DepartementsController extends Controller
      */
     public function index()
     {
-        $service = departements::all();
-        return view('departementsmodal')->with('service',$service);;
+        $departements = departements::all();
+        return view('departementsmodal')->with('departements',$departements);;
     }
 
     /**
@@ -36,11 +36,11 @@ class DepartementsController extends Controller
      */
     public function store(Request $request)
     {
-        $structure = $request->validate([
+        $departements = $request->validate([
             'nom' => 'required',
             ]);
 
-        departements::create($structure);
+        departements::create($departements);
         return redirect('/departements')->with('success', 'Departement ajouté avec Succes!!');
     }
 
@@ -61,7 +61,7 @@ class DepartementsController extends Controller
      * @param  \App\Models\departements  $departements
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(departements $departements)
     {
         $departements = departements::findOrFail($id);
 
@@ -75,15 +75,11 @@ class DepartementsController extends Controller
      * @param  \App\Models\departements  $departements
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, departements $departements)
     {
         $validatedData = $request->validate([
             'nom' => 'required',
-        ]);
-
-        departements::whereId($id)->update($validatedData);
-    
-        return redirect('/departements')->with('success', 'MISE A JOUR REUSSIE');
+            ]);
     }
 
     /**
@@ -92,7 +88,7 @@ class DepartementsController extends Controller
      * @param  \App\Models\departements  $departements
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $id)
+    public function destroy(departements $departements)
     {
         $departements = departements::findOrFail($id);
         $departements->delete();
