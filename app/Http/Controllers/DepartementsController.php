@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\departements;
+use App\Models\utilisateurs;
+
 use Illuminate\Http\Request;
 
 class DepartementsController extends Controller
@@ -23,9 +24,13 @@ class DepartementsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+   
+
     public function create()
     {
-        return view('create');
+        $yes = utilisateurs::all();
+        return view('departementsmodal')->with('yes',$yes);
     }
 
     /**

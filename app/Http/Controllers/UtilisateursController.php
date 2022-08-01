@@ -26,8 +26,8 @@ class UtilisateursController extends Controller
      */
     public function create()
     {  
-        $service = departements::all();
-        return view('utilisateurmodal')->with('service',$service);   
+        $departements = departements::all();
+        return view('utilisateursmodal',compact('departements'));   
     }
 
     /**
@@ -47,6 +47,7 @@ class UtilisateursController extends Controller
         'username' => 'required',
         'password' => 'required',
         'poste' => 'required',
+        'id_departement'=> 'required',
         
         ]);
 
@@ -92,6 +93,8 @@ class UtilisateursController extends Controller
         $barakaila->phone = $request->input('phone');
         $barakaila->email = $request->input('email');
         $barakaila->poste = $request->input('poste');
+        $barakaila->id_departement = $request->input('id_departement');
+
         $barakaila->save();
         return redirect('/utilisateurs')->with('success', 'utilisateur Modifié avec Succes!!');
     }
