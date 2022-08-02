@@ -70,9 +70,9 @@
                         <select name="id_departement" id="id_departement">
                             <option value="">Choisir</option>
 
-                            @foreach($departements as $dai)
-                            <option value="{{ $dai->id }}">{{ $dai->nom }}</option>
-                            @endforeach
+                            
+                            <option value=""></option>
+                           
                         </select>
                         
                     </div>
