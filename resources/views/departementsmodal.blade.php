@@ -58,12 +58,13 @@
         </div>
         <div class="modal-body">
           
-            <form action= "/departements" method="POST">
+            <form action= "/departements" id="modifdepart" method="POST">
                 {{ csrf_field() }}
+                {{ method_field('PUT') }}
                 <div class="modal-body">							
                     <div class="mb-3">
                         <label for="" class="form-label">Nom </label>
-                        <input type="text" class="form-control" name="nom" >
+                        <input type="text" class="form-control" id="nom" name="nom" >
                     </div>
                 </div>
                 
@@ -149,7 +150,7 @@
         <table id="datatable" class="table table-bordered">
             <thead>
               <tr>
-                <th scope="col">ID</th>
+                <th scope="col" class="masque">>ID</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Actions</th>
 
@@ -160,7 +161,7 @@
                 @foreach ($departements as $depart)
                 
                 <tr>
-                    <td scope="row">{{$depart->id}}</td>
+                    <td scope="row" class="masque">{{$depart->id}}</td>
                     <th scope="row">{{$depart->nom}}</td>
                 
                     <td>
@@ -192,6 +193,16 @@
     } );
 </script>
 
+{{-- Hide content of table --}}
+
+<script>
+    $(document).ready( function () {
+        $('.masque').hide();
+    } );
+</script>
+
+{{-- End of hide --}}
+
 <script type="text/javascript">
     
     $(document).ready(function() {
@@ -211,7 +222,7 @@
     
         $('#nom').val(data[1]);
     
-        $('#editForm').attr('action', '/departements/'+data[0]);
+        $('#modifdepart').attr('action', '/departements/'+data[0]);
         $('#modifier').modal('show');
     });
 
