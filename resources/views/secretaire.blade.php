@@ -56,8 +56,8 @@
                     <div class="form-group">
                         <label for="exampleInputPassword1" class="form-label">Id_département</label>
                         <select id="" class="form-control" name="id_departement">
-                            @foreach ($secretaires as $secretaire )
-                                <option value="{{$secretaire->id}}">{{$secretaire->id_departement}}</option>
+                            @foreach ($service as $departements )
+                                <option value="{{$departements->id}}">{{$departements->id_departement}}</option>
                             @endforeach
                           
                         </select>
@@ -97,18 +97,19 @@
             <table id="myDataTable" class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Username</th>
+                        <th>ID Secretaire</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Adresse</th>
+                        <th>Phone</th>
                         <th>Email</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Modifier</th>
-                        
+                        <th>ID Département</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    @foreach($departements as $secretaires )
                         <tr>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -117,7 +118,7 @@
                             <td></td>
                             
                         </tr>
-                  
+                    @endforeach
                 </tbody>
             </table>
 
@@ -125,21 +126,6 @@
     </div>
     
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

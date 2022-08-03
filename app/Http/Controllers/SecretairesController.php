@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\secretaires;
+use App\Models\departements;
 use Illuminate\Http\Request;
 use App\Http\Requests\SecretaireFormRequest;
+
 
 class SecretairesController extends Controller
 {
@@ -27,10 +29,11 @@ class SecretairesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
-        $secretaires = secretaires::all();
-        return view('createsecretaire', compact('secretaires'));
+        $departements = departements::all();
+        return view('secretaire', compact('departements'));
 
     }
 
