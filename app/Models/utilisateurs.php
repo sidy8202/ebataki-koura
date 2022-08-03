@@ -11,10 +11,7 @@ class utilisateurs extends Model
     protected $fillable =  ['nom','prenom','adresse','phone','email','username','poste','id_departement'];
 
     
-    public function departements()
-    {  
-        Return $this->hasMany(departements::class);
-    }
+    
 
 }
 
