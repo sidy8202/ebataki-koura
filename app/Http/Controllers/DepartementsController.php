@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\departements;
+use App\Models\utilisateurs;
+
 use Illuminate\Http\Request;
 
 class DepartementsController extends Controller
@@ -14,7 +15,8 @@ class DepartementsController extends Controller
      */
     public function index()
     {
-        //
+        $departements = departements::all();
+        return view('departementsmodal')->with('departements',$departements);
     }
 
     /**
@@ -22,9 +24,13 @@ class DepartementsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+   
+
     public function create()
     {
-        //
+       
+        return view('departementsmodal');
     }
 
     /**
@@ -35,51 +41,64 @@ class DepartementsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $departements = $request->validate([
+            'nom' => 'required',
+            ]);
+
+        departements::create($departements);
+        return redirect('/departements')->with('success', 'Departement ajouté avec Succes!!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\departements  $departements
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(departements $departements)
+    public function show($id)
     {
-        //
+        $departements = Departements::findOrFail($id);
+        return view('show', compact('departements'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\departements  $departements
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(departements $departements)
+    public function edit($id)
     {
-        //
+        $departements = departements::findOrFail($id);
+
+    return view('edit', compact('departements'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\departements  $departements
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, departements $departements)
+    public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'nom' => 'required',
+            ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\departements  $departements
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(departements $departements)
+    public function destroy($id)
     {
-        //
+        $departements = departements::findOrFail($id);
+        $departements->delete();
+    
+        return redirect('/departements')->with('success', 'SUPPRIMER  REUSSIE');
     }
 }

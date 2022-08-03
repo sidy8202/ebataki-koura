@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class utilisateurs extends Model
 {
     use HasFactory;
-    protected $fillable =  ['nom','prenom','adresse','phone','email','username','password',	'poste'];
+    protected $fillable =  ['nom','prenom','adresse','phone','email','username','poste','id_departement'];
+
+    
+    public function departements()
+    {  
+        Return $this->hasMany(departements::class);
+    }
 
 }
+
+

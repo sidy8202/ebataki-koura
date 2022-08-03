@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\utilisateurs;
 use App\Models\departements;
-
-
-use Illuminate\Http\Request;
 
 class UtilisateursController extends Controller
 {
@@ -18,7 +16,7 @@ class UtilisateursController extends Controller
     public function index()
     {
         $bara = utilisateurs::all();
-        return view('utilisateursmodal')->with('bara',$bara);;
+        return view('utilisateursmodal')->with('bara',$bara);
     }
 
     /**
@@ -27,8 +25,9 @@ class UtilisateursController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        
+    {   
+        $departements = departements::all();
+        return view('utilisateursmodal',compact('departements'));   
     }
 
     /**
@@ -48,6 +47,7 @@ class UtilisateursController extends Controller
         'username' => 'required',
         'password' => 'required',
         'poste' => 'required',
+        'id_departement'=> 'required',
         
         ]);
 
@@ -63,7 +63,7 @@ class UtilisateursController extends Controller
      */
     public function show(utilisateurs $utilisateurs)
     {
-        //
+        
     }
 
     /**
@@ -72,9 +72,9 @@ class UtilisateursController extends Controller
      * @param  \App\Models\utilisateurs  $utilisateurs
      * @return \Illuminate\Http\Response
      */
-    public function edit(utilisateurs $utilisateurs)
+    public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -84,9 +84,19 @@ class UtilisateursController extends Controller
      * @param  \App\Models\utilisateurs  $utilisateurs
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, utilisateurs $utilisateurs)
+    public function update(Request $request, $id)
     {
-        //
+        $barakaila = utilisateurs::find($id);
+        $barakaila->nom = $request->input('nom');
+        $barakaila->prenom = $request->input('prenom');
+        $barakaila->adresse = $request->input('adresse');
+        $barakaila->phone = $request->input('phone');
+        $barakaila->email = $request->input('email');
+        $barakaila->poste = $request->input('poste');
+        $barakaila->id_departement = $request->input('id_departement');
+
+        $barakaila->save();
+        return redirect('/utilisateurs')->with('success', 'utilisateur Modifié avec Succes!!');
     }
 
     /**
@@ -95,8 +105,10 @@ class UtilisateursController extends Controller
      * @param  \App\Models\utilisateurs  $utilisateurs
      * @return \Illuminate\Http\Response
      */
-    public function destroy(utilisateurs $utilisateurs)
+    public function destroy($id)
     {
-        //
+        $barakaila = utilisateurs::find($id) ;
+        $barakaila->delete();
+        return redirect('/utilisateurs')->with('success', 'Utilisateurs Supprimé avec Succes!!');
     }
 }
