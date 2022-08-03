@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\utilisateurs;
 use App\Models\departements;
+use Illuminate\Support\Facades\DB;
+
+use Illuminate\Http\Request;
+
 
 class UtilisateursController extends Controller
 {
@@ -26,9 +29,10 @@ class UtilisateursController extends Controller
      */
     public function create()
     {   
-         
-    }
-
+        $departements = departements::all();
+        return view('utilisateursmodal',compact('departements')); 
+    }          
+    
     /**
      * Store a newly created resource in storage.
      *

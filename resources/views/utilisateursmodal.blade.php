@@ -23,7 +23,7 @@
         </div>
         <div class="modal-body">
           
-            <form action= "{{ action('UtilisateursController@store') }}" method="POST">
+            <form action= "{{ url('utilisateursmodal') }}" method="POST">
                 {{ csrf_field() }}
                 <div class="modal-body">							
                     <div class="mb-3">
@@ -56,8 +56,6 @@
                         <input type="text" class="form-control" name="username" >
                     </div>
                             
-                  
-
                     <div class="mb-3">
                         <label for="" class="form-label">Poste</label>
                         <input type="text" class="form-control" name="poste" >
@@ -65,13 +63,14 @@
 
                     <div class="mb-3">
                         <label for="" class="form-label">Departement</label>
-
-                        <select name="id_departement" id="id_departement">
+                            
+                        <select name="id_departement">  
                             <option value="">Choisir</option>
 
-                            
-                            <option value=""></option>
-                           
+                                @foreach ($departements as $depart)
+                                    <option value="{{ $depart->id }}">{{ $depart -> nom }}</option>
+                                @endforeach
+
                         </select>
                         
                     </div>
