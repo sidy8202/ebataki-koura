@@ -18,9 +18,5 @@ Route::get('/', function () {
 });
 
 Route::resource('/departements', 'DepartementsController');
-
 Route::resource('/utilisateurs', 'UtilisateursController');
 
-
-
-?>
