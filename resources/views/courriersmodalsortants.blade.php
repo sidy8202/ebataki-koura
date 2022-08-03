@@ -127,7 +127,7 @@
                             <div class="mb-3">
                                 <h6>Voulez-vous vraiment supprimer cette ligne?</h6>
                             </div>
-                             <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_method" value="DELETE">
                         </div>  
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Non</button>

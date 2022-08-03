@@ -42,7 +42,7 @@ class CourriersSortantsController extends Controller
         $validatedData = $request->validate([
             'num_reference' => 'required',
             'objet' => 'required',
-            'destinateur' => 'required',
+            'destinateur' => 'required'
             // 'id_utilisateurs' => 'required'
         ]);
     

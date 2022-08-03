@@ -24,6 +24,30 @@
     <div class="container">
         @yield('content')
     </div>
+
+    <!-- <div class="sidebar">
+        <nav class="navbar bg-danger">
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link 2</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link 3</a>
+                </li>
+                </ul>
+            </div>
+        </nav>
+    </div> -->
+    
+
+
+
+
+
     <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('js/jquery-3.5.1.min.js') }}" type="texte/js"></script>
     <script src="{{ asset('js/script.js') }}" type="texte/js"></script>
