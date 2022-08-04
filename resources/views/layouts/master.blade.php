@@ -15,6 +15,8 @@
   
 
     <!-- Styles -->
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">

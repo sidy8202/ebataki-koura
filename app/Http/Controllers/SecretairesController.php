@@ -19,9 +19,8 @@ class SecretairesController extends Controller
     public function index()
     {
         $secretaires = secretaires::all();
-
         $departements = departements::all();
-        return view('secretaire', compact('departements', 'secretaires' ));
+        return view('secretaire', compact('secretaires', 'departements'));
         
 
     }
@@ -35,7 +34,9 @@ class SecretairesController extends Controller
     public function create()
     
     {
-       
+        $secretaires = secretaires::all();
+        return view('secretaire', compact('secretaires'));
+        
 
     }
 
@@ -57,8 +58,9 @@ class SecretairesController extends Controller
         $secretaire->email = $data['email'];
         $secretaire->username = $data['username'];
         $secretaire->password = $data['password'];
+        $secretaire->id_departement = $data['id_departement'];
+        $reservation->code_vol = $data['code_vol'];
        
-
         $secretaire->save();
         return redirect('secretaire')->with('message', 'Secrétaire ajouté avec succès');
 

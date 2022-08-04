@@ -57,7 +57,7 @@
                         <label for="exampleInputPassword1" class="form-label">Id_département</label>
                         <select id="" class="form-control" name="id_departement">
                             @foreach ($departements as $departements )
-                                <option value="{{$departements->id}}">{{$departements->id_departement}}</option>
+                                <option value="{{$departements->id}}">{{$departements->nom}}</option>
                             @endforeach
                           
                         </select>
@@ -68,7 +68,7 @@
                 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
-                    <button type="submit" class="btn btn-success">Enregistrer</button>
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
                 </div>
 
             </form>

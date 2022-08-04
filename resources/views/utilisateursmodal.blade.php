@@ -57,8 +57,6 @@
                         <input type="text" class="form-control" name="username" >
                     </div>
                             
-                  
-
                     <div class="mb-3">
                         <label for="" class="form-label">Poste</label>
                         <input type="text" class="form-control" name="poste" >
@@ -66,13 +64,12 @@
 
                     <div class="mb-3">
                         <label for="" class="form-label">Departement</label>
-
-                        <select name="id_departement" id="id_departement">
-                            <option value="">Choisir</option>
-
-                            @foreach($departements as $dai)
-                            <option value="{{ $dai->id }}">{{ $dai->nom }}</option>
-                            @endforeach
+                            
+                        <select name="id_departement">  
+                            
+                                @foreach ($departements as $depart)
+                                    <option value="{{ $depart->id }}">{{ $depart -> nom }}</option>
+                                @endforeach
                         </select>
                         
                     </div>
@@ -259,17 +256,17 @@
             </thead>
 
             <tbody>
-                @foreach ($bara as $gnouma)
+               
                 
               <tr>
-                <th scope="row" class="th_1">{{ $gnouma->id }}</th>
-                <th scope="row">{{ $gnouma->nom }}</th>
-                <td>{{ $gnouma->prenom }}</td>
-                <td>{{ $gnouma->adresse }}</td>
-                <td>{{ $gnouma->phone }}</td>
-                <td>{{ $gnouma->email }}</td>
-                <td>{{ $gnouma->username }}</td>
-                <td>{{ $gnouma->poste }}</td>
+                <th scope="row" class="th_1"></th>
+                <th scope="row"></th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td></td>
                 
                 <td>
@@ -279,7 +276,7 @@
               {{-- <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a> --}}
                 </td>
               </tr>
-              @endforeach
+             
 
             </tbody>
           </table>

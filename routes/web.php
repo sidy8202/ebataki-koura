@@ -28,7 +28,6 @@ Route::prefix('admin')->group(function() {
 
 
 Route::get('secretaire',[App\Http\Controllers\SecretairesController::class, 'index']);
-Route::get('secretaire',[App\Http\Controllers\SecretairesController::class, 'create']);
 Route::post('secretaire',[App\Http\Controllers\SecretairesController::class, 'store']);
 
 

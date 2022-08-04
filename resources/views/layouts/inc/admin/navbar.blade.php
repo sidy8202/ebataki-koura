@@ -5,7 +5,7 @@
             <img src="{{asset('admin/images/bataki.png')}}" alt="E-Bataki" style=" width: 60px; height: 50px;" />
 
 
-            
+          
           </a>
           <a class="navbar-brand brand-logo-mini" href="index.html">
             <!-- <img src="{{asset('admin/images/logogolden.png')}}" alt="logo"/> -->
