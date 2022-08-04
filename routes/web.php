@@ -28,3 +28,5 @@ Route::post('secretaire',[App\Http\Controllers\SecretairesController::class, 'st
 Route::resource('/departements', 'DepartementsController');
 
 Route::resource('/utilisateurs', 'UtilisateursController');
+
+Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index' ]);
