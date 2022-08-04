@@ -18,5 +18,8 @@ Route::get('/', function () {
 });
 
 Route::resource('/departements', 'DepartementsController');
-Route::resource('/utilisateurs', 'UtilisateursController');
 
+
+Route::resource('/courriers_sortants', 'CourriersSortantsController');
+Route::resource('/utilisateurs', 'UtilisateursController');
+?>

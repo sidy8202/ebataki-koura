@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\courriers_sortants;
+use App\Models\courriers_entrants;
+use App\Models\utilisateurs;
 use Illuminate\Http\Request;
 
 class CourriersSortantsController extends Controller
@@ -14,7 +16,11 @@ class CourriersSortantsController extends Controller
      */
     public function index()
     {
-        //
+        $bara = utilisateurs::all();
+
+        $crst = courriers_sortants::all();
+        return view('courriersmodalsortants', compact('crst','bara'));
+
     }
 
     /**
@@ -24,7 +30,7 @@ class CourriersSortantsController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -35,7 +41,15 @@ class CourriersSortantsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'num_reference' => 'required',
+            'objet' => 'required',
+            'destinateur' => 'required'
+            
+        ]);
+    
+        $crst = courriers_sortants::create($validatedData);
+        return redirect('/courriers_sortants')->with('success', 'courrier envoyé avec succèss!!!');
     }
 
     /**
@@ -46,7 +60,7 @@ class CourriersSortantsController extends Controller
      */
     public function show(courriers_sortants $courriers_sortants)
     {
-        //
+        
     }
 
     /**
@@ -57,7 +71,8 @@ class CourriersSortantsController extends Controller
      */
     public function edit(courriers_sortants $courriers_sortants)
     {
-        //
+        $crst = courriers_sortants::findOrFail();
+        return view('edit', compact('crst'));
     }
 
     /**
@@ -69,7 +84,14 @@ class CourriersSortantsController extends Controller
      */
     public function update(Request $request, courriers_sortants $courriers_sortants)
     {
-        //
+        $validatedData = $request->validate([
+            'num_reference' => 'required',
+            'objet' => 'required',
+            'destinateur' => 'required'
+        ]);
+
+        $crst = courriers_sortants::whereId()->update($validatedData);
+        return redirect('/courriers_sortants')->with('success', 'courrier mise à jour avec succèss!!!');
     }
 
     /**
@@ -80,6 +102,8 @@ class CourriersSortantsController extends Controller
      */
     public function destroy(courriers_sortants $courriers_sortants)
     {
-        //
+        $crst = courriers_sortants::findOrFail();
+        $crst->delete();
+        return redirect('/courriers_sortants')->with('success', 'courrier supprimer avec succèss!!!');
     }
 }

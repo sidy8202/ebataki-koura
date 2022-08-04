@@ -15,13 +15,13 @@ class CreateSecretairesTable extends Migration
     {
         Schema::create('secretaires', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
+            $table->string('nom');   
             $table->string('prenom');
             $table->string('adresse');
             $table->integer('phone');
             $table->string('email');
             $table->string('username');
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->unsignedBigInteger("id_departement");
             $table->foreign('id_departement')
                 ->references('id')

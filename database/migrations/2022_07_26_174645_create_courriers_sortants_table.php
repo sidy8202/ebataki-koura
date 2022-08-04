@@ -24,7 +24,7 @@ class CreateCourriersSortantsTable extends Migration
                 ->references('id')
                 ->on('utilisateurs')
                 ->onDelete('cascade');
-
+ 
             $table->unsignedBigInteger("id_courriers_entrants");
             $table->foreign('id_courriers_entrants')
                 ->references('id')
