@@ -15,11 +15,9 @@ class DepartementsController extends Controller
      */
     public function index()
     {
-        $departements = Departements::all();
-
-   
-        $service = departements::all();
-        return view('departementsmodal')->with('service',$service);
+       
+        $departements = departements::all();
+        return view('departementsmodal')->with('departements',$departements);
     }
 
     /**

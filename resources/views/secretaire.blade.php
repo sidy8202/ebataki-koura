@@ -81,7 +81,7 @@
 
 
 
-<div class="container-fluid px-4">
+<div class="container px-4">
 
     <div class="card mt-5 ">
 
