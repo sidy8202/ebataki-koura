@@ -18,8 +18,10 @@ class UtilisateursController extends Controller
      */
     public function index()
     {
+        $departements = departements::all();
         $bara = utilisateurs::all();
-        return view('utilisateursmodal')->with('bara',$bara);
+
+        return view('utilisateursmodal',compact('departements','bara'));
     }
 
     /**
@@ -28,9 +30,8 @@ class UtilisateursController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
-        $departements = departements::all();
-        return view('utilisateursmodal',compact('departements')); 
+    {  
+         
     }          
     
     /**
@@ -55,7 +56,7 @@ class UtilisateursController extends Controller
         ]);
 
         utilisateurs::create($barakaila);
-        return redirect('/utilisateurs')->with('success', 'Utilisateur ajouté avec Succes!!');
+        return redirect('utilisateurs')->with('success', 'Utilisateur ajouté avec Succes!!');
     }
 
     /**
