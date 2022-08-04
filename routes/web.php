@@ -25,6 +25,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('secretaire',[App\Http\Controllers\SecretairesController::class, 'index']);
 Route::get('secretaire',[App\Http\Controllers\SecretairesController::class, 'create']);
 Route::post('secretaire',[App\Http\Controllers\SecretairesController::class, 'store']);
-Route::resource('/departements', 'DepartementsController');
 
 Route::resource('/utilisateurs', 'UtilisateursController');
+Route::resource('/departements', 'DepartementsController');
+
+?>

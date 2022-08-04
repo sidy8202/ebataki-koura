@@ -31,6 +31,7 @@ class SecretairesController extends Controller
      */
 
     public function create()
+    
     {
         $departements = departements::all();
         return view('secretaire', compact('departements'));

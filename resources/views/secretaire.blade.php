@@ -56,7 +56,7 @@
                     <div class="form-group">
                         <label for="exampleInputPassword1" class="form-label">Id_département</label>
                         <select id="" class="form-control" name="id_departement">
-                            @foreach ($service as $departements )
+                            @foreach ($departements as $departements )
                                 <option value="{{$departements->id}}">{{$departements->id_departement}}</option>
                             @endforeach
                           

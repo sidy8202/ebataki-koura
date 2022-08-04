@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\departements;
+use App\Models\utilisateurs;
+
 use Illuminate\Http\Request;
 
 class DepartementsController extends Controller
@@ -16,7 +17,7 @@ class DepartementsController extends Controller
     {
         $departements = Departements::all();
 
-    return view('index', compact('departements'));
+   
         $service = departements::all();
         return view('departementsmodal')->with('service',$service);
     }
@@ -26,9 +27,13 @@ class DepartementsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+   
+
     public function create()
     {
-        return view('create');
+       
+        return view('departementsmodal');
     }
 
     /**
@@ -50,7 +55,7 @@ class DepartementsController extends Controller
             'nom' => 'required',
             ]);
 
-        departements::create($structure);
+        departements::create($departements);
         return redirect('/departements')->with('success', 'Departement ajouté avec Succes!!');
     }
 
@@ -74,9 +79,9 @@ class DepartementsController extends Controller
      */
     public function edit($id)
     {
-        $departements = Departements::findOrFail($id);
+        $departements = departements::findOrFail($id);
 
-        return view('edit', compact('departements'));
+    return view('edit', compact('departements'));
     }
 
     /**
@@ -91,10 +96,6 @@ class DepartementsController extends Controller
         $validatedData = $request->validate([
             'nom' => 'required',
             ]);
-    
-        Departements::whereId($id)->update($validatedData);
-    
-        return redirect('/departements')->with('success', 'MISE A JOUR REUSSIE');
     }
 
     /**
@@ -105,9 +106,9 @@ class DepartementsController extends Controller
      */
     public function destroy($id)
     {
-        $departement = Departements::findOrFail($id);
-        $departement->delete();
+        $departements = departements::findOrFail($id);
+        $departements->delete();
     
-        return redirect('/departements')->with('success', 'SUPPRESSION  REUSSIE');
+        return redirect('/departements')->with('success', 'SUPPRIMER  REUSSIE');
     }
 }
