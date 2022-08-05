@@ -30,7 +30,8 @@ class UtilisateursController extends Controller
     public function create()
     {   
         $departements = departements::all();
-        return view('utilisateursmodal',compact('departements')); 
+        dd($departements);
+        return view('utilisateursmodal',compact('id', 'departements')); 
     }          
     
     /**

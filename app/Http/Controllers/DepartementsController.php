@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\departements;
+use App\Models\utilisateurs;
+
 use Illuminate\Http\Request;
 
 class DepartementsController extends Controller
@@ -23,9 +24,13 @@ class DepartementsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+   
+
     public function create()
     {
-        
+       
+        return view('departementsmodal');
     }
 
     /**
@@ -47,49 +52,49 @@ class DepartementsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\departements  $departements
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(departements $departements)
+    public function show($id)
     {
-        
+        $departements = Departements::findOrFail($id);
+        return view('show', compact('departements'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\departements  $departements
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id)
+    public function edit($id)
     {
-        
+        $departements = departements::findOrFail($id);
+
+    return view('edit', compact('departements'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\departements  $departements
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $validatedata = departements::find($id);
-        $validatedata->nom = $request->input('nom');
-        $validatedata->save();
-        return redirect('/departements')->with('success', 'Mise à jour Reussie!!');
-
-            
+        $validatedData = $request->validate([
+            'nom' => 'required',
+            ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\departements  $departements
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $id)
+    public function destroy($id)
     {
         $departements = departements::findOrFail($id);
         $departements->delete();
