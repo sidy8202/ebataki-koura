@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\utilisateurs;
-use App\Models\departements;
-use Illuminate\Support\Facades\DB;
+
+
 
 use Illuminate\Http\Request;
 
@@ -18,10 +18,11 @@ class UtilisateursController extends Controller
      */
     public function index()
     {
-        $bara = utilisateurs::all();
+        $utilisateurs = utilisateurs::all();
         $departements = departements::all();
 
-        return view('utilisateursmodal',compact('departements','bara'));
+        
+        return view('utilisateurs.utilisateursmodal',compact('utilisateurs','departement'));
     }
 
     /**

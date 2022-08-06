@@ -17,9 +17,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('admin')->group(function() {
+
+    Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
+});
+
+
+Route::get('secretaire',[App\Http\Controllers\SecretairesController::class, 'index']);
+Route::post('secretaire',[App\Http\Controllers\SecretairesController::class, 'store']);
+
+
+Route::resource('/utilisateurs', 'UtilisateursController');
+
 Route::resource('/departements', 'DepartementsController');
 
-
 Route::resource('/courriers_sortants', 'CourriersSortantsController');
-Route::resource('/utilisateurs', 'UtilisateursController');
-?>
+
+

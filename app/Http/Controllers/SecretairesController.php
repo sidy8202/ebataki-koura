@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\secretaires;
+use App\Models\departements;
 use Illuminate\Http\Request;
+use App\Http\Requests\SecretaireFormRequest;
+
 
 class SecretairesController extends Controller
 {
@@ -12,9 +15,14 @@ class SecretairesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        //
+        $secretaires = secretaires::all();
+        $departements = departements::all();
+        return view('secretaire', compact('secretaires', 'departements'));
+        
+
     }
 
     /**
@@ -22,9 +30,14 @@ class SecretairesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
+    
     {
-        //
+        $secretaires = secretaires::all();
+        return view('secretaire', compact('secretaires'));
+        
+
     }
 
     /**
@@ -33,9 +46,25 @@ class SecretairesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SecretaireFormRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $secretaire = new secretaires;
+        $secretaire->nom = $data['nom'];
+        $secretaire->prenom = $data['prenom'];
+        $secretaire->adresse = $data['adresse'];
+        $secretaire->phone = $data['phone'];
+        $secretaire->email = $data['email'];
+        $secretaire->username = $data['username'];
+        $secretaire->password = $data['password'];
+        $secretaire->id_departement = $data['id_departement'];
+        $reservation->code_vol = $data['code_vol'];
+       
+        $secretaire->save();
+        return redirect('secretaire')->with('message', 'Secrétaire ajouté avec succès');
+
+    
     }
 
     /**

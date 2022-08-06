@@ -21193,14 +21193,14 @@ dl li {
 }
 
 .sidebar .nav .nav-item .nav-link i {
-  color: inherit;
+  color: white;
 }
 
 .sidebar .nav .nav-item .nav-link i.menu-icon {
   font-size: 1.125rem;
   line-height: 1;
   margin-right: 1.125rem;
-  color: inherit;
+  color: white;
 }
 
 .rtl .sidebar .nav .nav-item .nav-link i.menu-icon {
@@ -21210,6 +21210,7 @@ dl li {
 
 .sidebar .nav .nav-item .nav-link i.menu-icon:before {
   vertical-align: middle;
+  color: white;
 }
 
 .sidebar .nav .nav-item .nav-link i.menu-arrow {
@@ -21241,7 +21242,7 @@ dl li {
 }
 
 .sidebar .nav .nav-item .nav-link .menu-title {
-  color: inherit;
+  color: white;
   display: inline-block;
   font-size: 0.875rem;
   line-height: 1;
@@ -21785,6 +21786,7 @@ dl li {
     margin-right: 0;
     margin-left: 0;
     margin-bottom: 0;
+    
   }
   .sidebar-icon-only .sidebar .nav .nav-item .nav-link i.menu-arrow {
     display: none;
