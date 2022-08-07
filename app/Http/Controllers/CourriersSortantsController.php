@@ -69,8 +69,7 @@ class CourriersSortantsController extends Controller
      */
     public function edit(courriers_sortants $courriers_sortants)
     {
-        $crst = courriers_sortants::findOrFail();
-        return view('edit', compact('crst'));
+        
     }
 
     /**
@@ -80,16 +79,15 @@ class CourriersSortantsController extends Controller
      * @param  \App\Models\courriers_sortants  $courriers_sortants
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, courriers_sortants $courriers_sortants)
+    public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'num_reference' => 'required',
-            'objet' => 'required',
-            'destinateur' => 'required'
-        ]);
+        $validatedata = courriers_sortants::find($id);
+        $validatedata->num_reference = $request->input('num_reference');
+        $validatedata->objet = $request->input('objet');
+        $validatedata->destinateur = $request->input('destinateur');
+        $validatedata->save();
+        return redirect('/courriers_sortants')->with('success', 'Courrier mise à jour avec succèss!!!');
 
-        $crst = courriers_sortants::whereId()->update($validatedData);
-        return redirect('/courriers_sortants')->with('success', 'courrier mise à jour avec succèss!!!');
     }
 
     /**
@@ -98,10 +96,10 @@ class CourriersSortantsController extends Controller
      * @param  \App\Models\courriers_sortants  $courriers_sortants
      * @return \Illuminate\Http\Response
      */
-    public function destroy(courriers_sortants $courriers_sortants)
+    public function destroy( $id)
     {
-        $crst = courriers_sortants::findOrFail();
-        $crst->delete();
+        $courriers_sortants = courriers_sortants::findOrFail($id);
+        $courriers_sortants->delete();
         return redirect('/courriers_sortants')->with('success', 'courrier supprimer avec succèss!!!');
     }
 }

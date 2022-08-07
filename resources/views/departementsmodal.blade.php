@@ -57,7 +57,6 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          
             <form action= "/departements" id="modifdepart" method="POST">
                 {{ csrf_field() }}
                 {{ method_field('PUT') }}
@@ -67,15 +66,12 @@
                         <input type="text" class="form-control" id="nom" name="nom" >
                     </div>
                 </div>
-                
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
                     <button type="submit" class="btn btn-primary">Modifier</button>
                 </div>
             </form>
-
         </div>
-       
       </div>
     </div>
   </div>
@@ -177,7 +173,6 @@
           </table>
     </div>
   </div>
-
 </div>
 
 <!-- JavaScript Bundle with Popper -->
