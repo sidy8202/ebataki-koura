@@ -12,7 +12,7 @@
 
 </head>
 
-@section('content')
+
 <body>
 <div class="container">
 <div class="card">
@@ -154,5 +154,5 @@
 {{-- End of hide --}}
 
 </body>
-@endsection
+
 </html>
