@@ -22,6 +22,58 @@
               <div class="col-md-5">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Envoyer</button>
               </div>
+
+               <!-- debut Modal envoyer courriers -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ajouter utilisateur</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form action= "{{ action('CourriersSortantsController@store') }}" method="POST">
+                  {{ csrf_field() }}
+                  <div class="modal-body">							
+                      <div class="mb-3">
+                          <label for="" class="form-label">N° Référence</label>
+                          <input type="text" class="form-control" name="num_reference" >
+                      </div>
+                      <div class="mb-3">
+                          <label for="" class="form-label">Obet </label>
+                          <input type="text" class="form-control" name="objet" >
+                      </div>
+                      <div class="mb-3">
+                          <label for="" class="form-label">Destinateur</label>
+                          <input type="text" class="form-control" name="destinateur" >
+                      </div>
+                      <div class="mb-3">
+                          <label for="" class="form-label">Expéditeur</label>
+
+                          <select name="id_utilisateurs " id="">
+                            @foreach ($bara as $voila)
+                              <option value=""><strong>{{ $voila->nom}}  {{ $voila->prenom}}</strong></option>
+                            @endforeach
+                          </select>
+                        
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="" class="form-label">Le Courrier</label>
+                        <input type="file" class="form-control" name="destinateur" >
+                    </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+                      <button type="submit" class="btn btn-primary">Envoyer</button>
+                  </div>
+              </form>
+
+          </div>
+        
+        </div>
+      </div>
+    </div>
+    <!-- fin modal envoyer -->  
               <div class="col">
                 <h2>La liste des courriers envoyés</h2>
               </div>
@@ -47,7 +99,7 @@
                 <td>{{$crs->num_reference}}</td>
                 <td>{{$crs->objet}}</td>
                 <td>{{$crs->destinateur}}</td>
-                <td>{{$crs->destinateur}}</td>
+                <td>{{$crs->id_utilisateurs}}</td>
                 <td>
                   <button class="btn btn-success edit" data-bs-toggle="modal" data-bs-target="#modifcoursortants">Mod</button>
                   <button class="btn btn-danger edit" data-bs-toggle="modal" data-bs-target="#deleteModal">Supp</button>

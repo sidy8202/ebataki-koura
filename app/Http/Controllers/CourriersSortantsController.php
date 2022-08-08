@@ -16,8 +16,10 @@ class CourriersSortantsController extends Controller
      */
     public function index()
     {
+        $bara = utilisateurs::all();
+
         $crst = courriers_sortants::all();
-        return view('courriersmodalsortants', compact('crst'));
+        return view('courriersmodalsortants', compact('crst','bara'));
 
     }
 
@@ -43,7 +45,7 @@ class CourriersSortantsController extends Controller
             'num_reference' => 'required',
             'objet' => 'required',
             'destinateur' => 'required'
-            // 'id_utilisateurs' => 'required'
+            
         ]);
     
         $crst = courriers_sortants::create($validatedData);

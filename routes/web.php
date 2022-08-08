@@ -39,3 +39,7 @@ Route::resource('/departements', 'DepartementsController');
 
 
 
+
+
+
+?>
