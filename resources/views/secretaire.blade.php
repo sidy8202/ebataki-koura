@@ -35,7 +35,7 @@
 
                     <div class="form-group">
                         <label for="name">Phone</label>
-                        <input type="text" name="phone" class="form-control">
+                        <input type="number" name="phone" class="form-control">
                     </div>
 
                     <div class="form-group">
@@ -56,6 +56,11 @@
                     <div class="form-group">
                         <label for="name">Mot de Passe</label>
                         <input type="text" name="password" class="form-control"@error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                        @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
@@ -65,13 +70,11 @@
 
                     <div class="form-group">
                         <label for="exampleInputPassword1" class="form-label">Id_département</label>
-                        <select id="" class="form-control" name="id_departement">
+                        <select name="id_departement" class="form-control">
                             @foreach ($departements as $departements )
                                 <option value="{{$departements->id}}">{{$departements->nom}}</option>
                             @endforeach
-                          
                         </select>
-                       
                     </div>
                     
                 </div>
@@ -103,11 +106,19 @@
         </div>
 
         <div class="card-body" >
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error )
+                        <div>{{$error}}</div>
+                    @endforeach
+                </div> 
+            @endif
+
                     
             <table id="myDataTable" class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>ID Secretaire</th>
+                        
                         <th>Nom</th>
                         <th>Prénom</th>
                         <th>Adresse</th>
@@ -117,15 +128,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($departements as $secretaires )
+                    @foreach($secretaires as $secretaires )
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            
+                            <td>{{ $secretaires->nom }}</td>
+                            <td>{{ $secretaires->prenom }}</td>
+                            <td>{{ $secretaires->adresse }}</td>
+                            <td>{{ $secretaires->phone }}</td>
+                            <td>{{ $secretaires->email }}</td>
+                            <td>{{ $secretaires->id_departement }}</td>
                             
                         </tr>
                     @endforeach

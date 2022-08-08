@@ -43,7 +43,7 @@
        
       </div>
     </div>
-  </div>
+</div>
 
   {{-- Fin d'ajout departement --}}
 
@@ -144,7 +144,7 @@
     </div>
     <div class="card-body">
         <table id="datatable" class="table table-bordered">
-            <thead>
+            <thead >
               <tr>
                 <th scope="col" class="masque">>ID</th>
                 <th scope="col">Nom</th>

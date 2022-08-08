@@ -9,7 +9,7 @@ class secretaires extends Model
 {
     use HasFactory;
 
-    protected $table = 'secretaires';
+protected $table = 'secretaires';
 
     protected $fillable = [
         'nom',

@@ -55,7 +55,7 @@ class SecretairesController extends Controller
             'phone' => ['required','string','max:50'],
             'email' => ['required','string','email','max:50','unique:users'],
             'username' => ['required','string','max:50','unique:secretaires'],
-            'poste' => ['required','string','max:30'],
+            
             'password'=>['required','string','min:5','confirmed'],
             'id_departement'=> 'required',
             
@@ -71,7 +71,7 @@ class SecretairesController extends Controller
                 'prenom' => $request['prenom'],
                 'email' =>$request['email'],
                 'password' => bcrypt($request['password']),
-                'status' => 'secretaires',
+                'status' => 'secretaire',
                 ]
                 );
                 if($good)
@@ -87,14 +87,14 @@ class SecretairesController extends Controller
                             'email' =>$request['email'],
                             'username' => $request['username'],
                             'password' => bcrypt($request['password']),
-                            'poste'	=> $request['poste'],
+                           
                             'id_departement'=> $request['id_departement'],
                                         
                             
                         ]
     
                         );
-                return redirect('secretaires')->with('success', 'Utilisateur ajouté avec Succes!!');
+                return redirect('secretaire')->with('success', 'Utilisateur ajouté avec Succes!!');
     
                 }
             }

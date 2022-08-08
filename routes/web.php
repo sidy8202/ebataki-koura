@@ -29,6 +29,7 @@ Route::prefix('admin')->group(function() {
 });
 
 
+
 Route::get('secretaire',[App\Http\Controllers\SecretairesController::class, 'index']);
 Route::post('secretaire',[App\Http\Controllers\SecretairesController::class, 'store']);
 
@@ -42,6 +43,3 @@ Route::resource('/courriers_entrants', 'CourriersEntrantsController');
 
 
 
-
-
-?>
