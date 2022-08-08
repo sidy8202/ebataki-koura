@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\utilisateurs;
-
+use App\Models\User;
 
 
 use Illuminate\Http\Request;
@@ -31,8 +31,10 @@ class UtilisateursController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {  
-
+    {   
+        $departements = departements::all();
+        dd($departements);
+        return view('utilisateursmodal',compact('id', 'departements')); 
     }          
     
     /**
