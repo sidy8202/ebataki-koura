@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\utilisateurs;
 use App\Models\departements;
+use App\Models\User;
+
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
@@ -43,19 +45,58 @@ class UtilisateursController extends Controller
     public function store(Request $request)
     {
         $barakaila = $request->validate([
-        'nom' => 'required',
-        'prenom' => 'required',
-        'adresse' => 'required',
-        'phone' => 'required',
-        'email' => 'required',
-        'username' => 'required',
-        'poste' => 'required',
+        'nom' => ['required','string','max:225'],
+        'prenom' => ['required','string','max:225'],
+        'adresse' => ['required','string','max:225'],
+        'phone' => ['required','string','max:50'],
+        'email' => ['required','string','email','max:50','unique:users'],
+        'username' => ['required','string','max:50','unique:utilisateurs'],
+        'poste' => ['required','string','max:30'],
+        'password'=>['required','string','min:5','confirmed'],
         'id_departement'=> 'required',
         
         ]);
 
-        utilisateurs::create($barakaila);
-        return redirect('utilisateurs')->with('success', 'Utilisateur ajouté avec Succes!!');
+        if($barakaila)
+        {
+
+        $merci= user::create(
+            [
+
+            'nom' => $request['nom'],
+            'prenom' => $request['prenom'],
+            'email' =>$request['email'],
+            'password' => bcrypt($request['password']),
+            'status' => 'utilisateur',
+            ]
+            );
+
+            if($merci)
+            {
+                $tchiden = utilisateurs::create(
+                    [
+                        'id_users' => $merci->id,
+
+                        'nom' => $request['nom'],
+                        'prenom'  => $request['prenom'],
+                        'adresse'  => $request['adresse'],
+                        'phone'  =>	$request['phone'],
+                        'email' =>$request['email'],
+                        'username' => $request['username'],
+                        'password' => bcrypt($request['password']),
+                        'poste'	=> $request['poste'],
+                        'id_departement'=> $request['id_departement'],
+                                    
+                        
+                    ]
+
+                    );
+            return redirect('utilisateurs')->with('success', 'Utilisateur ajouté avec Succes!!');
+
+            }
+
+        
+        }
     }
 
     /**

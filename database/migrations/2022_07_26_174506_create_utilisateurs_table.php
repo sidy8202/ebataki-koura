@@ -28,7 +28,14 @@ class CreateUtilisateursTable extends Migration
                 ->references('id')
                 ->on('departements')
                 ->onDelete('cascade');
-            $table->timestamps();
+                
+                $table->unsignedBigInteger("id_users");
+                $table->foreign('id_users')
+                    ->references('id')
+                    ->on('users')
+                    ->onDelete('cascade');
+    
+                $table->timestamps();
         });
     }
 

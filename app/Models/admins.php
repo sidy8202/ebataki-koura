@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class admins extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'nom',
+        'prenom',
+        'adresse',
+        'phone',
+        'email',
+        'username',
+        'password',
+        'id_users'
+
+    ];
+
+    public function users()
+    {
+        return $this->belongsTo(users::class,'id_users');
+
+    }
 }

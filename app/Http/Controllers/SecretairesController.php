@@ -6,6 +6,7 @@ use App\Models\secretaires;
 use App\Models\departements;
 use Illuminate\Http\Request;
 use App\Http\Requests\SecretaireFormRequest;
+use App\Models\User;
 
 
 class SecretairesController extends Controller
@@ -22,7 +23,6 @@ class SecretairesController extends Controller
         $departements = departements::all();
         return view('secretaire', compact('secretaires', 'departements'));
         
-
     }
 
     /**
@@ -48,23 +48,58 @@ class SecretairesController extends Controller
      */
     public function store(SecretaireFormRequest $request)
     {
-        $data = $request->validated();
-
-        $secretaire = new secretaires;
-        $secretaire->nom = $data['nom'];
-        $secretaire->prenom = $data['prenom'];
-        $secretaire->adresse = $data['adresse'];
-        $secretaire->phone = $data['phone'];
-        $secretaire->email = $data['email'];
-        $secretaire->username = $data['username'];
-        $secretaire->password = $data['password'];
-        $secretaire->id_departement = $data['id_departement'];
-        $reservation->code_vol = $data['code_vol'];
-       
-        $secretaire->save();
-        return redirect('secretaire')->with('message', 'Secrétaire ajouté avec succès');
-
+        $data = $request->validate([
+            'nom' => ['required','string','max:225'],
+            'prenom' => ['required','string','max:225'],
+            'adresse' => ['required','string','max:225'],
+            'phone' => ['required','string','max:50'],
+            'email' => ['required','string','email','max:50','unique:users'],
+            'username' => ['required','string','max:50','unique:secretaires'],
+            'poste' => ['required','string','max:30'],
+            'password'=>['required','string','min:5','confirmed'],
+            'id_departement'=> 'required',
+            
+            ]);
     
+            if($data)
+            {
+    
+            $good= user::create(
+                [
+    
+                'nom' => $request['nom'],
+                'prenom' => $request['prenom'],
+                'email' =>$request['email'],
+                'password' => bcrypt($request['password']),
+                'status' => 'secretaires',
+                ]
+                );
+                if($good)
+                {
+                    $depot = secretaires::create(
+                        [
+                            'id_users' => $good->id,
+    
+                            'nom' => $request['nom'],
+                            'prenom'  => $request['prenom'],
+                            'adresse'  => $request['adresse'],
+                            'phone'  =>	$request['phone'],
+                            'email' =>$request['email'],
+                            'username' => $request['username'],
+                            'password' => bcrypt($request['password']),
+                            'poste'	=> $request['poste'],
+                            'id_departement'=> $request['id_departement'],
+                                        
+                            
+                        ]
+    
+                        );
+                return redirect('secretaires')->with('success', 'Utilisateur ajouté avec Succes!!');
+    
+                }
+            }
+        
+        
     }
 
     /**

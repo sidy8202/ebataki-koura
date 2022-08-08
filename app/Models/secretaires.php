@@ -19,6 +19,14 @@ class secretaires extends Model
         'email',
         'username',
         'password',
-        'id_departement'
+        'id_departement',
+        'id_users'
+
     ];
+
+    public function users()
+    {
+        return $this->belongsTo(users::class,'id_users');
+
+    }
 }

@@ -40,7 +40,12 @@
 
                     <div class="form-group">
                         <label for="name">Email</label>
-                        <input type="email" name="email" class="form-control">
+                        <input type="email" name="email" class="form-control" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                        @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
@@ -49,8 +54,13 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="name">Password</label>
-                        <input type="text" name="password" class="form-control">
+                        <label for="name">Mot de Passe</label>
+                        <input type="text" name="password" class="form-control"@error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="" class="form-label">Confirmer</label>
+                        <input type="password" class="form-control"  name="password_confirmation" required autocomplete="new-password">
                     </div>
 
                     <div class="form-group">

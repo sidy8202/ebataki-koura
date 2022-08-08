@@ -46,10 +46,24 @@
                         <label for="" class="form-label">Telephone</label>
                         <input type="text" class="form-control" name="phone" >
                     </div>
-
                     <div class="mb-3">
                         <label for="" class="form-label">Adresse Email</label>
-                        <input type="email" class="form-control" name="email" >
+                        <input type="email" class="form-control"  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                        @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="" class="form-label">Mot de Passe</label>
+                        <input type="password" class="form-control" name="password" @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" >
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="" class="form-label">Confirmer</label>
+                        <input type="password" class="form-control"  name="password_confirmation" required autocomplete="new-password">
                     </div>
 
                     <div class="mb-3">
