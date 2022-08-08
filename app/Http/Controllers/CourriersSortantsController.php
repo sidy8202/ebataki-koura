@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\courriers_sortants;
+use App\Models\courriers_entrants;
+use App\Models\utilisateurs;
 use Illuminate\Http\Request;
 
 class CourriersSortantsController extends Controller
@@ -14,7 +16,9 @@ class CourriersSortantsController extends Controller
      */
     public function index()
     {
-        //
+        $crst = courriers_sortants::all();
+        return view('courriersmodalsortants', compact('crst'));
+
     }
 
     /**
@@ -24,7 +28,7 @@ class CourriersSortantsController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -35,7 +39,15 @@ class CourriersSortantsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'num_reference' => 'required',
+            'objet' => 'required',
+            'destinateur' => 'required'
+            // 'id_utilisateurs' => 'required'
+        ]);
+    
+        $crst = courriers_sortants::create($validatedData);
+        return redirect('/courriers_sortants')->with('success', 'courrier envoyé avec succèss!!!');
     }
 
     /**
@@ -46,7 +58,7 @@ class CourriersSortantsController extends Controller
      */
     public function show(courriers_sortants $courriers_sortants)
     {
-        //
+        
     }
 
     /**
@@ -57,7 +69,7 @@ class CourriersSortantsController extends Controller
      */
     public function edit(courriers_sortants $courriers_sortants)
     {
-        //
+        
     }
 
     /**
@@ -67,9 +79,15 @@ class CourriersSortantsController extends Controller
      * @param  \App\Models\courriers_sortants  $courriers_sortants
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, courriers_sortants $courriers_sortants)
+    public function update(Request $request, $id)
     {
-        //
+        $validatedata = courriers_sortants::find($id);
+        $validatedata->num_reference = $request->input('num_reference');
+        $validatedata->objet = $request->input('objet');
+        $validatedata->destinateur = $request->input('destinateur');
+        $validatedata->save();
+        return redirect('/courriers_sortants')->with('success', 'Courrier mise à jour avec succèss!!!');
+
     }
 
     /**
@@ -78,8 +96,10 @@ class CourriersSortantsController extends Controller
      * @param  \App\Models\courriers_sortants  $courriers_sortants
      * @return \Illuminate\Http\Response
      */
-    public function destroy(courriers_sortants $courriers_sortants)
+    public function destroy( $id)
     {
-        //
+        $courriers_sortants = courriers_sortants::findOrFail($id);
+        $courriers_sortants->delete();
+        return redirect('/courriers_sortants')->with('success', 'courrier supprimer avec succèss!!!');
     }
 }

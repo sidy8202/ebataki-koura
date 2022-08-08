@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-<h3>Bienvenue sur E_Bataki</h3>
+<h3>Bienvenue sur E_Bataki, votre application de gestion de courrier</h3>
 </body>
 </html>
