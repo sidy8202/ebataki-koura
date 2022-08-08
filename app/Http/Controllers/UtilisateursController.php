@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\utilisateurs;
-use App\Models\departements;
-use Illuminate\Support\Facades\DB;
+use App\Models\User;
+
 
 use Illuminate\Http\Request;
 
@@ -18,10 +18,11 @@ class UtilisateursController extends Controller
      */
     public function index()
     {
-        $bara = utilisateurs::all();
+        $utilisateurs = utilisateurs::all();
         $departements = departements::all();
 
-        return view('utilisateursmodal',compact('departements','bara'));
+        
+        return view('utilisateurs.utilisateursmodal',compact('utilisateurs','departement'));
     }
 
     /**
@@ -30,8 +31,15 @@ class UtilisateursController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+<<<<<<< HEAD
     {  
 
+=======
+    {   
+        $departements = departements::all();
+        dd($departements);
+        return view('utilisateursmodal',compact('id', 'departements')); 
+>>>>>>> c55acadffa18b338c44d6a486198a125e4abb3ea
     }          
     
     /**

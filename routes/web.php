@@ -21,6 +21,7 @@ Route::resource('/courriers_sortants', 'CourriersSortantsController');
 
 Auth::routes();
 
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('admin')->group(function() {
@@ -34,9 +35,9 @@ Route::post('secretaire',[App\Http\Controllers\SecretairesController::class, 'st
 
 
 Route::resource('/utilisateurs', 'UtilisateursController');
+
 Route::resource('/departements', 'DepartementsController');
 
-Route::resource('/courriers_entrants', 'CourriersEntrantsController');
 
 
 
@@ -45,3 +46,5 @@ Route::resource('/courriers_entrants', 'CourriersEntrantsController');
 
 
 ?>
+
+

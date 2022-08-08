@@ -258,7 +258,7 @@
 
             <tbody>
                
-                @foreach ($bara as $gnouma )
+                @foreach ($departement as $gnouma )
                     
               
               <tr>
@@ -270,7 +270,11 @@
                 <td>{{ $gnouma ->email}}</td>
                 <td>{{ $gnouma ->username}}</td>
                 <td>{{ $gnouma ->poste}}</td>
-                <td>{{ $gnouma ->id_departement}}</td>
+
+                @foreach ( $departements->departements as $bravo )
+                    
+                @endforeach
+                <td>{{ $bravo ->nom}}</td>
                 
                 <td>
                     <a href="#" class="edit btn btn-primary btn-sm"  >Edit</a> 

@@ -14,19 +14,27 @@ class CreateSecretairesTable extends Migration
     public function up()
     {
         Schema::create('secretaires', function (Blueprint $table) {
+            
             $table->id();
-            $table->string('nom');   
+            $table->string('nom');
             $table->string('prenom');
             $table->string('adresse');
             $table->integer('phone');
-            $table->string('email');
             $table->string('username');
-            $table->string('password')->nullable();
+            $table->string('poste');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+
             $table->unsignedBigInteger("id_departement");
             $table->foreign('id_departement')
                 ->references('id')
                 ->on('departements')
                 ->onDelete('cascade');
+
+            $table->integer('user_Id');
+            
             $table->timestamps();
         });
     }
