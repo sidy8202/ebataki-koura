@@ -61,6 +61,11 @@ class SecretaireFormRequest extends FormRequest
                 'required',
                 'string',
                 'max:100'
+            ],
+
+            'id_departement' => [
+                'string',
+                'max:100'
             ]
            
         ];
