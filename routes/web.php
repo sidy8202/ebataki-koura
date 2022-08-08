@@ -18,7 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/courriers_sortants', 'CourriersSortantsController');
+Route::resource('/courriers_sortants', 'CourriersSortantsController', ['only' => ['index', 'store']]);
+
+
 
 Auth::routes();
 
@@ -29,10 +31,11 @@ Route::prefix('admin')->group(function() {
     Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
     Route::get('secretaire', [App\Http\Controllers\Admin\SecretaireController::class, 'index']);
     Route::post('secretaire',[App\Http\Controllers\Admin\SecretaireController::class, 'store']);
-    Route::get('courriers_sortants', [App\Http\Controllers\Admin\CourriersSortantsController::class, 'index']);
-
 });
+Route::prefix('users')->group(function() {
 
+    Route::get('dashboard', [App\Http\Controllers\users\DashboardUsersController::class, 'index']);
+});
 
 
 // Route::get('secretaire',[App\Http\Controllers\SecretairesController::class, 'index']);
@@ -42,6 +45,7 @@ Route::prefix('admin')->group(function() {
 Route::resource('/utilisateurs', 'UtilisateursController');
 Route::resource('/departements', 'DepartementsController');
 
+Route::resource('/courriers_entrants', 'CourriersEntrantsController');
 
 
 

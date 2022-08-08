@@ -2,7 +2,7 @@
       <div class="navbar-brand-wrapper d-flex justify-content-center" style="background-color: #0E4C92">
         <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">  
           <a class="navbar-brand brand-logo" href="index.html">
-            <img src="{{asset('admin/images/bataki.png')}}" alt="E-Bataki" style=" width: 60px; height: 60px;" />
+            <img src="{{asset('admin/images/bataki.png')}}" alt="E-Bataki" style=" width: 60px; height: 50px;" />
 
 
           
@@ -13,11 +13,11 @@
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-sort-variant"></span>
           </button>
-        </div>
+        </div>  
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end" style="background-color: #0E4C92">
         <ul class="navbar-nav mr-lg-4 w-100">
-          <h3 class="justify-content-center">Dashboard Users</h3>
+        <h3 class="justify-content-center" >Dashboard Admin</h3>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item dropdown me-1">

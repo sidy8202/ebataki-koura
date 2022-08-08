@@ -66,7 +66,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action= "{{ action('Courriers_d_Sortants@store') }}" method="POST">
+                <form action= "{{ action('CourriersSortantsController@store') }}" method="POST">
                     {{ csrf_field() }}
                     <div class="modal-body">							
                         <div class="mb-3">
@@ -94,6 +94,7 @@
                           <label for="" class="form-label">Le Courrier</label>
                           <input type="file" class="form-control" name="destinateur" >
                       </div>
+                      
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
                         <button type="submit" class="btn btn-primary">Envoyer</button>

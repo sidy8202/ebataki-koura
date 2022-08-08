@@ -21137,14 +21137,17 @@ code {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   -ms-box-shadow: none;
+  /* height: 150px; */
 }
 
 .card .card-body {
   padding: 1.5rem 1.875rem;
+  text-align: center;
 }
 
 .card .card-body + .card-body {
   padding-top: 1rem;
+  
 }
 
 .card .card-title {
@@ -21152,7 +21155,7 @@ code {
   margin-bottom: 1.5rem;
   text-transform: uppercase;
   font-size: .875rem;
-  font-weight: bold;
+  font-weight: bold;s
 }
 
 .card .card-subtitle {
