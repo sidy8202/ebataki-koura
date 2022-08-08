@@ -36,6 +36,7 @@ Route::post('secretaire',[App\Http\Controllers\SecretairesController::class, 'st
 Route::resource('/utilisateurs', 'UtilisateursController');
 Route::resource('/departements', 'DepartementsController');
 
+Route::resource('/courriers_entrants', 'CourriersEntrantsController');
 
 
 

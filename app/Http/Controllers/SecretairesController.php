@@ -59,11 +59,9 @@ class SecretairesController extends Controller
         $secretaire->username = $data['username'];
         $secretaire->password = $data['password'];
         $secretaire->id_departement = $data['id_departement'];
-        $reservation->code_vol = $data['code_vol'];
-       
+    
         $secretaire->save();
         return redirect('secretaire')->with('message', 'Secrétaire ajouté avec succès');
-
     
     }
 
