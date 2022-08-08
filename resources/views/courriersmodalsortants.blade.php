@@ -67,7 +67,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/courriers_sortants" id="modformcour" method="POST">
+                <form action="/courriers_sortants" id="modformcour" method="post">
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
                     <div class="modal-body">							

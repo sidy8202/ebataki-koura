@@ -29,7 +29,8 @@ Route::prefix('admin')->group(function() {
 });
 
 
-Route::get('secretaire',[App\Http\Controllers\SecretairesController::class, 'index']);
+
+Route::get('diagui',[App\Http\Controllers\SecretairesController::class, 'index']);
 Route::post('secretaire',[App\Http\Controllers\SecretairesController::class, 'store']);
 
 

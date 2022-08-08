@@ -10,3 +10,5 @@ class courriers_sortants extends Model
     use HasFactory;
     protected $fillable = ['num_reference', 'objet', 'destinateur'];
 }
+
+
