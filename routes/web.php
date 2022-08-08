@@ -27,6 +27,10 @@ Route::prefix('admin')->group(function() {
 
     Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
 });
+Route::prefix('users')->group(function() {
+
+    Route::get('dashboard', [App\Http\Controllers\users\DashboardUsersController::class, 'index']);
+});
 
 
 Route::get('secretaire',[App\Http\Controllers\SecretairesController::class, 'index']);
