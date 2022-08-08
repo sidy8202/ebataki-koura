@@ -12,9 +12,8 @@
 
 </head>
 
-
+@section('content')
 <body>
-  
 <div class="container">
 <div class="card">
     <div class="card-header">
@@ -155,4 +154,5 @@
 {{-- End of hide --}}
 
 </body>
+@endsection
 </html>
