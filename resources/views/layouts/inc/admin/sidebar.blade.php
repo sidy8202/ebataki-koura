@@ -35,12 +35,7 @@
               <span class="menu-title">Gérer départements</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="uii-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Ajouter catégorie</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Voir catégorie</a></li>
-              </ul>
-            </div>
+            
           </li>
 
         

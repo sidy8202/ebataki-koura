@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\courriers_sortants;
 use App\Models\courriers_entrants;
-use App\Models\secretaire;
 use App\Models\utilisateurs;
 use Illuminate\Http\Request;
 
-class CourriersEntrantsController extends Controller
+class CourriersSortantsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +18,8 @@ class CourriersEntrantsController extends Controller
     {
         $bara = utilisateurs::all();
 
-        $crst = courriers_entrants::all();
-        return view('courriermodalentrants', compact('crst','bara'));
+        $crst = courriers_sortants::all();
+        return view('courriersmodalsortants', compact('crst','bara'));
 
     }
 
@@ -44,62 +44,64 @@ class CourriersEntrantsController extends Controller
         $validatedData = $request->validate([
             'num_reference' => 'required',
             'objet' => 'required',
-            'expediteur' => 'required'
+            'destinateur' => 'required'
             
         ]);
-        $crst = courriers_entrants::create($validatedData);
-        return redirect('/courriers_entrants')->with('success', 'courrier receptionné avec succèss!!!');
+    
+        $crst = courriers_sortants::create($validatedData);
+        return redirect('/courriers_sortants')->with('success', 'courrier envoyé avec succèss!!!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\courriers_entrants  $courriers_entrants
+     * @param  \App\Models\courriers_sortants  $courriers_sortants
      * @return \Illuminate\Http\Response
      */
-    public function show(courriers_entrants $courriers_entrants)
+    public function show(courriers_sortants $courriers_sortants)
     {
-        //
+        
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\courriers_entrants  $courriers_entrants
+     * @param  \App\Models\courriers_sortants  $courriers_sortants
      * @return \Illuminate\Http\Response
      */
-    public function edit(courriers_entrants $courriers_entrants)
+    public function edit(courriers_sortants $courriers_sortants)
     {
-        //
+        
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\courriers_entrants  $courriers_entrants
+     * @param  \App\Models\courriers_sortants  $courriers_sortants
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, courriers_entrants $courriers_entrants)
+    public function update(Request $request, $id)
     {
-        $validatedata = courriers_entrants::find($id);
+        $validatedata = courriers_sortants::find($id);
         $validatedata->num_reference = $request->input('num_reference');
         $validatedata->objet = $request->input('objet');
-        $validatedata->expediteur = $request->input('expediteur');
+        $validatedata->destinateur = $request->input('destinateur');
         $validatedata->save();
-        return redirect('/courriers_entrants')->with('success', 'Courrier mise à jour avec succèss!!!');
+        return redirect('/courriers_sortants')->with('success', 'Courrier mise à jour avec succèss!!!');
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\courriers_entrants  $courriers_entrants
+     * @param  \App\Models\courriers_sortants  $courriers_sortants
      * @return \Illuminate\Http\Response
      */
-    public function destroy(courriers_entrants $courriers_entrants)
+    public function destroy( $id)
     {
-        $courriers_entrants = courriers_entrants::findOrFail($id);
-        $courriers_entrants->delete();
-        return redirect('/courriers_entrants')->with('success', 'courrier supprimer avec succèss!!!');
+        $courriers_sortants = courriers_sortants::findOrFail($id);
+        $courriers_sortants->delete();
+        return redirect('/courriers_sortants')->with('success', 'courrier supprimer avec succèss!!!');
     }
 }
