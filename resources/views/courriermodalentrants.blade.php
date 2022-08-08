@@ -11,8 +11,19 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 
 </head>
+
+
 <body>
-    <!-- debut Modal envoyer courriers -->
+<div class="container">
+<div class="card">
+    <div class="card-header">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-5">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Envoyer</button>
+              </div>
+
+               <!-- debut Modal envoyer courriers -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -29,17 +40,19 @@
                           <input type="text" class="form-control" name="num_reference" >
                       </div>
                       <div class="mb-3">
-                          <label for="" class="form-label">Obet </label>
+                          <label for="" class="form-label">Objet </label>
                           <input type="text" class="form-control" name="objet" >
                       </div>
                       <div class="mb-3">
-                          <label for="" class="form-label">Destinateur</label>
-                          <input type="text" class="form-control" name="destinateur" >
+                          <label for="" class="form-label">Expediteur</label>
+                          <input type="text" class="form-control" name="expediteur" >
                       </div>
-                      <div class="mb-3">
-                          <label for="" class="form-label">Expéditeur</label>
+                    
 
-                          <select name="id_utilisateurs " id="">
+                      <div class="mb-3">
+                          <label for="" class="form-label">Secretaire</label>
+
+                          <select name="id_secretaires " id="">
                             @foreach ($bara as $voila)
                               <option value=""><strong>{{ $voila->nom}}  {{ $voila->prenom}}</strong></option>
                             @endforeach
@@ -59,59 +72,53 @@
 
           </div>
         
-        
-    <!-- fin modal envoyer --> 
-    <div class="container mt-5">
-  <div class="card">
-    <div class="card-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-5">
-                    <h2>La liste des courriers envoyés</h2>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Envoyer</button>
-                </div>
-            </div>
         </div>
+      </div>
     </div>
-            <div class="card-body">
-                <table class="table table-striped table-bordered" id="datatable">
-                    <thead class="text-center">
-                        <tr>
-                        <td class="masque">ID</td>
-                        <td>N°Reference</td>
-                        <td>Objet</td>
-                        <td>Destinateur</td>
-                        <td>Expediteur</td>
-                        <td colspan="2">Action</td>
-                        </tr>
-                    </thead>
-                    <!-- //Affichage dans le tebleau -->
-                    <tbody>
-                        @foreach($crst as $crs)
-                        <tr>
-                            <td class="masque">{{$crs->id}}</td>
-                            <td>{{$crs->num_reference}}</td>
-                            <td>{{$crs->objet}}</td>
-                            <td>{{$crs->destinateur}}</td>
-                            <td>{{$crs->id_utilisateurs}}</td>
-                            <td>
-                            <button class="btn btn-success edit" data-bs-toggle="modal" data-bs-target="#modifcoursortants">Mod</button>
-                            <button class="btn btn-danger edit" data-bs-toggle="modal" data-bs-target="#deleteModal">Supp</button>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
+    <!-- fin modal envoyer -->  
+              <div class="col">
+                <h2>La liste des courriers envoyés</h2>
+              </div>
+          </div>
+      </div>
     </div>
-    <!-- debut Modal modifier courriers -->
-    <div class="modal fade" id="modifcoursortants" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <table class="table table-striped table-bordered" id="datatable">
+        <thead class="text-center">
+            <tr>
+              <td class="masque">ID</td>
+              <td>N°Reference</td>
+              <td>Objet</td>
+              <td>Expediteur</td>
+              <td>Secretaire</td>
+              <td colspan="2">Action</td>
+            </tr>
+        </thead>
+        <!-- //Affichage dans le tebleau -->
+        <tbody>
+            @foreach($crst as $crs)
+            <tr>
+                <td class="masque">{{$crs->id}}</td>
+                <td>{{$crs->num_reference}}</td>
+                <td>{{$crs->objet}}</td>
+                <td>{{$crs->expediteur}}</td>
+                <td>{{$crs->id_secretaires}}</td>
+                <td>
+                  <button class="btn btn-success edit" data-bs-toggle="modal" data-bs-target="#modifcoursortants">Mod</button>
+                  <button class="btn btn-danger edit" data-bs-toggle="modal" data-bs-target="#deleteModal">Supp</button>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+      </table>
+
+
+       <!-- debut Modal modifier courriers -->
+      <div class="modal fade" id="modifcoursortants" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-        <div class="modal-content">
+          <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ajouter utilisateur</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <h5 class="modal-title" id="exampleModalLabel">Ajouter utilisateur</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="/courriers_sortants" id="modformcour" method="POST">
@@ -123,16 +130,17 @@
                             <input type="text" class="form-control" id="num_reference" name="num_reference" >
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Obet </label>
+                            <label for="" class="form-label">Objet </label>
                             <input type="text" class="form-control" id="objet" name="objet" >
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Destinateur</label>
-                            <input type="text" class="form-control" id="destinateur" name="destinateur" >
+                            <label for="" class="form-label">Expediteur</label>
+                            <input type="text" class="form-control" id="expediteur" name="destinateur" >
                         </div>
+                        
                         <div class="mb-3">
-                            <label for="" class="form-label">Expéditeur</label>
-                            <input type="text" class="form-control" id="id_utilisateurs" name="id_utilisateurs" >
+                            <label for="" class="form-label">Secretaire</label>
+                            <input type="text" class="form-control" id="id_secretaires" name="id_utilisateurs" >
                         </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
@@ -141,14 +149,14 @@
                 </form>
 
             </div>
-        
+          
+          </div>
         </div>
-        </div>
-    </div>
-    <!-- fin modal modifier -->
+      </div>
+      <!-- fin modal modifier -->
 
-    <!-- debut modal supprimer -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <!-- debut modal supprimer -->
+      <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -170,30 +178,35 @@
                     </form>
             </div>
         </div>
-    </div>
-    <!-- fin modal supprimer -->
+      </div>
+      <!-- fin modal supprimer -->
 
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script> 
 
-    <script>
-        $(document).ready( function () 
-        {
-            $('#datatable').DataTable();
-        } );
-    </script>
+  </div>
+</div>
 
-    {{-- Hide content of table --}}
 
-    <script>
-        $(document).ready( function () {
-            $('.masque').hide();
-        } );
-    </script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script> 
 
-    {{-- End of hide --}}
+ <script>
+    $(document).ready( function () 
+    {
+        $('#datatable').DataTable();
+    } );
+</script>
+
+{{-- Hide content of table --}}
+
+<script>
+    $(document).ready( function () {
+        $('.masque').hide();
+    } );
+</script>
+
+{{-- End of hide --}}
 
 </body>
 

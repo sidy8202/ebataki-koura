@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\courriers_entrants;
+use App\Models\secretaire;
+use App\Models\utilisateurs;
 use Illuminate\Http\Request;
 
 class CourriersEntrantsController extends Controller
@@ -14,7 +16,11 @@ class CourriersEntrantsController extends Controller
      */
     public function index()
     {
-        //
+        $bara = utilisateurs::all();
+
+        $crst = courriers_entrants::all();
+        return view('courriermodalentrants', compact('crst','bara'));
+
     }
 
     /**
@@ -24,7 +30,7 @@ class CourriersEntrantsController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -35,7 +41,14 @@ class CourriersEntrantsController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $validatedData = $request->validate([
+            'num_reference' => 'required',
+            'objet' => 'required',
+            'expediteur' => 'required'
+            
+        ]);
+        $crst = courriers_entrants::create($validatedData);
+        return redirect('/courriers_entrants')->with('success', 'courrier receptionné avec succèss!!!');
     }
 
     /**
@@ -69,7 +82,12 @@ class CourriersEntrantsController extends Controller
      */
     public function update(Request $request, courriers_entrants $courriers_entrants)
     {
-        //
+        $validatedata = courriers_entrants::find($id);
+        $validatedata->num_reference = $request->input('num_reference');
+        $validatedata->objet = $request->input('objet');
+        $validatedata->expediteur = $request->input('expediteur');
+        $validatedata->save();
+        return redirect('/courriers_entrants')->with('success', 'Courrier mise à jour avec succèss!!!');
     }
 
     /**
@@ -80,6 +98,8 @@ class CourriersEntrantsController extends Controller
      */
     public function destroy(courriers_entrants $courriers_entrants)
     {
-        //
+        $courriers_entrants = courriers_entrants::findOrFail($id);
+        $courriers_entrants->delete();
+        return redirect('/courriers_entrants')->with('success', 'courrier supprimer avec succèss!!!');
     }
 }
