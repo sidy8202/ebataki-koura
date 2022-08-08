@@ -30,15 +30,8 @@ class UtilisateursController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-<<<<<<< HEAD
     {  
 
-=======
-    {   
-        $departements = departements::all();
-        dd($departements);
-        return view('utilisateursmodal',compact('id', 'departements')); 
->>>>>>> 98ec40d1f6872cdf6fc6eba5fc3acf78a2d07407
     }          
     
     /**
