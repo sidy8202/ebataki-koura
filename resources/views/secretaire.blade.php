@@ -55,7 +55,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputPassword1" class="form-label">Id_département</label>
-                        <select name="id_depart" class="form-control">
+                        <select name="id_departement" class="form-control">
                             @foreach ($departements as $departements )
                                 <option value="{{$departements->id}}">{{$departements->nom}}</option>
                             @endforeach

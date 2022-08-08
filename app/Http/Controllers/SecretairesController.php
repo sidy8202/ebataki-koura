@@ -62,7 +62,6 @@ class SecretairesController extends Controller
     
         $secretaire->save();
         return redirect('secretaire')->with('message', 'Secrétaire ajouté avec succès');
-
     
     }
 
