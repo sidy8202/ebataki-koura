@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
 </head>
 <body>
+
 <!-- Modal d'ajout pour utilisateur -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -208,6 +209,7 @@
       <ul>
           @foreach ($errors->all() as $error)
           <li>{{ $error }}</li>    
+
           @endforeach
       </ul>
   </div>
@@ -256,17 +258,19 @@
 
             <tbody>
                
-                
+                @foreach ($bara as $gnouma )
+                    
+              
               <tr>
-                <th scope="row" class="th_1"></th>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <th scope="row" class="th_1">{{ $gnouma->id }}</th>
+                <th scope="row">{{ $gnouma ->nom}}</th>   
+                <td>{{ $gnouma ->prenom}}</td>
+                <td>{{ $gnouma ->adresse}}</td>
+                <td>{{ $gnouma ->phone}}</td>
+                <td>{{ $gnouma ->email}}</td>
+                <td>{{ $gnouma ->username}}</td>
+                <td>{{ $gnouma ->poste}}</td>
+                <td>{{ $gnouma ->id_departement}}</td>
                 
                 <td>
                     <a href="#" class="edit btn btn-primary btn-sm"  >Edit</a> 
@@ -275,9 +279,10 @@
               {{-- <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a> --}}
                 </td>
               </tr>
-             
-
+              @endforeach
             </tbody>
+          
+
           </table>
     </div>
   </div>

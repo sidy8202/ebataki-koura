@@ -21,7 +21,7 @@ class CreateUtilisateursTable extends Migration
             $table->integer('phone');
             $table->string('email');
             $table->string('username');
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->string('poste');
             $table->unsignedBigInteger("id_departement");
             $table->foreign('id_departement')
