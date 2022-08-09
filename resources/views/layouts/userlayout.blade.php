@@ -25,10 +25,10 @@
 <body>
 
     <div class="container-scroller">
-        @include('layouts.inc.admin.navbar')
+        @include('layouts.inc.users.navbar')
 
         <div class="container-fluid page-body-wrapper">
-            @include('layouts.inc.admin.sidebar')
+            @include('layouts.inc.users.sidebar')
 
             <div class="main-panel">
 
