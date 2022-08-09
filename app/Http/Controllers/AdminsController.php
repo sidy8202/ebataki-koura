@@ -27,6 +27,13 @@ class AdminsController extends Controller
         
     }
 
+    public function dashboard()
+    {     
+       
+        return view('admin.dashboard');
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -35,7 +42,7 @@ class AdminsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

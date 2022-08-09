@@ -42,15 +42,12 @@ Route::prefix('users')->group(function() {
 
 
 
-Route::resource('/utilisateurs', 'UtilisateursController');
+Route::resource('/utilisateurs', 'UtilisateursController',['only' => [ 'index', 'create','store','dashboard']]);
 Route::resource('/departements', 'DepartementsController');
 
 Route::resource('/courriers_entrants', 'CourriersEntrantsController');
 
-
-
-
-
+Route::get('/utilisateurs/dashboard', [App\Http\Controllers\utilisateursController::class, 'dashboard'])->name('utilisateurs.dashboard');
 
 
 ?>
