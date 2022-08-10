@@ -34,20 +34,22 @@ Route::prefix('admin')->group(function() {
 });
 Route::prefix('users')->group(function() {
 
-    Route::get('dashboard', [App\Http\Controllers\users\DashboardUsersController::class, 'index']);
+    Route::get('/dashboarduse', [App\Http\Controllers\users\DashboardUsersController::class, 'index']);
 });
 
 
-// Route::get('secretaire',[App\Http\Controllers\SecretairesController::class, 'index']);
 
 
 
-Route::resource('/utilisateurs', 'UtilisateursController',['only' => [ 'index', 'create','store','dashboard']]);
+Route::resource('/utilisateurs', 'UtilisateursController',['only' => [ 'index', 'create','store']]);
 Route::resource('/departements', 'DepartementsController');
+Route::resource('/adminskoura', 'AdminsController',['only' => [ 'index', 'create','store']]);
+
 
 Route::resource('/courriers_entrants', 'CourriersEntrantsController');
 
-Route::get('/utilisateurs/dashboard', [App\Http\Controllers\utilisateursController::class, 'dashboard'])->name('utilisateurs.dashboard');
+Route::get('/admin/dashboard', [App\Http\Controllers\DashboardController::class, 'dashboard'])->name('admins.dashboard');
+Route::get('/secretaire/dashboard', [App\Http\Controllers\DashboardController::class, 'create'])->name('secretaire.dashboard');
 
 
 ?>

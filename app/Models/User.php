@@ -34,7 +34,7 @@ class User extends Authenticatable
 
     public function admins()
     {
-        return $this->hasMany(directeurs::class,'id_users');
+        return $this->hasMany(admins::class,'id_users');
 
     }
 

@@ -17,7 +17,7 @@
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end" style="background-color: #0E4C92">
         <ul class="navbar-nav mr-lg-4 w-100">
-        <h3 class="justify-content-center" >Dashboard Admin</h3>
+        <h3 class="justify-content-center" >Dashboard Secretaire</h3>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item dropdown me-1">
@@ -116,7 +116,7 @@
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
               <img src="images/faces/face5.jpg" alt="profile"/>
-              <span class="nav-profile-name">{{ $admin->prenom}} {{ $admin->nom}}</span>
+              <span class="nav-profile-name">{{ $secretaire->prenom}} {{ $secretaire->nom}}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">

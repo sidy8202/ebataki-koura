@@ -26,11 +26,7 @@ class UtilisateursController extends Controller
         return view('utilisateursmodal',compact('departements','bara'));
     }
 
-    public function dashboard()
-    {     
-       
-        return view('admin.dashboard');
-    }
+   
 
     /**
      * Show the form for creating a new resource.
