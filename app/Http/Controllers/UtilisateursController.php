@@ -90,8 +90,7 @@ class UtilisateursController extends Controller
                         'password' => bcrypt($request['password']),
                         'poste'	=> $request['poste'],
                         'id_departement'=> $request['id_departement'],
-                                    
-                        
+                                                           
                     ]
 
                     );

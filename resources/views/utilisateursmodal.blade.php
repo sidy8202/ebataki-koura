@@ -58,7 +58,7 @@
 
                     <div class="mb-3">
                         <label for="" class="form-label">Mot de Passe</label>
-                        <input type="password" class="form-control" name="password" @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" >
+                        <input type="password" class="form-control" name="password" @error('password') is-invalid @enderror"  required autocomplete="new-password" >
                     </div>
 
                     <div class="mb-3">

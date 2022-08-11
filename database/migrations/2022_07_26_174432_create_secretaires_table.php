@@ -19,9 +19,11 @@ class CreateSecretairesTable extends Migration
             $table->string('prenom');
             $table->string('adresse');
             $table->integer('phone');
-            $table->string('email');
+            $table->string('email')->unique();
+          
             $table->string('username');
             $table->string('password');
+           
 
             $table->unsignedBigInteger("id_departement");
             $table->foreign('id_departement')

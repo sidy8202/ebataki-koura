@@ -33,8 +33,13 @@ Route::prefix('admin')->group(function() {
     Route::post('secretaire',[App\Http\Controllers\Admin\SecretaireController::class, 'store']);
 });
 Route::prefix('users')->group(function() {
+    Route::get('dashboard', [App\Http\Controllers\users\DashboardUsersController::class, 'index']);
+  
+});
 
-    Route::get('/dashboarduse', [App\Http\Controllers\users\DashboardUsersController::class, 'index']);
+Route::prefix('secretaire')->group(function() {
+    Route::get('dashboard', [App\Http\Controllers\secretaires\DashboardSecretairesController::class, 'index']);
+  
 });
 
 
@@ -48,8 +53,7 @@ Route::resource('/adminskoura', 'AdminsController',['only' => [ 'index', 'create
 
 Route::resource('/courriers_entrants', 'CourriersEntrantsController');
 
-Route::get('/admin/dashboard', [App\Http\Controllers\DashboardController::class, 'dashboard'])->name('admins.dashboard');
-Route::get('/secretaire/dashboard', [App\Http\Controllers\DashboardController::class, 'create'])->name('secretaire.dashboard');
+
 
 
 ?>

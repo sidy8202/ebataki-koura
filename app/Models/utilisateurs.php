@@ -15,13 +15,14 @@ class utilisateurs extends Model
         'phone',
         'email',
         'username',
+        'password',
         'poste',
         'id_departement',
         'id_users'];  
 
     public function users()
     {
-        return $this->belongsTo(users::class,'id_users');
+        return $this->belongsTo(User::class,'id_users');
 
     }
 }

@@ -21,7 +21,6 @@ class User extends Authenticatable
         'nom',
         'prenom',
         'email',
-
         'password',
         'status',
 
@@ -40,7 +39,7 @@ class User extends Authenticatable
 
     public function utilisateurs()
     {
-        return $this->hasMany(parents::class,'id_users');
+        return $this->hasMany(utilisateurs::class,'id_users');
 
     }
 

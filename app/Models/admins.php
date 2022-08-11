@@ -17,12 +17,11 @@ class admins extends Model
         'username',
         'password',
         'id_users'
-
     ];
 
     public function users()
     {
-        return $this->belongsTo(users::class,'id_users');
+        return $this->belongsTo(User::class,'id_users');
 
     }
 }
