@@ -31,7 +31,7 @@ Route::prefix('admin')->group(function() {
     Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
     Route::get('courriers_sortants', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
     
-Route::resource('/courriers_sortants', 'App\Http\Controllers\Admin\CourriersSortantsController', ['only' => ['index', 'store']]);
+    Route::resource('/courriers_sortants', 'App\Http\Controllers\Admin\CourriersSortantsController', ['only' => ['index', 'store']]);
 
 
     Route::get('secretaire', [App\Http\Controllers\Admin\SecretaireController::class, 'index']);
