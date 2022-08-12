@@ -19,7 +19,7 @@ class CourriersSortantsController extends Controller
         $bara = utilisateurs::all();
 
         $crst = courriers_sortants::all();
-        return view('admin.courriersortants.courriersmodalsortants', compact('crst','bara'));
+        return view('admin.courriersortants.index', compact('crst','bara'));
 
     }
 
