@@ -14,20 +14,11 @@
             </a>
             <div class="collapse" id="uiii-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="users/courriers_sortants">Courriers envoyés</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/users/dashboard/courriers_sortants">Courriers envoyés</a></li>
                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Couriers reçu</a></li>
               </ul>
             </div>
           </li>
-
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="pages/forms/basic_elements.html">
-              <i class="mdi mdi-view-headline menu-icon"></i>
-              <span class="menu-title">Ventes</span>
-            </a>
-          </li> -->
-
-         
           
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#uii-basic" aria-expanded="false" aria-controls="uii-basic">

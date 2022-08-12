@@ -18,7 +18,7 @@
             <div class="nav-menu">
                 <div class="card-header"></div>
                 <div class="logo">
-                    <img src="{{asset('img/ebataki.png')}}" alt="logo">
+                    <img src="{{asset('img/ebataki.png')}}" alt="logo">Group79-1
                 </div>
             </div>
         </div>

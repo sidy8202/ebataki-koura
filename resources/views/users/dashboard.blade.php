@@ -11,7 +11,7 @@
                     <h2>100</h2>
                   </div>
                   <div class="card-footer d-flex align-items-center justify-content-between">
-                      <a class="small text-white stretched-link" href="#">Plus de Détails</a>
+                      <a class="small text-white stretched-link" href="/courriers_entrants">Plus de Détails</a>
                       <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                   </div>
               </div>
@@ -22,7 +22,7 @@
                       <h2>201</h2>
                   </div>
                   <div class="card-footer d-flex align-items-center justify-content-between">
-                      <a class="small text-white stretched-link" href="#">Plus de Détails</a>
+                      <a class="small text-white stretched-link" href="/courriers_sortants">Plus de Détails</a>
                       <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                   </div>
               </div>

@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('/courriers_sortants', 'CourriersSortantsController');
+Route::resource('/users/dashboard/courriers_sortants', 'CourriersSortantsController');
 
 Auth::routes();
 
@@ -41,6 +42,7 @@ Route::resource('/utilisateurs', 'UtilisateursController');
 Route::resource('/departements', 'DepartementsController');
 
 Route::resource('/courriers_entrants', 'CourriersEntrantsController');
+Route::resource('/users/dashboard/courriers_entrants', 'CourriersEntrantsController');
 
 
 
