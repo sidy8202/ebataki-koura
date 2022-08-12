@@ -29,26 +29,34 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('admin')->group(function() {
 
     Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
+    Route::get('courriers_sortants', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
+    
+Route::resource('/courriers_sortants', 'App\Http\Controllers\Admin\CourriersSortantsController', ['only' => ['index', 'store']]);
+
+
     Route::get('secretaire', [App\Http\Controllers\Admin\SecretaireController::class, 'index']);
     Route::post('secretaire',[App\Http\Controllers\Admin\SecretaireController::class, 'store']);
 });
 Route::prefix('users')->group(function() {
-
     Route::get('dashboard', [App\Http\Controllers\users\DashboardUsersController::class, 'index']);
+  
+});
+
+Route::prefix('secretaire')->group(function() {
+    Route::get('dashboard', [App\Http\Controllers\secretaires\DashboardSecretairesController::class, 'index']);
+  
 });
 
 
-// Route::get('secretaire',[App\Http\Controllers\SecretairesController::class, 'index']);
 
 
 
-Route::resource('/utilisateurs', 'UtilisateursController');
+Route::resource('/utilisateurs', 'UtilisateursController',['only' => [ 'index', 'create','store']]);
 Route::resource('/departements', 'DepartementsController');
+Route::resource('/adminskoura', 'AdminsController',['only' => [ 'index', 'create','store']]);
+
 
 Route::resource('/courriers_entrants', 'CourriersEntrantsController');
-
-
-
 
 
 
