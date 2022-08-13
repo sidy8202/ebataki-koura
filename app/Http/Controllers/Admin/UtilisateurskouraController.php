@@ -89,7 +89,7 @@ class UtilisateurskouraController extends Controller
                     ]
 
                     );
-            return redirect('utilisateurs')->with('success', 'Utilisateur ajouté avec Succes!!');
+            return view('admin.users.index')->with('success', 'Utilisateur ajouté avec Succes!!');
 
             }
 
@@ -136,9 +136,8 @@ class UtilisateurskouraController extends Controller
         $barakaila->email = $request->input('email');
         $barakaila->poste = $request->input('poste');
         $barakaila->id_departement = $request->input('id_departement');
-
         $barakaila->save();
-        return redirect('/utilisateurs')->with('success', 'utilisateur Modifié avec Succes!!');
+        return view('admin.users.index')->with('success', 'utilisateur Modifié avec Succes!!');
     }
 
     /**
@@ -151,7 +150,7 @@ class UtilisateurskouraController extends Controller
     {
         $barakaila = utilisateurs::find($id) ;
         $barakaila->delete();
-        return redirect('/utilisateurs')->with('success', 'Utilisateurs Supprimé avec Succes!!');
+        return redirect('admin.users.index')->with('success', 'Utilisateurs Supprimé avec Succes!!');
     }
 
 }
