@@ -42,6 +42,13 @@ class User extends Authenticatable
         return $this->hasMany(utilisateurs::class,'id_users');
 
     }
+    public function UtilisateurskouraController()
+    
+        {
+            return $this->hasMany(UtilisateurskouraController::class,'id_users');
+    
+        }
+    
 
     /**
      * The attributes that should be hidden for serialization.
