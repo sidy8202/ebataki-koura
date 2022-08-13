@@ -9,7 +9,7 @@ class secretaires extends Model
 {
     use HasFactory;
 
-protected $table = 'secretaires';
+
 
     protected $fillable = [
         'nom',
@@ -26,7 +26,7 @@ protected $table = 'secretaires';
 
     public function users()
     {
-        return $this->belongsTo(users::class,'id_users');
+        return $this->belongsTo(User::class,'id_users');
 
     }
 }

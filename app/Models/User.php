@@ -21,7 +21,6 @@ class User extends Authenticatable
         'nom',
         'prenom',
         'email',
-
         'password',
         'status',
 
@@ -34,13 +33,19 @@ class User extends Authenticatable
 
     public function admins()
     {
-        return $this->hasMany(directeurs::class,'id_users');
+        return $this->hasMany(admins::class,'id_users');
 
     }
 
     public function utilisateurs()
     {
-        return $this->hasMany(parents::class,'id_users');
+        return $this->hasMany(utilisateurs::class,'id_users');
+
+    }
+
+    public function departements()
+    {
+        return $this->hasMany(departements::class,'nom');
 
     }
 

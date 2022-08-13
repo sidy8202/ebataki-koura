@@ -1,8 +1,6 @@
-@extends('layouts.users')
 
+@extends('layouts.userlayout')
 @section('content')
-
-
 <div class="container-fluid px-4">
   <div class="row">
           <div class="col-xl-6 col-md-6">

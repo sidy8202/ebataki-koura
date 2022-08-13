@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Models\secretaires;
+use App\Models\user;
+
 use App\Models\departements;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\SecretaireFormRequest;
+
 
 class SecretaireController extends Controller
 {
@@ -35,26 +37,64 @@ class SecretaireController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SecretaireFormRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->validated();
+        $nagnana = $request->validate(
+            [
 
-        $secretaire = new secretaires;
-        $secretaire->nom = $data['nom'];
-        $secretaire->prenom = $data['prenom'];
-        $secretaire->adresse = $data['adresse'];
-        $secretaire->phone = $data['phone'];
-        $secretaire->email = $data['email'];
-        $secretaire->username = $data['username'];
-        $secretaire->password = $data['password'];
-        $secretaire->id_departement = $data['id_departement'];
-    
-        $secretaire->save();
-        $secretaires = secretaires::all();
-        $departements = departements::all();
-        return view('admin.secretaire.index', compact('secretaires', 'departements'));
+                'nom'=>['required','string','max:225'],
+                'prenom'=>['required','string','max:225'],                
+                'adresse'=>['required','string','max:225'],
+                'phone'=>['required','string','max:50'],
+                'username'=>['required','string','max:225'],
+                'email'=>['required','string','email','max:50','unique:users'],
+                'id_departement'=>'required',
+                'password'=>['required','string','min:5','confirmed']
+               
+            ]
+            );
+
+            if($nagnana)
+            {
+                $user =  User::create(
+                    [
+                        'nom' => $request['nom'],
+                        'prenom' => $request['prenom'],
+                        'email' =>$request['email'],
+                        'password' => bcrypt($request['password']),
+                        'status' => 'secretaire',
+                    ]
+                    
+                    );
+
+                    if($user)
+                    {
+                        $secretaire = secretaires::create(
+                            [
+                                'id_users' => $user->id,
+                                'nom'=>$request['nom'],
+                                'prenom'=>$request['prenom'],
+                                'adresse'=>$request['adresse'],
+                                'phone'=>$request['phone'],                              
+                                'id_departement'=> $request['id_departement'],
+                                'email'=>$request['email'],
+                                'username'=>$request['username'],
+                                'password' => bcrypt($request['password']),
+
+                            ]
+                            );
+                            
+                                                    
+                            $secretaires = secretaires::all();
+                            $departements = departements::all();
+                            return view('admin.secretaire.index', compact('secretaires', 'departements'));
+                            
+
+                    }
+                }
+
         
-    
+         
     }
 
     /**

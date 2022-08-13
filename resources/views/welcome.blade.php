@@ -20,13 +20,16 @@
                 <div class="logo">
                     <img src="{{asset('img/ebataki.png')}}" alt="logo">
                 </div>
+                <div class="d-grid d-md-block">
+                    <button class="btn btn-light" type="button"><a href="{{ route('login') }}">Se connecter</a></button>
+                </div>
             </div>
         </div>
         <div class="row car ">
             <div id="carouselExampleSlidesOnly" class="carousel slide  " data-bs-ride="carousel">
               <div class="carousel-inner ">
                 <div class="carousel-item active ">
-                    <img src="{{asset('img/carou1.jpg')}}" class="d-block w-100 " alt="...">
+                    <img src="{{asset('img/carou1.png')}}" class="d-block w-100 " alt="...">
                 </div>
                 <div class="carousel-item">
                     <img src="{{asset('img/carou2.jpg')}}" class="d-block w-100" alt="...">
@@ -58,7 +61,7 @@
         </div>
         
         <footer>
-            <h5 class="copyright">Copyright <span class="copy">©</span> 2022 E-Bataki</h5>          
+        <img id="footer" src="{{asset('img/footer.png')}}">         
         </footer>
     </div>
     
