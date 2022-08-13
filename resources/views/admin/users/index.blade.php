@@ -3,21 +3,14 @@
 @section('content')
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    {{-- <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"> --}}
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/af-2.4.0/datatables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
-</head>
-<body>
+
+
 
 <!-- Modal d'ajout pour utilisateur -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -223,50 +216,50 @@
 
     {{-- End of delete  Modal --}}
 
-  @if(count($errors) > 0)
-  <div class=" alert alert-danger">
-      <ul>
-          @foreach ($errors->all() as $error)
-          <li>{{ $error }}</li>    
-
-          @endforeach
-      </ul>
-  </div>
-  @endif
-  @if (session('success'))
-      <div class="alert alert-success">
-          <p>{{ session('success') }}</p>
-      </div> 
-  @endif
+  
 
   {{-- CArd avec la table --}}
 
-<div class="container mt-5">
+<div class="container ">
   <div class="card">
-
     <div class="card-header">        
        <h2>La liste des utilisateurs <button type="button" class="btn btn-primary btn-sm float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
                          Ajouter utilisateur
-            </button> </h2> 
-                        
+            </button> </h2>                        
     </div>
 
     <div class="card-body">
 
-        <table id="datatable" class="table table-bordered">
+        @if(count($errors) > 0)
+            <div class=" alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>    
+
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                <p>{{ session('success') }}</p>
+            </div> 
+        @endif
+
+        <table id="myDataTable" class="table table-bordered" >
             <thead>
               <tr>
-                <th scope="col" class="th_1">Id</th>
-                <th scope="col">Nom</th>
-                <th scope="col">Prenom</th>
-                <th scope="col">Adresse</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Email</th>
-                <th scope="col">Username</th>
-                <th scope="col">Poste</th>
-                <th scope="col">Departement</th>
-                <th scope="col">Actions</th>
-
+                <th  class="th_1">Id</th>
+                <th >Nom</th>
+                <th >Prenom</th>
+                <th >Adresse</th>
+                <th >Phone</th>
+                <th >Email</th>
+                
+                <th >Poste</th>
+                <th >Departement</th>
+                <th >Actions</th>
               </tr>
             </thead>
 
@@ -276,13 +269,13 @@
                     
               
               <tr>
-                <th scope="row" class="th_1">{{ $gnouma->id }}</th>
+                <th  class="th_1">{{ $gnouma->id }}</th>
                 <th >{{ $gnouma ->nom}}</th>   
                 <td>{{ $gnouma ->prenom}}</td>
                 <td>{{ $gnouma ->adresse}}</td>
                 <td>{{ $gnouma ->phone}}</td>
                 <td>{{ $gnouma ->email}}</td>
-                <td>{{ $gnouma ->username}}</td>
+                
                 <td>{{ $gnouma ->poste}}</td>
                 <td>{{ $gnouma ->id_departement}}</td>
                 
@@ -294,14 +287,10 @@
                 </td>
               </tr>
               @endforeach
-            </tbody>
-          
-
-          </table>
+            </tbody> 
+        </table>
     </div>
   </div>
-
-
 </div>
 
 {{-- Fin du card --}}
@@ -313,12 +302,7 @@
  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
 
  
-<script>
-    $(document).ready( function () 
-    {
-        $('#datatable').DataTable();
-    } );
-</script>
+
 
 {{-- Hide content of table --}}
 
@@ -334,7 +318,7 @@
     
     $(document).ready(function() {
     
-    var table = $('#datatable').DataTable();
+    var table = $('#myDataTable').DataTable();
     
     
     table.on('click','.edit', function() {
@@ -357,7 +341,7 @@
         $('#poste').val(data[7]);
        
     
-        $('#editForm').attr('action', '/utilisateurs/'+data[0]);
+        $('#editForm').attr('action', 'admin/utilisateursadd'+data[0]);
         $('#editModal').modal('show');
     });
 
@@ -372,7 +356,7 @@
 
         var data = table.row($tr).data();
         console.log(data);
-        $('#deleteForm').attr('action', '/utilisateurs/'+data[0]);
+        $('#deleteForm').attr('action', 'admin.users.index'+data[0]);
         $('#deleteModal').modal('show');
     });
 
@@ -380,7 +364,5 @@
 
 });
 </script>
-</body>
-</html>
 
 @endsection
