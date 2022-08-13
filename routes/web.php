@@ -33,6 +33,9 @@ Route::prefix('admin')->group(function() {
     Route::post('/utilisateursadd', [App\Http\Controllers\Admin\UtilisateursKouraController::class,'store']);
 
 
+    Route::get('/courrierentrandd', [App\Http\Controllers\Admin\UtilisateursKouraController::class,'index']);
+    Route::post('/courrierentrandd', [App\Http\Controllers\Admin\UtilisateursKouraController::class,'store']);
+
     Route::get('secretaire', [App\Http\Controllers\Admin\SecretaireController::class, 'index']);
     Route::post('secretaire',[App\Http\Controllers\Admin\SecretaireController::class, 'store']);
 
