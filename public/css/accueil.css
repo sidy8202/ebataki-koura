@@ -17,20 +17,20 @@ body{
 .nav-menu{
     background-color: #0E4C92;
     display: flex;
-    height: 105px;
+    height: 90px;
     margin-top: 0;
     padding: 0px;
 }
 
 img.d-block{
-    height: 420px;
+    height: 510px;
    
 }
 
 
 .logo img{
-    width: 107px;
-    height: 107PX;
+    width: 89px;
+    height: 89PX;
     margin-left: 20px;
 }
 
@@ -38,7 +38,7 @@ img.d-block{
 h4{
     text-align: center;
     color: #0E4C92;
-    font-size: 30px;
+    font-size: 28px;
     margin-top: 22px;
     font-family: sans-serif;
 }
@@ -48,20 +48,20 @@ h5{
 
 table{
     color: #000;
-    font-size: 18px;
+    font-size: 16px;
     width: 100%;
     text-align: center;
-    padding: 5px;
+    padding: 3px;
     
 }
 table th{
-    margin-top: 10px;
-    padding: 10px;
+    margin-top: 8px;
+    padding: 6px;
 }
 
 table th img{
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
 }
 
 #font{
@@ -73,10 +73,10 @@ table th img{
 .copyright{
     text-align: center;
     color: #0B6623;
-    font-size: 13px;
+    font-size: 14px;
     font-family: 'Roboto';
     
-    margin-top: 12px
+    margin-top: 10px
 }
 
 .copy{

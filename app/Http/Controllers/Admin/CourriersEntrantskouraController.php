@@ -6,16 +6,15 @@ use App\Models\secretaire;
 use App\Models\utilisateurs;
 
 use App\Http\Controllers\Controller;
+use App\Models\secretaires;
 use Illuminate\Http\Request;
 
 class CourriersEntrantskouraController extends Controller
 {
     public function index()
     {
-        $bara = utilisateurs::all();
-
+        $bara = secretaires::all();
         $crst = courriers_entrants::all();
-
         return view('admin.courriersentrants.indexce', compact('crst','bara'));
 
     }
@@ -36,16 +35,17 @@ class CourriersEntrantskouraController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id)
+    public function store(Request $request)
     {
         $validatedData = $request->validate([
             'num_reference' => 'required',
             'objet' => 'required',
-            'expediteur' => 'required'
+            'expediteur' => 'required',
+            'id_secretaire' => 'required'
             
         ]);
         $crst = courriers_entrants::create($validatedData);
-        return view('admin.courriersentrants.indexce')->with('success', 'courrier receptionné avec succèss!!!');
+        return redirect('admin/courrierentrandd')->with('success', 'courrier receptionné avec succèss!!!');
         
 
     }

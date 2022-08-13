@@ -89,7 +89,7 @@ class UtilisateurskouraController extends Controller
                     ]
 
                     );
-            return view('admin.users.index')->with('success', 'Utilisateur ajouté avec Succes!!');
+            return redirect('admin/utilisateursadd')->with('success', 'Utilisateur ajouté avec Succes!!');
 
             }
 

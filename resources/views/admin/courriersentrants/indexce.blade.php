@@ -3,18 +3,126 @@
 @section('content')
 
 
+<div class="container mt-3">
+@if(count($errors) > 0)
+            <div class=" alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>    
+
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                <p>{{ session('success') }}</p>
+            </div> 
+        @endif
+    <div class="card">
+      <div class="card-header">Envoie de courriers entrants
+        <a href="" class="btn btn-primary btn-sm float-end text-white" data-bs-toggle="modal" data-bs-target="#exampleModal" >Envoyer</a>
+      </div>
+      <div class="card-body">
+      <table class="table table-bordered" id="datatable">
+            <thead class="text-center">
+                <tr>
+                  <td class="masque">ID</td>
+                  <td>N°Reference</td>
+                  <td>Objet</td>
+                  <td>Expediteur</td>
+                  <td>Secretaire</td>
+                  <td>Action</td>
+                </tr>
+            </thead>
+            <!-- //Affichage dans le tebleau -->
+            <tbody>
+                @foreach($crst as $crs)
+                <tr>
+                    <td class="masque">{{$crs->id}}</td>
+                    <td>{{$crs->num_reference}}</td>
+                    <td>{{$crs->objet}}</td>
+                    <td>{{$crs->expediteur}}</td>
+                    <td>{{$crs->id_secretaire}}</td>
+                    <td>
+                      <button class="btn btn-success edit" data-bs-toggle="modal" data-bs-target="#modifcoursortants">Mod</button>
+                      <button class="btn btn-danger edit" data-bs-toggle="modal" data-bs-target="#deleteModal">Supp</button>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+          </table>
+      </div>
+    </div>
+</div>
+
+<!-- debut Modal envoyer courriers -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter utilisateur</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form action= "{{ URL('admin/courrierentrandd') }}" method="POST">
+              {{ csrf_field() }}
+              <div class="modal-body">							
+                  <div class="mb-3">
+                      <label for="" class="form-label">N° Référence</label>
+                      <input type="text" class="form-control" name="num_reference" >
+                  </div>
+                  <div class="mb-3">
+                      <label for="" class="form-label">Objet </label>
+                      <input type="text" class="form-control" name="objet" >
+                  </div>
+                  <div class="mb-3">
+                      <label for="" class="form-label">Expediteur</label>
+                      <input type="text" class="form-control" name="expediteur" >
+                  </div>
+                
+
+                  <div class="mb-3">
+                      <label for="" class="form-label">Secretaire</label>
+
+                      <select name="id_secretaire">
+                        @foreach ($bara as $voila)
+                          <option value="{{ $voila->id}}"><strong>{{ $voila->nom}}  {{ $voila->prenom}}</strong></option>
+                        @endforeach
+                      </select>
+                    
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="" class="form-label">Le Courrier</label>
+                    <input type="file" class="form-control" name="destinateur" >
+                </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+                  <button type="submit" class="btn btn-primary">Envoyer</button>
+              </div>
+          </form>
+
+      </div>
+    
+    </div>
+  </div>
+</div>
 
 
 <div class="container">
-    <div class="card">
-        <div class="card-header">
-          <div class="container">
-              <div class="row">
-                  <div class="col-md-5">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Envoyer</button>
-                  </div>
+
+
+
+
+  <div class="card">
+    <div class="card-header">
+      <h3><a  class="btn btn-primary btn-sm float-end text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">Envoyer</a></h3>
     
-                   <!-- debut Modal envoyer courriers -->
+              
+    
+<!-- debut Modal envoyer courriers -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -23,7 +131,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                  <form action= "{{ action('CourriersEntrantskouraController@store') }}" method="POST">
+                  <form action= "{{ URL('admin/courrierentrandd') }}" method="POST">
                       {{ csrf_field() }}
                       <div class="modal-body">							
                           <div class="mb-3">
@@ -67,41 +175,13 @@
           </div>
         </div>
         <!-- fin modal envoyer -->  
-                  <div class="col">
-                    <h2>La liste des courriers envoyés</h2>
-                  </div>
-              </div>
-          </div>
+        <div class="col">
+          <h2>La liste des courriers envoyés</h2>
         </div>
-        <table class="table table-striped table-bordered" id="datatable">
-            <thead class="text-center">
-                <tr>
-                  <td class="masque">ID</td>
-                  <td>N°Reference</td>
-                  <td>Objet</td>
-                  <td>Expediteur</td>
-                  <td>Secretaire</td>
-                  <td colspan="2">Action</td>
-                </tr>
-            </thead>
-            <!-- //Affichage dans le tebleau -->
-            <tbody>
-                @foreach($crst as $crs)
-                <tr>
-                    <td class="masque">{{$crs->id}}</td>
-                    <td>{{$crs->num_reference}}</td>
-                    <td>{{$crs->objet}}</td>
-                    <td>{{$crs->expediteur}}</td>
-                    <td>{{$crs->id_secretaires}}</td>
-                    <td>
-                      <button class="btn btn-success edit" data-bs-toggle="modal" data-bs-target="#modifcoursortants">Mod</button>
-                      <button class="btn btn-danger edit" data-bs-toggle="modal" data-bs-target="#deleteModal">Supp</button>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-          </table>
-    
+             
+     
+    </div>
+
     
            <!-- debut Modal modifier courriers -->
           <div class="modal fade" id="modifcoursortants" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -174,8 +254,8 @@
     
     
     
-      </div>
-    </div>
+  </div>
+</div>
     
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
