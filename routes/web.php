@@ -36,7 +36,13 @@ Route::prefix('admin')->group(function() {
 
     Route::get('secretaire', [App\Http\Controllers\Admin\SecretaireController::class, 'index']);
     Route::post('secretaire',[App\Http\Controllers\Admin\SecretaireController::class, 'store']);
+
+    Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
+    Route::get('courriers_sortants', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
+     
+    
 });
+
 Route::prefix('users')->group(function() {
     Route::get('dashboard', [App\Http\Controllers\users\DashboardUsersController::class, 'index']);
   
@@ -57,8 +63,4 @@ Route::resource('/adminskoura', 'AdminsController',['only' => [ 'index', 'create
 
 
 Route::resource('/courriers_entrants', 'CourriersEntrantsController');
-
-
-
-
 ?>
