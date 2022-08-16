@@ -25,6 +25,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('admin')->group(function() {
 
 
+
     Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
 
     Route::get('courriers_sortants', [App\Http\Controllers\Admin\CourriersSortantsController::class, 'index']);
@@ -41,10 +42,6 @@ Route::prefix('admin')->group(function() {
     Route::get('secretaire', [App\Http\Controllers\Admin\SecretaireController::class, 'index']);
     Route::post('secretaire',[App\Http\Controllers\Admin\SecretaireController::class, 'store']);
 
-
-    Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
-     
-    
 });
 
 Route::prefix('users')->group(function() {

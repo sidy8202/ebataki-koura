@@ -14,5 +14,6 @@ class courriers_entrants extends Model
         'objet',
         'expediteur',
         'id_secretaire',
+        'pdf_courriers',
     ];
 }

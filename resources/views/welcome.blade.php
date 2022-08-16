@@ -20,6 +20,9 @@
                 <div class="logo">
                     <img src="{{asset('img/ebataki.png')}}" alt="logo">
                 </div>
+                <div class="d-grid d-md-block">
+                    <button class="btn btn-light" type="button"><a href="{{ route('login') }}">Se connecter</a></button>
+                </div>
             </div>
         </div>
         <div class="row car ">
@@ -58,7 +61,7 @@
         </div>
         
         <footer>
-            <h5 class="copyright">Copyright <span class="copy">©</span> 2022 E-Bataki</h5>          
+        <img id="footer" src="{{asset('img/footer.png')}}">         
         </footer>
     </div>
     

@@ -50,6 +50,12 @@ class User extends Authenticatable
         }
     
 
+    public function departements()
+    {
+        return $this->hasMany(departements::class,'nom');
+
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

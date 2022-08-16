@@ -33,6 +33,8 @@
                   <td>Objet</td>
                   <td>Expediteur</td>
                   <td>Secretaire</td>
+                  <td>vos courriers</td>
+
                   <td>Action</td>
                 </tr>
             </thead>
@@ -45,9 +47,12 @@
                     <td>{{$crs->objet}}</td>
                     <td>{{$crs->expediteur}}</td>
                     <td>{{$crs->id_secretaire}}</td>
+                    <td><a href="{{ url('courriers/entrants/'.$crs->pdf_courriers) }}" download>Fichier joint:</a></td>
+
                     <td>
                       <button class="btn btn-success edit" data-bs-toggle="modal" data-bs-target="#modifcoursortants">Mod</button>
                       <button class="btn btn-danger edit" data-bs-toggle="modal" data-bs-target="#deleteModal">Supp</button>
+                      
                     </td>
                 </tr>
                 @endforeach
@@ -66,7 +71,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-          <form action= "{{ URL('admin/courrierentrandd') }}" method="POST">
+          <form action= "{{ URL('admin/courrierentrandd') }}" method="POST" enctype="multipart/form-data">
               {{ csrf_field() }}
               <div class="modal-body">							
                   <div class="mb-3">
@@ -96,7 +101,7 @@
 
                   <div class="mb-3">
                     <label for="" class="form-label">Le Courrier</label>
-                    <input type="file" class="form-control" name="destinateur" >
+                    <input type="file" class="form-control" name="pdf_courriers" >
                 </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>

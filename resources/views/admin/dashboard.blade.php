@@ -10,7 +10,7 @@
                 <h2>100</h2>
                 </div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" href="#">Plus de Détails</a>
+                    <a class="small text-white stretched-link" href="{{ url('admin/courrierentrandd') }}">Plus de Détails</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
             </div>

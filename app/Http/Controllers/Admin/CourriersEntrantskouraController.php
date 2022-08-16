@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Models\courriers_entrants;
 use App\Models\secretaire;
 use App\Models\utilisateurs;
+use Illuminate\Support\Facades\Validator;
+
 
 use App\Http\Controllers\Controller;
 use App\Models\secretaires;
@@ -37,14 +40,35 @@ class CourriersEntrantskouraController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $validatedData = $request->validate([
             'num_reference' => 'required',
             'objet' => 'required',
             'expediteur' => 'required',
-            'id_secretaire' => 'required'
+            'id_secretaire' => 'required',
+            'pdf_courriers' => 'required|mimes:pdf|max:1000',
+        
             
         ]);
-        $crst = courriers_entrants::create($validatedData);
+        if($validatedData)
+        {
+            $fileName = time().'.'.$request->pdf_courriers->extension();  
+                $request->pdf_courriers->move(public_path('courriers/entrants'), $fileName);
+                $crst = courriers_entrants::create(
+                [
+
+                    'num_reference'=>$request['num_reference'],
+                    'objet'=>$request['objet'],
+                    'expediteur'=>$request['expediteur'],
+                    'id_secretaire'=>$request['id_secretaire'],
+                    'pdf_courriers'=>$fileName,
+
+                ]
+            );
+        }
+   
+
         return redirect('admin/courrierentrandd')->with('success', 'courrier receptionné avec succèss!!!');
         
 
