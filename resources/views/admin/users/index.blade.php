@@ -1,3 +1,8 @@
+@extends('layouts.admin')
+
+@section('content')
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +29,7 @@
         </div>
         <div class="modal-body">
           
-            <form action= "{{ action('UtilisateursController@store') }}" method="POST">
+            <form action= "{{ URL('admin/utilisateursadd') }}" method="POST">
                 {{ csrf_field() }}
                 <div class="modal-body">							
                     <div class="mb-3">
@@ -238,21 +243,16 @@
 
 <div class="container mt-5">
   <div class="card">
-    <div class="card-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-5">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+    <div class="card-header">        
+       <h2>La liste des utilisateurs <button type="button" class="btn btn-primary btn-sm float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
                          Ajouter utilisateur
-                    </button>
-                </div>
-                <div class="col">
-                    <h2>La liste des utilisateurs</h2>
-                </div>
-            </div>
-        </div>
+            </button> </h2> 
+                        
     </div>
+
     <div class="card-body">
+
         <table id="datatable" class="table table-bordered">
             <thead>
               <tr>
@@ -277,7 +277,7 @@
               
               <tr>
                 <th scope="row" class="th_1">{{ $gnouma->id }}</th>
-                <th scope="row">{{ $gnouma ->nom}}</th>   
+                <th >{{ $gnouma ->nom}}</th>   
                 <td>{{ $gnouma ->prenom}}</td>
                 <td>{{ $gnouma ->adresse}}</td>
                 <td>{{ $gnouma ->phone}}</td>
@@ -300,6 +300,7 @@
           </table>
     </div>
   </div>
+
 
 </div>
 
@@ -381,3 +382,5 @@
 </script>
 </body>
 </html>
+
+@endsection

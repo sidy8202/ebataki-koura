@@ -27,11 +27,6 @@
             </a>
           </li>
 
-         
-          
-         
-
-        
           <li class="nav-item">
             <a class="nav-link" href="pages/charts/chartjs.html">
               <i class="mdi mdi-chart-pie menu-icon"></i>

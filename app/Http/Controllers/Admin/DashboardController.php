@@ -1,6 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Models\utilisateurs;
+use App\Models\secretaires;
+use App\Models\admins;
+
+
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -21,5 +26,7 @@ class DashboardController extends Controller
         return view('admin/dashboard',compact('courriers_reçus','courriers_envoyes'));
         
     }
+
+    
 }
 

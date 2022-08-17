@@ -1,29 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\utilisateurs;
 use App\Models\departements;
 use App\Models\User;
 
-use Illuminate\Support\Facades\DB;
-
-use Illuminate\Http\Request;
 
 
-class UtilisateursController extends Controller
+class UtilisateurskouraController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $departements = departements::all();
         $bara = utilisateurs::all();
 
-        return view('utilisateursmodal',compact('departements','bara'));
+        return view('admin.users.index',compact('departements','bara'));
     }
 
    
@@ -158,4 +153,5 @@ class UtilisateursController extends Controller
         $barakaila->delete();
         return redirect('/utilisateurs')->with('success', 'Utilisateurs Supprimé avec Succes!!');
     }
+
 }

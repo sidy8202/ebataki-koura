@@ -3,9 +3,12 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-6">
+        <img id="key" src="{{asset('img/user.png')}}">
+        </div>
+        <div class="col-md-6">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">{{ __('Authentification') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -70,4 +73,37 @@
         </div>
     </div>
 </div>
+
+<style>
+body {
+    background-color: #0E4C92;
+}
+
+.card-header{
+    text-transform: uppercase;
+    text-align: center;
+    background-color: #0B6623;
+    color: #fff;
+}
+
+.col-md-6 img{
+    margin-top: 10%;
+    margin-left: 10%;
+    width: 400px;
+    height: 400px;
+}
+.card{
+    height: 620px;
+    width: 860px;
+    margin-top: 10px;
+    margin-left: -170px;
+}
+.card-body{
+    margin-top: 100px;
+    width: ;
+}
+.card form{
+    style: none;
+}
+</style>
 @endsection

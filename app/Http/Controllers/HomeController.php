@@ -36,7 +36,7 @@ class HomeController extends Controller
         if($user->status == 'utilisateur')
         {
             $utilisateur = utilisateurs::where ('id_users', $user->id)->first();
-            return view ('users.dashboard',compact('utilisateur'));
+            return view ('utilisateurs.dashboard',compact('utilisateur'));
         }
 
         elseif($user->status == 'admin')
@@ -55,10 +55,9 @@ class HomeController extends Controller
         {
             $secretaire = secretaires::where ('id_users', $user->id)->first();
 
-            return view ('secretaires.dashboard',compact('secretaire'));
+            return view ('secretaire.dashboard',compact('secretaire'));
 
         }
-
 
         else
         {
