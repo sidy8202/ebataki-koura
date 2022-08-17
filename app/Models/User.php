@@ -18,10 +18,43 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'nom',
+        'prenom',
         'email',
         'password',
+        'status',
+
     ];
+
+    public function secretaires()
+    {
+        return $this->hasMany(secretaires::class,'id_users');
+    }
+
+    public function admins()
+    {
+        return $this->hasMany(admins::class,'id_users');
+
+    }
+
+    public function utilisateurs()
+    {
+        return $this->hasMany(utilisateurs::class,'id_users');
+
+    }
+    public function UtilisateurskouraController()
+    
+        {
+            return $this->hasMany(UtilisateurskouraController::class,'id_users');
+    
+        }
+    
+
+    public function departements()
+    {
+        return $this->hasMany(departements::class,'nom');
+
+    }
 
     /**
      * The attributes that should be hidden for serialization.

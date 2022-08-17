@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Admint</title>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     {{-- <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"> --}}
@@ -19,12 +19,12 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ajouter utilisateur</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Ajouter Admin</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           
-            <form action= "{{ action('UtilisateursController@store') }}" method="POST">
+            <form action= "{{ action('AdminsController@store') }}" method="POST">
                 {{ csrf_field() }}
                 <div class="modal-body">							
                     <div class="mb-3">
@@ -47,32 +47,39 @@
                         <input type="text" class="form-control" name="phone" >
                     </div>
 
-                    <div class="mb-3">
-                        <label for="" class="form-label">Adresse Email</label>
-                        <input type="email" class="form-control" name="email" >
-                    </div>
-
+                    
                     <div class="mb-3">
                         <label for="" class="form-label">Nom d'utilisateur</label>
                         <input type="text" class="form-control" name="username" >
                     </div>
-                            
+
                     <div class="mb-3">
-                        <label for="" class="form-label">Poste</label>
-                        <input type="text" class="form-control" name="poste" >
+                        <label for="" class="form-label">Adresse Email</label>
+                        <input type="email" class="form-control" name="email" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                        @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     </div>
 
                     <div class="mb-3">
-                        <label for="" class="form-label">Departement</label>
-                            
-                        <select name="id_departement">  
-                            
-                                @foreach ($departements as $depart)
-                                    <option value="{{ $depart->id }}">{{ $depart -> nom }}</option>
-                                @endforeach
-                        </select>
-                        
+                        <label for="" class="form-label">Mot de Passe </label>
+                        <input type="password" class="form-control" name="password" @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     </div>
+
+                    <div class="mb-3">
+                        <label for="" class="form-label">Confirmer</label>
+                        <input type="password" class="form-control"  name="password_confirmation" required autocomplete="new-password">
+                    </div>
+                            
+                    
+                   
                     
                 </div>
                 
@@ -96,12 +103,12 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modifier un utilisateur</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Modifier un Admin</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           
-            <form action="/utilisateurs" id="editForm" method="POST">
+            <form action="/admins" id="editForm" method="POST">
                 {{ csrf_field() }}
                 {{ method_field('PUT') }}
 
@@ -137,18 +144,8 @@
                     </div>
 
 
-                    <div class="mb-3">
-                        <label for="" class="form-label">Poste</label>
-                        <input type="text" class="form-control" id="poste" name="poste" >
-                    </div>
 
-                    <div class="mb-3">
-                        <label for="" class="form-label">Departement</label>
-                        <select name="" id="">
-                            <option value=""></option>
-                        </select>
-                        
-                    </div>
+                    
                     
                 </div>
                 
@@ -177,7 +174,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Confirmer la suppression</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                    <form action="/utilisateurs" id="deleteForm" method="POST">
+                    <form action="/admins" id="deleteForm" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
 
@@ -204,22 +201,7 @@
 
     {{-- End of delete  Modal --}}
 
-  @if(count($errors) > 0)
-  <div class=" alert alert-danger">
-      <ul>
-          @foreach ($errors->all() as $error)
-          <li>{{ $error }}</li>    
-
-          @endforeach
-      </ul>
-  </div>
-  @endif
-  @if (session('success'))
-      <div class="alert alert-success">
-          <p>{{ session('success') }}</p>
-      </div> 
-  @endif
-
+ 
   {{-- CArd avec la table --}}
 
 <div class="container mt-5">
@@ -229,16 +211,32 @@
             <div class="row">
                 <div class="col-md-5">
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                         Ajouter utilisateur
+                         Ajouter Admin
                     </button>
                 </div>
                 <div class="col">
-                    <h2>La liste des utilisateurs</h2>
+                    <h2>La liste des Administrateurs</h2>
                 </div>
             </div>
         </div>
     </div>
     <div class="card-body">
+        @if(count($errors) > 0)
+        <div class=" alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>    
+      
+                @endforeach
+            </ul>
+        </div>
+        @endif
+        @if (session('success'))
+            <div class="alert alert-success">
+                <p>{{ session('success') }}</p>
+            </div> 
+        @endif
+      
         <table id="datatable" class="table table-bordered">
             <thead>
               <tr>
@@ -248,8 +246,8 @@
                 <th scope="col">Adresse</th>
                 <th scope="col">Phone</th>
                 <th scope="col">Email</th>
-                <th scope="col">Username</th>
-                <th scope="col">Poste</th>
+                
+               
                 <th scope="col">Departement</th>
                 <th scope="col">Actions</th>
 
@@ -258,19 +256,23 @@
 
             <tbody>
                
-                @foreach ($bara as $gnouma )
+                
                     
               
               <tr>
-                <th scope="row" class="th_1">{{ $gnouma->id }}</th>
-                <th scope="row">{{ $gnouma ->nom}}</th>   
-                <td>{{ $gnouma ->prenom}}</td>
-                <td>{{ $gnouma ->adresse}}</td>
-                <td>{{ $gnouma ->phone}}</td>
-                <td>{{ $gnouma ->email}}</td>
-                <td>{{ $gnouma ->username}}</td>
-                <td>{{ $gnouma ->poste}}</td>
-                <td>{{ $gnouma ->id_departement}}</td>
+                <th scope="row" class="th_1"></th>
+                <th scope="row"></th>   
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+              
+              
+
+               
+                    
+                
+                <td></td>
                 
                 <td>
                     <a href="#" class="edit btn btn-primary btn-sm"  >Edit</a> 
@@ -279,7 +281,7 @@
               {{-- <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a> --}}
                 </td>
               </tr>
-              @endforeach
+           
             </tbody>
           
 

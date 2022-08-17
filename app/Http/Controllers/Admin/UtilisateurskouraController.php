@@ -1,29 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\utilisateurs;
 use App\Models\departements;
 use App\Models\User;
 
-use Illuminate\Support\Facades\DB;
-
-use Illuminate\Http\Request;
 
 
-class UtilisateursController extends Controller
+class UtilisateurskouraController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $departements = departements::all();
         $bara = utilisateurs::all();
 
-        return view('utilisateursmodal',compact('departements','bara'));
+        return view('admin.users.index',compact('departements','bara'));
     }
 
    
@@ -94,7 +89,7 @@ class UtilisateursController extends Controller
                     ]
 
                     );
-            return redirect('utilisateurs')->with('success', 'Utilisateur ajouté avec Succes!!');
+            return redirect('admin/utilisateursadd')->with('success', 'Utilisateur ajouté avec Succes!!');
 
             }
 
@@ -141,9 +136,8 @@ class UtilisateursController extends Controller
         $barakaila->email = $request->input('email');
         $barakaila->poste = $request->input('poste');
         $barakaila->id_departement = $request->input('id_departement');
-
         $barakaila->save();
-        return redirect('/utilisateurs')->with('success', 'utilisateur Modifié avec Succes!!');
+        return view('admin.users.index')->with('success', 'utilisateur Modifié avec Succes!!');
     }
 
     /**
@@ -156,6 +150,7 @@ class UtilisateursController extends Controller
     {
         $barakaila = utilisateurs::find($id) ;
         $barakaila->delete();
-        return redirect('/utilisateurs')->with('success', 'Utilisateurs Supprimé avec Succes!!');
+        return redirect('admin.users.index')->with('success', 'Utilisateurs Supprimé avec Succes!!');
     }
+
 }

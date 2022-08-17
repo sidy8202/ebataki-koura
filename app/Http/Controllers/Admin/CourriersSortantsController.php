@@ -19,7 +19,7 @@ class CourriersSortantsController extends Controller
         $bara = utilisateurs::all();
 
         $crst = courriers_sortants::all();
-        return view('courriersmodalsortants', compact('crst','bara'));
+        return view('admin.courriersortants.index', compact('crst','bara'));
 
     }
 
@@ -49,7 +49,7 @@ class CourriersSortantsController extends Controller
         ]);
     
         $crst = courriers_sortants::create($validatedData);
-        return redirect('/courriers_sortants')->with('success', 'courrier envoyé avec succèss!!!');
+        return view('admin.courriersortants.index')->with('success', 'courrier envoyé avec succèss!!!');
     }
 
     /**
@@ -88,7 +88,7 @@ class CourriersSortantsController extends Controller
         $validatedata->objet = $request->input('objet');
         $validatedata->destinateur = $request->input('destinateur');
         $validatedata->save();
-        return redirect('/courriers_sortants')->with('success', 'Courrier mise à jour avec succèss!!!');
+        return view('admin.courriersortants.index')->with('success', 'Courrier mise à jour avec succèss !!!');
 
     }
 
@@ -102,6 +102,6 @@ class CourriersSortantsController extends Controller
     {
         $courriers_sortants = courriers_sortants::findOrFail($id);
         $courriers_sortants->delete();
-        return redirect('/courriers_sortants')->with('success', 'courrier supprimer avec succèss!!!');
+        return view('admin.courriersortants.index')->with('success', 'courrier supprimer avec succèss !!!');
     }
 }

@@ -2,7 +2,7 @@
       <div class="navbar-brand-wrapper d-flex justify-content-center" style="background-color: #0E4C92">
         <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">  
           <a class="navbar-brand brand-logo" href="index.html">
-            <img src="{{asset('admin/images/bataki.png')}}" alt="E-Bataki" style=" width: 60px; height: 60px;" />
+            <img src="{{asset('admin/images/bataki.png')}}" alt="E-Bataki" style=" width: 60px; height: 50px;" />
 
 
           
@@ -13,17 +13,17 @@
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-sort-variant"></span>
           </button>
-        </div>
+        </div>  
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end" style="background-color: #0E4C92">
         <ul class="navbar-nav mr-lg-4 w-100">
-          <h3 class="justify-content-center">Dashboard Users</h3>
+        <h3 class="justify-content-center" >Dashboard Secretaire</h3>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item dropdown me-1">
             <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-bs-toggle="dropdown">
               <i class="mdi mdi-message-text mx-0"></i>
-              <span class="count">{{ $utilisateur->nom }} {{ $utilisateur->prenom }}</span>
+              <span class="count"></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="messageDropdown">
               <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
@@ -116,8 +116,7 @@
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
               <img src="images/faces/face5.jpg" alt="profile"/>
-
-              <span class="nav-profile-name"></span>
+              <span class="nav-profile-name">{{ $secretaire->prenom}} {{ $secretaire->nom}}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">

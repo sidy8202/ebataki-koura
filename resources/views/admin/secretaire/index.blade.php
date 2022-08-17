@@ -1,6 +1,7 @@
+@extends('layouts.admin')
 
-@extends('layouts.master')
 @section('content')
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -12,7 +13,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">Veuillez renseigner les champs suivants Svp !</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{url('secretaire')}}" method="post">
+            <form action="{{url('/admin/secretaire')}}" method="post">
                 @csrf
 
 
@@ -21,6 +22,11 @@
                     <div class="form-group">
                         <label for="name">Nom</label>
                         <input type="text" name="nom" class="form-control">
+                         @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                     </div>
 
                     <div class="form-group">
@@ -40,7 +46,12 @@
 
                     <div class="form-group">
                         <label for="name">Email</label>
-                        <input type="email" name="email" class="form-control">
+                        <input type="email" name="email" class="form-control" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
+                        @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                     </div>
 
                     <div class="form-group">
@@ -49,9 +60,23 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="name">Password</label>
-                        <input type="text" name="password" class="form-control">
+                        <label for="name">Mot de Passe </label>
+                        <input type="password"  class="form-control" @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     </div>
+
+                    <div class="form-group">
+                        <label for="name">Confirmer</label>
+                        <input type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                    </div>
+
+                   
+
+                    
 
                     <div class="form-group">
                         <label for="exampleInputPassword1" class="form-label">Id_département</label>
@@ -75,13 +100,9 @@
     </div>
 </div>
 
-
-
-
-
 <div class="container px-4">
 
-    <div class="card mt-5 ">
+    <div class="card mt-2 ">
 
         <div class="card-header">
             <h4>La liste des secrétaires
@@ -132,8 +153,5 @@
     </div>
     
 </div>
-
-
-
-
+     
 @endsection

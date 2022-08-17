@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class admins extends Model
+class UtilisateurskouraController extends Model
 {
     use HasFactory;
-    protected $fillable = [
+    protected $fillable =  [
         'nom',
         'prenom',
         'adresse',
@@ -16,8 +16,9 @@ class admins extends Model
         'email',
         'username',
         'password',
-        'id_users'
-    ];
+        'poste',
+        'id_departement',
+        'id_users'];  
 
     public function users()
     {
@@ -25,3 +26,4 @@ class admins extends Model
 
     }
 }
+

@@ -25,7 +25,7 @@ class CreateCourriersEntrantsTable extends Migration
                 ->on('secretaires')
                 ->onDelete('cascade');
 
-                $table->unsignedBigInteger("id_utilisateurs");
+                $table->unsignedBigInteger("id_utilisateurs")->nullable();
                 $table->foreign('id_utilisateurs')
                     ->references('id')
                     ->on('utilisateurs')

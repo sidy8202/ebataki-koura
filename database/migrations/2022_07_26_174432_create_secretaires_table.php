@@ -19,14 +19,25 @@ class CreateSecretairesTable extends Migration
             $table->string('prenom');
             $table->string('adresse');
             $table->integer('phone');
-            $table->string('email');
+            $table->string('email')->unique();
+          
             $table->string('username');
-            $table->string('password')->nullable();
+            $table->string('password');
+           
+
             $table->unsignedBigInteger("id_departement");
             $table->foreign('id_departement')
                 ->references('id')
                 ->on('departements')
                 ->onDelete('cascade');
+            
+
+            $table->unsignedBigInteger("id_users");
+            $table->foreign('id_users')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+
             $table->timestamps();
         });
     }
