@@ -1,31 +1,25 @@
 <?php
 
 namespace App\Http\Controllers;
-
-<<<<<<< HEAD
+use Illuminate\Http\Request;
 use App\Models\admins;
 use App\Models\courriers_entrants;
 use App\Models\courriers_sortants;
 use App\Models\User;
-=======
->>>>>>> 773617b947b2dd1e1f902b74eb1554d16fb4e08b
-use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\departements;
 
-use App\Models\admins;
+use App\Models\departements;
 
 
 class AdminsController extends Controller
 {
     public function index()
     {
-<<<<<<< HEAD
-=======
-        $departements= departements::all();
 
-        return view('adminsmodal',compact('departements'));
->>>>>>> 773617b947b2dd1e1f902b74eb1554d16fb4e08b
+        $departements= departements::all();
+        $admins= admins::all();
+
+        return view('adminsmodal',compact('departements','admins'));
+
     }
 
     public function create()
