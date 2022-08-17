@@ -32,7 +32,7 @@
                     <img src="{{asset('img/carou1.png')}}" class="d-block w-100 " alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{asset('img/carou2.jpg')}}" class="d-block w-100" alt="...">
+                    <img src="{{asset('img/carou2.png')}}" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
                     <img src="{{asset('img/carou3.png')}}" class="d-block w-100" alt="...">

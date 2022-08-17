@@ -32,7 +32,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
 
-        // dd($user);
+        
         if($user->status == 'utilisateur')
         {
             $utilisateur = utilisateurs::where ('id_users', $user->id)->first();

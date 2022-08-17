@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class courriers_entrants extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'num_reference',
+        'objet',
+        'expediteur',
+        'id_secretaire',
+        'pdf_courriers',
+    ];
 }

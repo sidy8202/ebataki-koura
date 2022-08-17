@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\utilisateurs;
 use App\Models\secretaires;
 use App\Models\admins;
+use App\Models\user;
 
 
 
@@ -19,6 +20,7 @@ class DashboardController extends Controller
 
     public function index()
     {
+
         
         $courriers_reçus = courriers_entrants::count();
         $courriers_envoyes = courriers_sortants::count();

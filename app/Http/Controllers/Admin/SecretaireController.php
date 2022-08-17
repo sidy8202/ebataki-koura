@@ -28,7 +28,7 @@ class SecretaireController extends Controller
         $secretaires = secretaires::all();
         return view('secretaire', compact('secretaires'));
         
-
+        
     }
 
     /**
