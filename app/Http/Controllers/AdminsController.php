@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\admins;
+use App\Models\courriers_entrants;
+use App\Models\courriers_sortants;
 use Illuminate\Http\Request;
 
 class AdminsController extends Controller
@@ -14,7 +16,10 @@ class AdminsController extends Controller
      */
     public function index()
     {
-        //
+        $courriers_reçus = courriers_entrants::count();
+        $courriers_envoyes = courriers_sortants::count();
+        $secretaires = User::where('status_as','secretaire')->count();
+        return view('admin/dashboard',compact('courriers_reçus','courriers_envoyes','secretaires'));
     }
 
     /**
