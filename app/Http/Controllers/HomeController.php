@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\secretaires;
 use App\Models\utilisateurs;
 use App\Models\admins;
+use App\Models\courriers_entrants;
+use App\Models\courriers_sortants;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -39,9 +41,13 @@ class HomeController extends Controller
 
         elseif($user->status == 'admin')
         {
+            $courriers_reçus = courriers_entrants::count();
+            $courriers_envoyes = courriers_sortants::count();
+            $secretaires = User::where('status_as','secretaire')->count();
+        //return view('admin/dashboard',compact('courriers_reçus','courriers_envoyes','secretaires'));
             $admin = admins::where ('id_users', $user->id)->first();
 
-            return view ('admin.dashboard',compact('admin'));
+            return view ('admin.dashboard',compact('admin','courriers_reçus','courriers_envoyes','secretaires'));
 
         }
 
