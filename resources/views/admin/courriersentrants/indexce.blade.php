@@ -50,6 +50,7 @@
                     <td><a href="{{ url('courriers/entrants/'.$crs->pdf_courriers) }}" download>Fichier joint:</a></td>
 
                     <td>
+                      <a href="{{ url('courriers/entrants/'.$crs->pdf_courriers) }}" view class="btn btn-primary">Voir</a>
                       <button class="btn btn-success edit" data-bs-toggle="modal" data-bs-target="#modifcoursortants">Mod</button>
                       <button class="btn btn-danger edit" data-bs-toggle="modal" data-bs-target="#deleteModal">Supp</button>
                       
