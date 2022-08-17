@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
 use App\Models\secretaires;
 use App\Models\utilisateurs;
 use App\Models\admins;
@@ -43,11 +43,11 @@ class HomeController extends Controller
         {
             $courriers_reçus = courriers_entrants::count();
             $courriers_envoyes = courriers_sortants::count();
-            $secretaires = User::where('status_as','secretaire')->count();
+            //$secretaires = User::where('status_as','secretaire')->count();
         //return view('admin/dashboard',compact('courriers_reçus','courriers_envoyes','secretaires'));
             $admin = admins::where ('id_users', $user->id)->first();
 
-            return view ('admin.dashboard',compact('admin','courriers_reçus','courriers_envoyes','secretaires'));
+            return view ('admin.dashboard',compact('admin','courriers_reçus','courriers_envoyes'));
 
         }
 
