@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\courriers_entrants;
-use App\Models\secretaire;
+use App\Models\secretaires;
 use App\Models\utilisateurs;
 use Illuminate\Http\Request;
 
@@ -16,7 +16,7 @@ class CourriersEntrantsController extends Controller
      */
     public function index()
     {
-        $bara = utilisateurs::all();
+        $bara = secretaires::all();
 
         $crst = courriers_entrants::all();
         return view('courriermodalentrants', compact('crst','bara'));
@@ -30,7 +30,7 @@ class CourriersEntrantsController extends Controller
      */
     public function create()
     {
-        return view('create');
+       
     }
 
     /**
@@ -44,7 +44,8 @@ class CourriersEntrantsController extends Controller
         $validatedData = $request->validate([
             'num_reference' => 'required',
             'objet' => 'required',
-            'expediteur' => 'required'
+            'expediteur' => 'required',
+            'id_secretaire'=> 'required'
             
         ]);
         $crst = courriers_entrants::create($validatedData);

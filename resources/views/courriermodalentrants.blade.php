@@ -15,6 +15,22 @@
 
 <body>
 <div class="container">
+
+@if(count($errors) > 0)
+  <div class=" alert alert-danger">
+      <ul>
+          @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>    
+
+          @endforeach
+      </ul>
+  </div>
+  @endif
+  @if (session('success'))
+      <div class="alert alert-success">
+          <p>{{ session('success') }}</p>
+      </div> 
+  @endif
 <div class="card">
     <div class="card-header">
       <div class="container">
@@ -32,7 +48,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-              <form action= "{{ action('CourriersSortantsController@store') }}" method="POST">
+              <form action= "{{ action('CourriersEntrantsController@store') }}" method="POST">
                   {{ csrf_field() }}
                   <div class="modal-body">							
                       <div class="mb-3">
@@ -40,7 +56,7 @@
                           <input type="text" class="form-control" name="num_reference" >
                       </div>
                       <div class="mb-3">
-                          <label for="" class="form-label">Objet </label>
+                          <label for="" class="form-label">Objet</label>
                           <input type="text" class="form-control" name="objet" >
                       </div>
                       <div class="mb-3">
@@ -52,9 +68,9 @@
                       <div class="mb-3">
                           <label for="" class="form-label">Secretaire</label>
 
-                          <select name="id_secretaires " id="">
+                          <select name="id_secretaire">
                             @foreach ($bara as $voila)
-                              <option value=""><strong>{{ $voila->nom}}  {{ $voila->prenom}}</strong></option>
+                              <option value="{{$voila->id}}"><strong>{{ $voila->nom}}  {{ $voila->prenom}}</strong></option>
                             @endforeach
                           </select>
                         
@@ -62,8 +78,38 @@
 
                       <div class="mb-3">
                         <label for="" class="form-label">Le Courrier</label>
-                        <input type="file" class="form-control" name="destinateur" >
+                        <input type="file" class="form-control" name="" >
                     </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+                      <button type="submit" class="btn btn-primary">Envoyer</button>
+                  </div>
+              </form>
+
+          </div>
+        
+        </div>
+      </div>
+    </div>
+    <!-- fin modal envoyer -->  
+
+
+      <!-- debut Modal envoyer courriers -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Supprimer Courriers</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form action= "{{ action('CourriersEntrantsController@store') }}" method="POST" id="supprimer">
+                  {{ csrf_field() }}
+                  {{ method_field('DELETE') }}
+                  <div class="modal-body">							
+                     
+
+              <h6>Etes-vous sur de supprimer cette entrée?</h6>
                   <div class="modal-footer">
                       <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
                       <button type="submit" class="btn btn-primary">Envoyer</button>
@@ -83,7 +129,7 @@
       </div>
     </div>
     <table class="table table-striped table-bordered" id="datatable">
-        <thead class="text-center">
+        <thead class="text-center" style="background-color:#0B6623";>
             <tr>
               <td class="masque">ID</td>
               <td>N°Reference</td>
@@ -103,8 +149,8 @@
                 <td>{{$crs->expediteur}}</td>
                 <td>{{$crs->id_secretaires}}</td>
                 <td>
-                  <button class="btn btn-success edit" data-bs-toggle="modal" data-bs-target="#modifcoursortants">Mod</button>
-                  <button class="btn btn-danger edit" data-bs-toggle="modal" data-bs-target="#deleteModal">Supp</button>
+                  <button class="btn btn-success edit" data-bs-toggle="modal" data-bs-target="#modifcourentrants">Mod</button>
+                  <button class="btn btn-danger supp" data-bs-toggle="modal" data-bs-target="#deleteModal">Supp</button>
                 </td>
             </tr>
             @endforeach
@@ -113,7 +159,7 @@
 
 
        <!-- debut Modal modifier courriers -->
-      <div class="modal fade" id="modifcoursortants" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="modifcourentrants" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -121,7 +167,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/courriers_sortants" id="modformcour" method="POST">
+                <form action="/courriers_entrants" id="modformcour" method="POST">
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
                     <div class="modal-body">							
@@ -135,12 +181,13 @@
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Expediteur</label>
-                            <input type="text" class="form-control" id="expediteur" name="destinateur" >
+                            <input type="text" class="form-control" id="expediteur" name="expediteur" >
                         </div>
                         
                         <div class="mb-3">
                             <label for="" class="form-label">Secretaire</label>
-                            <input type="text" class="form-control" id="id_secretaires" name="id_utilisateurs" >
+                          
+                            <input type="text" class="form-control" id="id_secretaire" name="id_secretaire" >
                         </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
@@ -163,7 +210,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Confirmer la suppression</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                    <form action="/courriers_sortants" id="deleteForm" method="POST">
+                    <form action="/courriers_entrants" id="deleteForm" method="POST">
                         {{ csrf_field() }}
                         <div class="modal-body">
                             <div class="mb-3">
@@ -207,6 +254,57 @@
 </script>
 
 {{-- End of hide --}}
+
+<script type="text/javascript">
+    
+    $(document).ready(function() {
+    
+    var table = $('#datatable').DataTable();
+    
+    
+    table.on('click','.edit', function() {
+    
+    
+        $tr = $(this).closest('tr');
+        if ($($tr).hasClass('child')){
+            $tr = $tr.prev('.parent');
+        }
+        var data = table.row($tr).data();
+        console.log(data);
+    
+
+        $('#num_reference').val(data[1]);
+        $('#objet').val(data[2]);
+        $('#expediteur').val(data[3]);
+        // $('#phone').val(data[4]);
+        // $('#email').val(data[5]);
+        // $('#username').val(data[6]);
+        // $('#poste').val(data[7]);
+       
+    
+        $('#editForm').attr('action', '/courriers_entrants/'+data[0]);
+        $('#editModal').modal('show');
+    });
+
+    // Start Delete//
+    table.on('click','.delete', function()
+     {
+        $tr = $(this).closest('tr');
+            if ($($tr).hasClass('child'))
+            {
+                $tr = $tr.prev('.parent');
+            }
+
+        var data = table.row($tr).data();
+        console.log(data);
+        $('#supprimer').attr('action', '/courriers_entrants/'+data[0]);
+        $('.supp').modal('show');
+    });
+
+  //End Delete//
+
+});
+</script>
 
 </body>
 

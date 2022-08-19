@@ -18,8 +18,8 @@ class UtilisateursController extends Controller
      */
     public function index()
     {
-        $bara = utilisateurs::all();
         $departements = departements::all();
+        $bara = utilisateurs::all();
 
         return view('utilisateursmodal',compact('departements','bara'));
     }
@@ -30,8 +30,10 @@ class UtilisateursController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {  
-
+    {   
+        $departements = departements::all();
+        dd($departements);
+        return view('utilisateursmodal',compact('id', 'departements')); 
     }          
     
     /**
@@ -49,6 +51,7 @@ class UtilisateursController extends Controller
         'phone' => 'required',
         'email' => 'required',
         'username' => 'required',
+        'password' => 'required',
         'poste' => 'required',
         'id_departement'=> 'required',
         

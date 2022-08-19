@@ -16,6 +16,7 @@
     <div class="container-fluid g-0">
         <div class="row">
             <div class="nav-menu">
+                <div class="card-header"></div>
                 <div class="logo">
                     <img src="{{asset('img/ebataki.png')}}" alt="logo">
                 </div>
@@ -31,7 +32,7 @@
                     <img src="{{asset('img/carou2.jpg')}}" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{asset('img/carou3.jpg')}}" class="d-block w-100" alt="...">
+                    <img src="{{asset('img/carou3.png')}}" class="d-block w-100" alt="...">
                 </div>
                 </div>
             </div>
