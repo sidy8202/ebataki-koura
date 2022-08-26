@@ -51,6 +51,7 @@ class CourriersEntrantskouraController extends Controller
         
             
         ]);
+        
         if($validatedData)
         {
             $fileName = time().'.'.$request->pdf_courriers->extension();  

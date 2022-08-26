@@ -42,6 +42,8 @@ Route::prefix('admin')->group(function() {
     Route::get('secretaire', [App\Http\Controllers\Admin\SecretaireController::class, 'index']);
     Route::post('secretaire',[App\Http\Controllers\Admin\SecretaireController::class, 'store']);
 
+    // Route::get('mon-profile', [App\Http\Controllers\Admin\::class, 'index']);
+
 });
 
 Route::prefix('users')->group(function() {
