@@ -3,9 +3,7 @@
         <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">  
           <a class="navbar-brand brand-logo" href="index.html">
             <img src="{{asset('admin/images/bataki.png')}}" alt="E-Bataki" style=" width: 60px; height: 50px;" />
-
-
-          
+         
           </a>
           <a class="navbar-brand brand-logo-mini" href="index.html">
             <!-- <img src="{{asset('admin/images/logogolden.png')}}" alt="logo"/> -->
@@ -23,7 +21,7 @@
           <li class="nav-item dropdown me-1">
             <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-bs-toggle="dropdown">
               <i class="mdi mdi-message-text mx-0"></i>
-              <span class="count"></span>
+              <span class="count">{{ $admin->nom }}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="messageDropdown">
               <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
