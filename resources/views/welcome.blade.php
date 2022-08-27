@@ -18,7 +18,7 @@
             <div class="nav-menu">
                 <div class="card-header"></div>
                 <div class="logo">
-                    <img src="{{asset('img/ebataki.png')}}" alt="logo">Group79-1
+                    <img src="{{asset('img/ebataki.png')}}" alt="logo">
                 </div>
                 <div class="d-grid d-md-block">
                     <button class="btn btn-light" type="button"><a href="{{ route('login') }}">Se connecter</a></button>
