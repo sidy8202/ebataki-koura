@@ -7,6 +7,7 @@ use App\Models\courriers_entrants;
 
 use App\Models\departements;
 use App\Http\Controllers\Controller;
+use App\Models\utilisateurs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,8 +27,8 @@ class SecretaireController extends Controller
     public function voircourrier()
     {
         $user = Auth::user();
-        // $ayira = demandesci::where('id_users',$user->id)->orderBy('id','desc')->get();
-        $mescourriers = courriers_entrants::where('id_secretaire',$user->id)->orderBy('id','desc')->get();
+        $secretaire = secretaires::where('id_users', $user->id)->first();
+        $mescourriers = courriers_entrants::where('id_secretaire',$secretaire->id)->orderBy('id','desc')->get();
         return view('admin.secretaire.courentrantsecretaire', compact('user', 'mescourriers'));
     }
 // Envoyer au destinataire
@@ -35,14 +36,16 @@ class SecretaireController extends Controller
     public function voirform($id)
     {       
             $liste = courriers_entrants::findOrfail($id);
-            return view('admin.secretaire.envoiaudestinataire', compact('liste'));     
+            $user = Auth::user();
+            $destinateur = utilisateurs::all();
+            dd($destinateur);
+            return view('admin.secretaire.envoiaudestinataire', compact('liste','destinateur'));     
     }  
-    public function create()
-    
+
+    public function create()   
     {
         $secretaires = secretaires::all();
-        return view('secretaire', compact('secretaires'));        
-        
+        return view('secretaire', compact('secretaires'));                
     }
 
     /**

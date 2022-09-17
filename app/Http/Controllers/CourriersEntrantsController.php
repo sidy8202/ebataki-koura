@@ -82,7 +82,7 @@ class CourriersEntrantsController extends Controller
      */
     public function update(Request $request, courriers_entrants $courriers_entrants)
     {
-        $validatedata = courriers_entrants::find($id);
+        $validatedata = courriers_entrants::find($courriers_entrants);
         $validatedata->num_reference = $request->input('num_reference');
         $validatedata->objet = $request->input('objet');
         $validatedata->expediteur = $request->input('expediteur');
@@ -98,7 +98,7 @@ class CourriersEntrantsController extends Controller
      */
     public function destroy(courriers_entrants $courriers_entrants)
     {
-        $courriers_entrants = courriers_entrants::findOrFail($id);
+        $courriers_entrants = courriers_entrants::findOrFail($courriers_entrants);
         $courriers_entrants->delete();
         return redirect('/courriers_entrants')->with('success', 'courrier supprimer avec succèss!!!');
     }

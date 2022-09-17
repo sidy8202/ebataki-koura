@@ -17,7 +17,7 @@ class DepartementsController extends Controller
     {
        
         $departements = departements::all();
-        return view('departementsmodal')->with('departements',$departements);
+        return view('admin.departements.departementsmodal')->with('departements',$departements);
     }
 
     /**

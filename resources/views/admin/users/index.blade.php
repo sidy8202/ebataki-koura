@@ -242,7 +242,7 @@
             </div> 
         @endif
 
-        <table id="myDataTable" class="table table-bordered" >
+        <table id="myDataTable" class="table table-bordered table-responsive" >
             <thead>
               <tr>
                 <th  class="th_1">Id</th>
