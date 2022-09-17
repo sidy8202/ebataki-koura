@@ -1,21 +1,25 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\departements;
-
 use App\Models\admins;
+use App\Models\courriers_entrants;
+use App\Models\courriers_sortants;
+use App\Models\User;
+
+use App\Models\departements;
 
 
 class AdminsController extends Controller
 {
     public function index()
     {
-        $departements= departements::all();
 
-        return view('adminsmodal',compact('departements'));
+        $departements= departements::all();
+        $admins= admins::all();
+
+        return view('adminsmodal',compact('departements','admins'));
+
     }
 
     public function create()
