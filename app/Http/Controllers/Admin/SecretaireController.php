@@ -6,6 +6,8 @@ use App\Models\user;
 
 use App\Models\departements;
 use App\Http\Controllers\Controller;
+use App\Models\admins;
+use Illuminate\Foundation\Auth\User as AuthUser;
 use Illuminate\Http\Request;
 
 
@@ -16,8 +18,10 @@ class SecretaireController extends Controller
        
 
         $secretaires = secretaires::all();
+        $admin = admins::all();
+        $users = User::all();
         $departements = departements::all();
-        return view('admin.secretaire.index', compact('secretaires', 'departements'));
+        return view('admin.secretaire.index', compact('secretaires', 'departements', 'admin', 'users'));
         
 
     }
