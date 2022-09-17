@@ -7,7 +7,7 @@
         <div class="col-xl-3 col-md-6">
             <div class="card bg-success text-white mb-4">
                 <div class="card-body">Courriers entrants
-                <h2>100</h2>
+                <h2>{{$courriers_reçus}}</h2>
                 </div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
                     <a class="small text-white stretched-link" href="{{ url('admin/courrierentrandd') }}">Plus de Détails</a>
@@ -21,7 +21,7 @@
                     <h2>{{$courriers_envoyes}}</h2>
                 </div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" href="#">Plus de Détails</a>
+                    <a class="small text-white stretched-link" href="{{url('')}}">Plus de Détails</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
             </div>
