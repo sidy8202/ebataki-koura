@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Admin;
 use App\Models\secretaires;
 use App\Models\user;
+use App\Models\courriers_entrants;
 
 use App\Models\departements;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class SecretaireController extends Controller
 {
@@ -22,12 +23,25 @@ class SecretaireController extends Controller
 
     }
 
+    public function voircourrier()
+    {
+        $user = Auth::user();
+        // $ayira = demandesci::where('id_users',$user->id)->orderBy('id','desc')->get();
+        $mescourriers = courriers_entrants::where('id_secretaire',$user->id)->orderBy('id','desc')->get();
+        return view('admin.secretaire.courentrantsecretaire', compact('user', 'mescourriers'));
+    }
+// Envoyer au destinataire
+
+    public function voirform($id)
+    {       
+            $liste = courriers_entrants::findOrfail($id);
+            return view('admin.secretaire.envoiaudestinataire', compact('liste'));     
+    }  
     public function create()
     
     {
         $secretaires = secretaires::all();
-        return view('secretaire', compact('secretaires'));
-        
+        return view('secretaire', compact('secretaires'));        
         
     }
 

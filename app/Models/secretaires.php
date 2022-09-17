@@ -29,4 +29,10 @@ class secretaires extends Model
         return $this->belongsTo(User::class,'id_users');
 
     }
+
+    public function courriersentrants()
+    {
+        return $this->hasMany(courriers_entrants::class,'id_secretaire');
+
+    }
 }

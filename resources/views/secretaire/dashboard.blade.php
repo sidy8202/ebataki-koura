@@ -16,6 +16,7 @@
                   </div>
               </div>
           </div>
+
           <div class="col-xl-6 col-md-6">
               <div class="card bg-primary text-white mb-4">
                   <div class="card-body">Courriers envoyés
@@ -26,9 +27,6 @@
                       <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                   </div>
               </div>
-          </div>
-
-
-     
+          </div>    
 </div>
 @endsection
