@@ -8,8 +8,9 @@ use Illuminate\Http\Request;
 use App\Models\utilisateurs;
 use App\Models\departements;
 use App\Models\User;
+use App\Models\courriers_entrants;
 
-
+use Illuminate\Support\Facades\Auth;
 
 class UtilisateurskouraController extends Controller
 {
@@ -33,7 +34,15 @@ class UtilisateurskouraController extends Controller
         $departements = departements::all();
         dd($departements);
         return view('utilisateursmodal',compact('id', 'departements')); 
-    }          
+    }   
+    
+    public function voirmescourriers()
+    {
+        $user = Auth::user();
+        $secretaire = utilisateurs::where('id_users', $user->id)->first();
+        $mescourriers = courriers_entrants::where('id_utilisateurs',$secretaire->id)->orderBy('id','desc')->get();
+        return view('admin.users.mescourentrants', compact('user', 'mescourriers'));
+    }
     
     /**
      * Store a newly created resource in storage.

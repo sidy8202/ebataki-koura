@@ -38,9 +38,30 @@ class SecretaireController extends Controller
             $liste = courriers_entrants::findOrfail($id);
             $user = Auth::user();
             $destinateur = utilisateurs::all();
-            dd($destinateur);
+            // dd($destinateur);
             return view('admin.secretaire.envoiaudestinataire', compact('liste','destinateur'));     
     }  
+
+    public function sendcingcourr(Request $request,$id)
+    {
+        $liste = $request->validate([
+
+            'id_utilisateurs'=>'required'
+
+        ]);
+
+        if($liste);
+        {
+            $abai = courriers_entrants::whereId($id)->update([
+                'id_utilisateurs'=>$request['id_utilisateurs'],
+     
+            ]);
+        }
+        
+        return redirect('secretaire/secretaire')->with('success', 'Courriers envoyé avec succèss!');
+    }
+
+
 
     public function create()   
     {

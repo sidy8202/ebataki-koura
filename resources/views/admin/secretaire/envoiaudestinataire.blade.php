@@ -43,7 +43,7 @@
                 </marquee>  
                 
 
-                <form action="" class="px-md-2" method="POST">
+                <form action="{{ route('sendcourriertodestinataire', $liste->id) }}" class="px-md-2" method="POST">
                     @csrf
                     @method('PATCH')
                         {{-- Try --}}                      
@@ -68,7 +68,7 @@
                         <div class="form-outline mb-4">
                             <label class="form-label fw-bold" for="form3Example1q">Destinateur</label>
        
-                            <select name="status" class="form-control" id="exampleDatepicker1">
+                            <select name="id_utilisateurs" class="form-control" id="exampleDatepicker1">
                                 @foreach ($destinateur as $send)
                                 <option value="{{ $send->id }}">{{ $send->prenom }}  {{ $send->nom }}</option>
                                 @endforeach
