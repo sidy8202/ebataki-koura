@@ -115,17 +115,17 @@
           </li>
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
-              <img src="images/faces/face5.jpg" alt="profile"/>
-<<<<<<< HEAD
-              <span class="nav-profile-name"></span>
-=======
+              <img src="{{asset('uploads/profile/' .Auth::user()->image)}}" alt="profile"/>
               <span class="nav-profile-name">{{ Auth::user()->prenom }}  {{ Auth::user()->nom }}</span>
->>>>>>> 5eeeda334e0ee8c1fd742df3ac70f5c5a77e6649
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">
                 <i class="mdi mdi-settings text-primary"></i>
                 Settings
+              </a>
+              <a class="dropdown-item" href="{{url('admin/mon-profile')}}">
+                <i class="mdi mdi-settings text-primary"></i>
+                Profile
               </a>
              
               <a class="dropdown-item" href="{{ route('logout') }}"

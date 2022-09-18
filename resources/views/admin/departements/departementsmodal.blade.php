@@ -228,4 +228,5 @@
   //End Delete//
 
 });
+</script>
 @endsection

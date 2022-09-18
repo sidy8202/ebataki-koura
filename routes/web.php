@@ -44,11 +44,18 @@ Route::prefix('admin')->group(function() {
     Route::post('secretaire',[App\Http\Controllers\Admin\SecretaireController::class, 'store']);
 
     // Route::get('mon-profile', [App\Http\Controllers\Admin\::class, 'index']);
+    Route::get('mon-profile', [App\Http\Controllers\Admin\ProfileController::class, 'index'] )->name('mon-profile');
+    Route::post('mon-profile-update', [App\Http\Controllers\Admin\ProfileController::class, 'store'] )->name('mon-profile');
+
 
 });
 
 Route::prefix('users')->group(function() {
     Route::get('dashboard', [App\Http\Controllers\users\DashboardUsersController::class, 'index']);
+
+    Route::get('mon-profile', [App\Http\Controllers\users\ProfileController\ProfileController::class, 'index'] )->name('mon-profile');
+    Route::post('mon-profile-update', [App\Http\Controllers\users\ProfileController\ProfileController::class, 'store'] )->name('mon-profile');
+
   
 });
 
@@ -57,6 +64,10 @@ Route::prefix('secretaire')->group(function() {
     Route::get('secretaire',[App\Http\Controllers\Admin\SecretaireController::class, 'voircourrier'])->name('mescourriers');
     Route::get('envoyercourrierformulaire/{id}',[App\Http\Controllers\Admin\SecretaireController::class, 'voirform'])->name('sendformuser');
     Route::post('envoiuserformulaire',[App\Http\Controllers\Admin\SecretaireController::class, 'voircourrier'])->name('sendcourriertodestinataire');
+
+    Route::get('mon-profile', [App\Http\Controllers\secretaires\ProfileController\ProfileController::class, 'index'] )->name('mon-profile');
+    Route::post('mon-profile-update', [App\Http\Controllers\secretaires\ProfileController\ProfileController::class, 'store'] )->name('mon-profile');
+
  
 });
 
