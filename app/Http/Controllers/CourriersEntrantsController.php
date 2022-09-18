@@ -80,7 +80,7 @@ class CourriersEntrantsController extends Controller
      * @param  \App\Models\courriers_entrants  $courriers_entrants
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, courriers_entrants $courriers_entrants)
+    public function update(Request $request, courriers_entrants $courriers_entrants, $id)
     {
         $validatedata = courriers_entrants::find($id);
         $validatedata->num_reference = $request->input('num_reference');
