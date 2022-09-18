@@ -60,7 +60,7 @@ Route::prefix('users')->group(function() {
 });
 
 Route::prefix('secretaire')->group(function() {
-    Route::get('dashboard', [App\Http\Controllers\secretaires\DashboardSecretairesController::class, 'index']);
+    Route::get('dashboard', [App\Http\Controllers\secretaires\DashboardController::class, 'index']);
     Route::get('secretaire',[App\Http\Controllers\Admin\SecretaireController::class, 'voircourrier'])->name('mescourriers');
     Route::get('envoyercourrierformulaire/{id}',[App\Http\Controllers\Admin\SecretaireController::class, 'voirform'])->name('sendformuser');
     Route::post('envoiuserformulaire',[App\Http\Controllers\Admin\SecretaireController::class, 'voircourrier'])->name('sendcourriertodestinataire');
