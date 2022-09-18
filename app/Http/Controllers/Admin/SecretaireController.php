@@ -18,6 +18,7 @@ class SecretaireController extends Controller
        
 
         $secretaires = secretaires::all();
+
         $departements = departements::all();
         return view('admin.secretaire.index', compact('secretaires', 'departements'));
         

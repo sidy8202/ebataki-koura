@@ -57,6 +57,9 @@ Route::prefix('secretaire')->group(function() {
     Route::get('secretaire',[App\Http\Controllers\Admin\SecretaireController::class, 'voircourrier'])->name('mescourriers');
     Route::get('envoyercourrierformulaire/{id}',[App\Http\Controllers\Admin\SecretaireController::class, 'voirform'])->name('sendformuser');
     Route::patch('sendusercourrier/{id}',[App\Http\Controllers\Admin\SecretaireController::class, 'sendcingcourr'])->name('sendcourriertodestinataire');
+    Route::get('courriers_sortants_list',[App\Http\Controllers\secretaires\CourriersSortantsController::class, 'index'])->name('courriersSortants');
+    Route::post('courriers_sortants_ajout',[App\Http\Controllers\secretaires\CourriersSortantsController::class, 'store'])->name('enregistrercourriersSortants');
+
  
 });
 
