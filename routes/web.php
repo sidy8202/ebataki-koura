@@ -35,6 +35,8 @@ Route::prefix('admin')->group(function() {
 
     Route::get('/utilisateursadd', [App\Http\Controllers\Admin\UtilisateursKouraController::class,'index']);
     Route::post('/utilisateursadd', [App\Http\Controllers\Admin\UtilisateursKouraController::class,'store']);
+    Route::get('/utilisateurskacourriers', [App\Http\Controllers\Admin\UtilisateursKouraController::class,'voirmescourriers']);
+
 
 
     Route::get('/courrierentrandd', [App\Http\Controllers\Admin\CourriersEntrantskouraController::class,'index']);
@@ -54,7 +56,7 @@ Route::prefix('secretaire')->group(function() {
     Route::get('dashboard', [App\Http\Controllers\secretaires\DashboardSecretairesController::class, 'index']);
     Route::get('secretaire',[App\Http\Controllers\Admin\SecretaireController::class, 'voircourrier'])->name('mescourriers');
     Route::get('envoyercourrierformulaire/{id}',[App\Http\Controllers\Admin\SecretaireController::class, 'voirform'])->name('sendformuser');
-    Route::post('envoiuserformulaire',[App\Http\Controllers\Admin\SecretaireController::class, 'voircourrier'])->name('sendcourriertodestinataire');
+    Route::patch('sendusercourrier/{id}',[App\Http\Controllers\Admin\SecretaireController::class, 'sendcingcourr'])->name('sendcourriertodestinataire');
  
 });
 

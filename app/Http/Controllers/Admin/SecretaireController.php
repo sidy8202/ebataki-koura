@@ -18,6 +18,7 @@ class SecretaireController extends Controller
 
 
         $secretaires = secretaires::all();
+
         $departements = departements::all();
         return view('admin.secretaire.index', compact('secretaires', 'departements'));
 
@@ -38,6 +39,7 @@ class SecretaireController extends Controller
             $liste = courriers_entrants::findOrfail($id);
             $user = Auth::user();
             $destinateur = utilisateurs::all();
+            dd($destinateur);
             return view('admin.secretaire.envoiaudestinataire', compact('liste','destinateur'));
     }
 
