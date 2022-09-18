@@ -31,9 +31,7 @@ class AdminsController extends Controller
             [
 
                 'nom'=>['required','string','max:225'],
-                'prenom'=>['required','string','max:225'],
-                
-
+                'prenom'=>['required','string','max:225'],           
                 'adresse'=>['required','string','max:225'],
                 'phone'=>['required','string','max:50'],
                 'username'=>['required','string','max:225'],
