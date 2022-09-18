@@ -38,8 +38,7 @@ class SecretaireController extends Controller
     {
             $liste = courriers_entrants::findOrfail($id);
             $user = Auth::user();
-            $destinateur = utilisateurs::all();
-            dd($destinateur);
+            $destinateur = user::all();
             return view('admin.secretaire.envoiaudestinataire', compact('liste','destinateur'));
     }
 
