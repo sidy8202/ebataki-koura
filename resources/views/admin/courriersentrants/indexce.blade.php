@@ -4,7 +4,7 @@
 
 
 <div class="container mt-3">
-@if(count($errors) > 0)
+  @if(count($errors) > 0)
             <div class=" alert alert-danger">
                 <ul>
                     @foreach ($errors->all() as $error)
@@ -46,10 +46,11 @@
                     <td>{{$crs->num_reference}}</td>
                     <td>{{$crs->objet}}</td>
                     <td>{{$crs->expediteur}}</td>
-                    <td>{{$crs->id_secretaire}}</td>
+                    <td>{{$crs->secretaires->prenom}}   {{$crs->secretaires->nom}}</td>
                     <td><a href="{{ url('courriers/entrants/'.$crs->pdf_courriers) }}" download>Fichier joint:</a></td>
 
                     <td>
+                      <a href="{{ url('courriers/entrants/'.$crs->pdf_courriers) }}" view class="btn btn-primary">Voir</a>
                       <button class="btn btn-success edit" data-bs-toggle="modal" data-bs-target="#modifcoursortants">Mod</button>
                       <button class="btn btn-danger edit" data-bs-toggle="modal" data-bs-target="#deleteModal">Supp</button>
                       

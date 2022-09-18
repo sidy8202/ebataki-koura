@@ -3,10 +3,6 @@
 @section('content')
 
 
-
-
-
-
 <!-- Modal d'ajout pour utilisateur -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -169,7 +165,7 @@
        
       </div>
     </div>
-  </div>
+</div>
 
   {{--  Fin du Modal pour modifier--}}
 
@@ -215,26 +211,76 @@
 
   {{-- CArd avec la table --}}
 
-<div class="container ">
-  <div class="card">
-    <div class="card-header">        
-       <h2>La liste des utilisateurs <button type="button" class="btn btn-primary btn-sm float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                         Ajouter utilisateur
-            </button> </h2>                        
-    </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">        
+                    <h3>La liste des utilisateurs     <a type="button" class="btn btn-primary btn-sm float-end text-white" data-bs-toggle="modal" data-bs-target="#exampleModal ">Ajouter utilisateur</a>                         
+                    </h3>
+                </div>
+                <div class="card-body">
 
-    <div class="card-body">
+                    @if(count($errors) > 0)
+                        <div class=" alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>    
 
-        @if(count($errors) > 0)
-            <div class=" alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>    
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
-                    @endforeach
-                </ul>
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            <p>{{ session('success') }}</p>
+                        </div> 
+                    @endif
+
+
+                    <table id="myDataTable" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Adresse</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th >Poste</th>
+                                <!-- <th >Departement</th> -->
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+                        @foreach ($bara as $gnouma )
+                            <tr>
+                                
+                                <td >{{$gnouma ->nom}}</td>   
+                                <td>{{ $gnouma ->prenom}}</td>
+                                <td>{{ $gnouma ->adresse}}</td>
+                                <td>{{ $gnouma ->phone}}</td>
+                                <td>{{ $gnouma ->email}}</td>
+                                <td>{{ $gnouma ->poste}}</td>
+                                <!-- <td>{{ $gnouma ->id_departement}}</td> -->
+                                
+                                <td>
+
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#editModal"><i class="material-icons" style="font-size:25px;color:green">mode_edit</i></a>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="material-icons" style="font-size:25px;color:red">delete</i></a>
+                                    <!-- data-bs-toggle="modal" data-bs-target="#deleteModal" -->
+                                    
+                                <!-- {{-- <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a> --}} -->
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        @endif
+      
 
         @if (session('success'))
             <div class="alert alert-success">
@@ -242,7 +288,7 @@
             </div> 
         @endif
 
-        <table id="myDataTable" class="table table-bordered" >
+        <table id="myDataTable" class="table table-bordered table-responsive" >
             <thead>
               <tr>
                 <th  class="th_1">Id</th>
@@ -285,7 +331,7 @@
             </tbody> 
         </table>
     </div>
-  </div>
+   
 </div>
 
 {{-- Fin du card --}}

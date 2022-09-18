@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
 use App\Models\secretaires;
 use App\Models\utilisateurs;
 use App\Models\admins;
+use App\Models\courriers_entrants;
+use App\Models\courriers_sortants;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +32,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
 
-        // dd($user);
+
         if($user->status == 'utilisateur')
         {
             $utilisateur = utilisateurs::where ('id_users', $user->id)->first();
@@ -39,24 +41,30 @@ class HomeController extends Controller
 
         elseif($user->status == 'admin')
         {
+            $courriers_reçus = courriers_entrants::count();
+            $courriers_envoyes = courriers_sortants::count();
+            $secretaires = secretaires::all();
+            $users = user::all();
             $admin = admins::where ('id_users', $user->id)->first();
 
-            return view ('admin.dashboard',compact('admin'));
+            return view ('admin.dashboard',compact('admin','courriers_reçus','courriers_envoyes','secretaires','users'));
 
         }
 
         elseif($user->status == 'secretaire')
         {
+            $courriers_reçus = courriers_entrants::all();
+            $courriers_envoyes = courriers_sortants::all();
             $secretaire = secretaires::where ('id_users', $user->id)->first();
 
-            return view ('secretaire.dashboard',compact('secretaire'));
+            return view ('secretaire.dashboard',compact('secretaire','courriers_reçus','courriers_envoyes'));
 
         }
 
         else
         {
-          return view('home');  
+          return view('home');
         }
-        
+
     }
 }

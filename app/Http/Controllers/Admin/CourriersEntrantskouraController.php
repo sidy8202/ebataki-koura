@@ -51,6 +51,7 @@ class CourriersEntrantskouraController extends Controller
         
             
         ]);
+        
         if($validatedData)
         {
             $fileName = time().'.'.$request->pdf_courriers->extension();  
@@ -69,7 +70,7 @@ class CourriersEntrantskouraController extends Controller
         }
    
 
-        return redirect('admin/courrierentrandd')->with('success', 'courrier receptionné avec succèss!!!');
+        return redirect('admin/courrierentrandd')   ;
         
 
     }

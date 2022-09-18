@@ -16,4 +16,9 @@ class courriers_entrants extends Model
         'id_secretaire',
         'pdf_courriers',
     ];
+
+    public function secretaires()
+    {
+        return $this->belongsTo(secretaires::class,'id_secretaire');
+    }
 }

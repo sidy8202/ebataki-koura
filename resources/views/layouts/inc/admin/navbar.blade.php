@@ -1,11 +1,11 @@
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="navbar-brand-wrapper d-flex justify-content-center" style="background-color: #0E4C92">
-        <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">  
+        <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
           <a class="navbar-brand brand-logo" href="index.html">
             <img src="{{asset('admin/images/bataki.png')}}" alt="E-Bataki" style=" width: 60px; height: 50px;" />
 
 
-          
+
           </a>
           <a class="navbar-brand brand-logo-mini" href="index.html">
             <!-- <img src="{{asset('admin/images/logogolden.png')}}" alt="logo"/> -->
@@ -13,12 +13,13 @@
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-sort-variant"></span>
           </button>
-        </div>  
+        </div>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end" style="background-color: #0E4C92">
         <ul class="navbar-nav mr-lg-4 w-100">
         <h3 class="justify-content-center" >Dashboard Admin</h3>
         </ul>
+
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item dropdown me-1">
             <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-bs-toggle="dropdown">
@@ -29,7 +30,7 @@
               <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
               <a class="dropdown-item">
                 <div class="item-thumbnail">
-                    <img src="images/faces/face4.jpg" alt="image" class="profile-pic">
+                    <img src="{{asset('uploads/profile/' .Auth::user()->image)}}" alt="image" class="profile-pic">
                 </div>
                 <div class="item-content flex-grow">
                   <h6 class="ellipsis font-weight-normal">David Grey
@@ -53,7 +54,7 @@
               </a>
               <a class="dropdown-item">
                 <div class="item-thumbnail">
-                    <img src="images/faces/face3.jpg" alt="image" class="profile-pic">
+                    <img src="{{asset('admin/imag/user.png')}}" alt="image" class="profile-pic">
                 </div>
                 <div class="item-content flex-grow">
                   <h6 class="ellipsis font-weight-normal"> Johnson
@@ -92,7 +93,7 @@
                   </div>
                 </div>
                 <div class="item-content">
-                  <h6 class="font-weight-normal">Settings</h6>
+                  <h6 class="font-weight-normal">Paramètres</h6>
                   <p class="font-weight-light small-text mb-0 text-muted">
                     Private message
                   </p>
@@ -115,19 +116,27 @@
           </li>
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
+<<<<<<< HEAD
               <img src="images/faces/face5.jpg" alt="profile"/>
-              <span class="nav-profile-name"></span>
+=======
+              <img src="{{asset('uploads/profile/' .Auth::user()->image)}}" alt="profile"/>
+>>>>>>> 3cc1e97b735cbe73efc887d13ba7ec511efb8dd9
+              <span class="nav-profile-name">{{ Auth::user()->prenom }}  {{ Auth::user()->nom }}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">
                 <i class="mdi mdi-settings text-primary"></i>
-                Settings
+                Paramètres
+              </a>
+              <a class="dropdown-item" href="{{url('admin/mon-profile')}}">
+                <i class="mdi mdi-settings text-primary"></i>
+                Profile
               </a>
              
               <a class="dropdown-item" href="{{ route('logout') }}"
                   onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
-                  <i class="mdi mdi-logout text-primary"></i>{{ __('Logout') }}
+                  <i class="mdi mdi-logout text-primary"></i>{{ __('Deconnexion') }}
               </a>
 
               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

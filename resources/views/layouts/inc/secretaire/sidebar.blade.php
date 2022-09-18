@@ -1,7 +1,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color: #0E4C92;" >
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{url('secretaire/dashboard')}}">
               <i class="mdi mdi-home menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -14,8 +14,8 @@
             </a>
             <div class="collapse" id="uiii-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="users/courriers_sortants">Courriers envoyés</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Couriers reçu</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('mescourriers') }}">Courriers entrants</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('courriersSortants')}}">Couriers sortants</a></li>
               </ul>
             </div>
           </li>
@@ -27,8 +27,8 @@
             </a>
           </li> -->
 
-         
-          
+
+
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#uii-basic" aria-expanded="false" aria-controls="uii-basic">
               <i class="mdi mdi-circle-outline menu-icon"></i>
@@ -43,15 +43,14 @@
             </div>
           </li>
 
-        
-          <li class="nav-item">
+<!-- <li class="nav-item">
             <a class="nav-link" href="pages/charts/chartjs.html">
               <i class="mdi mdi-chart-pie menu-icon"></i>
               <span class="menu-title">Gérer utilisateurs</span>
             </a>
-          </li>
+          </li>-->
 
-         
+
+
         </ul>
       </nav>
-      

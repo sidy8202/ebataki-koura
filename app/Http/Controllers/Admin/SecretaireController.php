@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Admin;
 use App\Models\secretaires;
 use App\Models\user;
+use App\Models\courriers_entrants;
 
 use App\Models\departements;
 use App\Http\Controllers\Controller;
+use App\Models\admins;
+use App\Models\utilisateurs;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class SecretaireController extends Controller
 {
@@ -16,19 +19,61 @@ class SecretaireController extends Controller
        
 
         $secretaires = secretaires::all();
+<<<<<<< HEAD
+
+=======
+        $admin = admins::all();
+        $users = User::all();
+>>>>>>> 3cc1e97b735cbe73efc887d13ba7ec511efb8dd9
         $departements = departements::all();
-        return view('admin.secretaire.index', compact('secretaires', 'departements'));
+        return view('admin.secretaire.index', compact('secretaires', 'departements', 'admin', 'users'));
         
 
     }
 
-    public function create()
-    
+    public function voircourrier()
+    {
+        $user = Auth::user();
+        $secretaire = secretaires::where('id_users', $user->id)->first();
+        $mescourriers = courriers_entrants::where('id_secretaire',$secretaire->id)->orderBy('id','desc')->get();
+        return view('admin.secretaire.courentrantsecretaire', compact('user', 'mescourriers'));
+    }
+// Envoyer au destinataire
+
+    public function voirform($id)
+    {       
+            $liste = courriers_entrants::findOrfail($id);
+            $user = Auth::user();
+            $destinateur = utilisateurs::all();
+            // dd($destinateur);
+            return view('admin.secretaire.envoiaudestinataire', compact('liste','destinateur'));     
+    }  
+
+    public function sendcingcourr(Request $request,$id)
+    {
+        $liste = $request->validate([
+
+            'id_utilisateurs'=>'required'
+
+        ]);
+
+        if($liste);
+        {
+            $abai = courriers_entrants::whereId($id)->update([
+                'id_utilisateurs'=>$request['id_utilisateurs'],
+     
+            ]);
+        }
+        
+        return redirect('secretaire/secretaire')->with('success', 'Courriers envoyé avec succèss!');
+    }
+
+
+
+    public function create()   
     {
         $secretaires = secretaires::all();
-        return view('secretaire', compact('secretaires'));
-        
-        
+        return view('secretaire', compact('secretaires'));                
     }
 
     /**

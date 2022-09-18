@@ -106,8 +106,8 @@
             </a>
             <div class="collapse" id="uiii-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="users/courriers_sortants">Courriers entrants</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Couriers sortants</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ url('/admin/courrierentrandd') }}">Courriers entrants</a></li>
+                <li class="nav-item"> <a class="nav-link" href="">Couriers sortants</a></li>
               </ul>
             </div>
           </li>
@@ -119,18 +119,24 @@
             </a>
           </li> -->
 
-         
-          
+
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="{{ url('/departements') }}" aria-expanded="false" aria-controls="uii-basic">
+            <a class="nav-link" href="{{ url ('/departements')}}">
               <i class="mdi mdi-circle-outline menu-icon"></i>
               <span class="menu-title">Gérer départements</span>
-             
             </a>
           </li>
 
-         
-        
+          {{-- <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="" aria-expanded="false" aria-controls="uii-basic">
+              <i class="mdi mdi-circle-outline menu-icon"></i>
+              <span class="menu-title">Gérer départements</span>
+              <i class="menu-arrow"></i>
+            </a>
+          </li> --}}
+
+
+
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#gerer" aria-expanded="false" aria-controls="gerer">
               <i class="mdi mdi-chart-pie menu-icon"></i>
@@ -140,7 +146,7 @@
             <div class="collapse" id="gerer">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="">Admins</a>
-               
+
               </li>
                 <li class="nav-item"> <a class="nav-link" href="{{ url('admin/secretaire') }}">Secrétaires</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{ url('admin/utilisateursadd') }}">Simple utilisateurs</a></li>
@@ -150,8 +156,11 @@
             </div>
           </li>
 
-         
+
         </ul>
       </nav>
+<<<<<<< HEAD
       
 >>>>>>> bcc0cc620e24b161718052c98b44e9aafe7ecbd3
+=======
+>>>>>>> 3eb9be7baf446b234dc347d98068d100d5f80b6d
