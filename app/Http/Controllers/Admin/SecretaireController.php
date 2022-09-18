@@ -7,6 +7,7 @@ use App\Models\courriers_entrants;
 
 use App\Models\departements;
 use App\Http\Controllers\Controller;
+use App\Models\admins;
 use App\Models\utilisateurs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,9 +19,14 @@ class SecretaireController extends Controller
        
 
         $secretaires = secretaires::all();
+<<<<<<< HEAD
 
+=======
+        $admin = admins::all();
+        $users = User::all();
+>>>>>>> 3cc1e97b735cbe73efc887d13ba7ec511efb8dd9
         $departements = departements::all();
-        return view('admin.secretaire.index', compact('secretaires', 'departements'));
+        return view('admin.secretaire.index', compact('secretaires', 'departements', 'admin', 'users'));
         
 
     }

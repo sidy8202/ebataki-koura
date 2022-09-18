@@ -30,7 +30,7 @@
               <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
               <a class="dropdown-item">
                 <div class="item-thumbnail">
-                    <img src="images/faces/face4.jpg" alt="image" class="profile-pic">
+                    <img src="{{asset('uploads/profile/' .Auth::user()->image)}}" alt="image" class="profile-pic">
                 </div>
                 <div class="item-content flex-grow">
                   <h6 class="ellipsis font-weight-normal">David Grey
@@ -54,7 +54,7 @@
               </a>
               <a class="dropdown-item">
                 <div class="item-thumbnail">
-                    <img src="images/faces/face3.jpg" alt="image" class="profile-pic">
+                    <img src="{{asset('admin/imag/user.png')}}" alt="image" class="profile-pic">
                 </div>
                 <div class="item-content flex-grow">
                   <h6 class="ellipsis font-weight-normal"> Johnson
@@ -116,7 +116,11 @@
           </li>
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
+<<<<<<< HEAD
               <img src="images/faces/face5.jpg" alt="profile"/>
+=======
+              <img src="{{asset('uploads/profile/' .Auth::user()->image)}}" alt="profile"/>
+>>>>>>> 3cc1e97b735cbe73efc887d13ba7ec511efb8dd9
               <span class="nav-profile-name">{{ Auth::user()->prenom }}  {{ Auth::user()->nom }}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
@@ -124,7 +128,11 @@
                 <i class="mdi mdi-settings text-primary"></i>
                 Paramètres
               </a>
-
+              <a class="dropdown-item" href="{{url('admin/mon-profile')}}">
+                <i class="mdi mdi-settings text-primary"></i>
+                Profile
+              </a>
+             
               <a class="dropdown-item" href="{{ route('logout') }}"
                   onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">

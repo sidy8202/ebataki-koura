@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="fr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="{{asset('admin/css/style.css')}}">
     <!-- endinject -->
     <link rel="shortcut icon" href="{{asset('admin/images/favicon.png')}}" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 
 
 </head>
@@ -60,6 +62,7 @@
     <script src="{{asset('admin/js/jquery.dataTables.js')}}"></script>
     <script src="{{asset('admin/js/dataTables.bootstrap4.js')}}"></script>
 
+<<<<<<< HEAD
     <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> #}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>-->
@@ -70,58 +73,78 @@
         $('#datatable').DataTable();
     } );
 </script>
+=======
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script> 
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script> -->
 
-{{-- Hide content of table --}}
+    <script>
+        $(document).ready( function () 
+        {
+            $('#datatable').DataTable();
+        } );
+    </script>
+>>>>>>> 3cc1e97b735cbe73efc887d13ba7ec511efb8dd9
 
-<script>
-    $(document).ready( function () {
-        $('.masque').hide();
-    } );
-</script>
+    {{-- Hide content of table --}}
 
-{{-- End of hide --}}
+    <script>
+        $(document).ready( function () {
+            $('.masque').hide();
+        } );
+    </script>
 
-<script type="text/javascript">
+    {{-- End of hide --}}
 
-    $(document).ready(function() {
-
-    var table = $('#datatable').DataTable();
-
-
-    table.on('click','.edit', function() {
-
-
-        $tr = $(this).closest('tr');
-        if ($($tr).hasClass('child')){
-            $tr = $tr.prev('.parent');
-        }
-        var data = table.row($tr).data();
-        console.log(data);
-
-        $('#nom').val(data[1]);
-
-        $('#modifdepart').attr('action', '/departements/'+data[0]);
-        $('#modifier').modal('show');
-    });
-
-    // Start Delete//
-    table.on('click','.delete', function()
-     {
-        $tr = $(this).closest('tr');
-            if ($($tr).hasClass('child'))
-            {
+    <script type="text/javascript">
+        
+        $(document).ready(function() {
+        
+        var table = $('#datatable').DataTable();
+        
+        
+        table.on('click','.edit', function() {
+        
+        
+            $tr = $(this).closest('tr');
+            if ($($tr).hasClass('child')){
                 $tr = $tr.prev('.parent');
             }
+            var data = table.row($tr).data();
+            console.log(data);
+        
+            $('#nom').val(data[1]);
+        
+            $('#modifdepart').attr('action', '/departements/'+data[0]);
+            $('#modifier').modal('show');
+        });
 
-        var data = table.row($tr).data();
-        console.log(data);
-        $('#deleteForm').attr('action', '/departements/'+data[0]);
-        $('#deleteModal').modal('show');
-    });
+        // Start Delete//
+        table.on('click','.delete', function()
+        {
+            $tr = $(this).closest('tr');
+                if ($($tr).hasClass('child'))
+                {
+                    $tr = $tr.prev('.parent');
+                }
 
-  //End Delete//
+            var data = table.row($tr).data();
+            console.log(data);
+            $('#deleteForm').attr('action', '/departements/'+data[0]);
+            $('#deleteModal').modal('show');
+        });
 
+<<<<<<< HEAD
 });
 
 
 
+=======
+        //End Delete//
+
+        });
+    </script>
+  
+</body>
+</html>
+>>>>>>> 3cc1e97b735cbe73efc887d13ba7ec511efb8dd9

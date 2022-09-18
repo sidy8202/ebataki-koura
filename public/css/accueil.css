@@ -7,7 +7,7 @@
 body{
     margin: 0;
     padding: 0;
-   overflow: auto;
+   overflow-x: hidden;
 }
 
 .row{
@@ -71,13 +71,8 @@ table th{
 }
 
 table th img{
-<<<<<<< HEAD
     width: 50px;
     height: 50px;
-=======
-    width: 80px;
-    height: 80px;
->>>>>>> 773617b947b2dd1e1f902b74eb1554d16fb4e08b
 }
 
 #font{
@@ -86,7 +81,6 @@ table th img{
     padding: 10px;
 }
 
-<<<<<<< HEAD
 .copyright{
     text-align: center;
     color: #0B6623;
@@ -101,11 +95,6 @@ table th img{
     font-weight: bold;
     width: 24px;
     height: 24px;
-=======
-#footer{
-    width: 100%;
-    height: 61px;
->>>>>>> 773617b947b2dd1e1f902b74eb1554d16fb4e08b
     top: 1000px;
 }
 
