@@ -50,22 +50,22 @@
 
     <script src="{{asset('admin/vendors/datatables.net/jquery.dataTables.js')}}"></script>
     <script src="{{asset('admin/vendors/datatables.net-bs4/dataTables.bootstrap4.js')}}"></script>
-    
+
     <script src="{{asset('admin/js/off-canvas.js')}}"></script>
     <script src="{{asset('admin/js/hoverable-collapse.js')}}"></script>
     <script src="{{asset('admin/js/template.js')}}"></script>
-    
+
     <script src="{{asset('admin/js/dashboard.js')}}"></script>
     <script src="{{asset('admin/js/data-table.js')}}"></script>
     <script src="{{asset('admin/js/jquery.dataTables.js')}}"></script>
     <script src="{{asset('admin/js/dataTables.bootstrap4.js')}}"></script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script> 
- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> #}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>-->
 
  <script>
-    $(document).ready( function () 
+    $(document).ready( function ()
     {
         $('#datatable').DataTable();
     } );
@@ -82,24 +82,24 @@
 {{-- End of hide --}}
 
 <script type="text/javascript">
-    
+
     $(document).ready(function() {
-    
+
     var table = $('#datatable').DataTable();
-    
-    
+
+
     table.on('click','.edit', function() {
-    
-    
+
+
         $tr = $(this).closest('tr');
         if ($($tr).hasClass('child')){
             $tr = $tr.prev('.parent');
         }
         var data = table.row($tr).data();
         console.log(data);
-    
+
         $('#nom').val(data[1]);
-    
+
         $('#modifdepart').attr('action', '/departements/'+data[0]);
         $('#modifier').modal('show');
     });
@@ -122,7 +122,6 @@
   //End Delete//
 
 });
- 
-  
-</body>
-</html>
+
+
+

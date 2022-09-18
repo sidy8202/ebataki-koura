@@ -8,7 +8,7 @@ use App\Models\courriers_sortants;
 use App\Models\User;
 
 use App\Models\departements;
-
+use App\Models\secretaires;
 
 class AdminsController extends Controller
 {
@@ -24,7 +24,8 @@ class AdminsController extends Controller
 
     public function create()
     {
-        return view('admins.dashboard');
+        $secretaires = secretaires::count();
+        return view('admins.dashboard',compact('secretaires'));
 
     }
 
@@ -35,15 +36,15 @@ class AdminsController extends Controller
             [
 
                 'nom'=>['required','string','max:225'],
-                'prenom'=>['required','string','max:225'],           
+                'prenom'=>['required','string','max:225'],
                 'adresse'=>['required','string','max:225'],
                 'phone'=>['required','string','max:50'],
                 'username'=>['required','string','max:225'],
                 'email'=>['required','string','email','max:50','unique:users'],
-              
+
                 'password'=>['required','string','min:5','confirmed']
 
-               
+
             ]
             );
 
@@ -58,7 +59,7 @@ class AdminsController extends Controller
                         'password' => bcrypt($request['password']),
                         'status' => 'admin',
                     ]
-                    
+
                     );
 
                     if($user)
@@ -70,15 +71,15 @@ class AdminsController extends Controller
                                 'prenom'=>$request['prenom'],
                                 'adresse'=>$request['adresse'],
                                 'phone'=>$request['phone'],
-                                
-                               
+
+
                                 'email'=>$request['email'],
                                 'username'=>$request['username'],
                                 'password' => bcrypt($request['password']),
 
                             ]
                             );
-                            
+
                             return redirect('/adminskoura')->with('success', 'Admin ajouté avec Succes!!');
 
 
