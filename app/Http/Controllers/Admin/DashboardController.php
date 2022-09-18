@@ -19,14 +19,16 @@ class DashboardController extends Controller
     public function index()
     {
 
-        
+
         $courriers_reçus = courriers_entrants::count();
         $courriers_envoyes = courriers_sortants::count();
+        $secretaires = secretaires::all();
+        $users = user::all();
         //$secretaires = User::where('status == secretaire')->count();
-        return view('admin/dashboard',compact('courriers_reçus','courriers_envoyes'));
-        
+        return view('admin/dashboard',compact('courriers_reçus','courriers_envoyes','secretaires','users'));
+
     }
 
-    
+
 }
 

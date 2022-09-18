@@ -15,12 +15,12 @@ class SecretaireController extends Controller
 {
     public function index()
     {
-       
+
 
         $secretaires = secretaires::all();
         $departements = departements::all();
         return view('admin.secretaire.index', compact('secretaires', 'departements'));
-        
+
 
     }
 
@@ -34,18 +34,17 @@ class SecretaireController extends Controller
 // Envoyer au destinataire
 
     public function voirform($id)
-    {       
+    {
             $liste = courriers_entrants::findOrfail($id);
             $user = Auth::user();
             $destinateur = utilisateurs::all();
-            dd($destinateur);
-            return view('admin.secretaire.envoiaudestinataire', compact('liste','destinateur'));     
-    }  
+            return view('admin.secretaire.envoiaudestinataire', compact('liste','destinateur'));
+    }
 
-    public function create()   
+    public function create()
     {
         $secretaires = secretaires::all();
-        return view('secretaire', compact('secretaires'));                
+        return view('secretaire', compact('secretaires'));
     }
 
     /**
@@ -60,14 +59,14 @@ class SecretaireController extends Controller
             [
 
                 'nom'=>['required','string','max:225'],
-                'prenom'=>['required','string','max:225'],                
+                'prenom'=>['required','string','max:225'],
                 'adresse'=>['required','string','max:225'],
                 'phone'=>['required','string','max:50'],
                 'username'=>['required','string','max:225'],
                 'email'=>['required','string','email','max:50','unique:users'],
                 'id_departement'=>'required',
                 'password'=>['required','string','min:5','confirmed']
-               
+
             ]
             );
 
@@ -81,7 +80,7 @@ class SecretaireController extends Controller
                         'password' => bcrypt($request['password']),
                         'status' => 'secretaire',
                     ]
-                    
+
                     );
 
                     if($user)
@@ -92,7 +91,7 @@ class SecretaireController extends Controller
                                 'nom'=>$request['nom'],
                                 'prenom'=>$request['prenom'],
                                 'adresse'=>$request['adresse'],
-                                'phone'=>$request['phone'],                              
+                                'phone'=>$request['phone'],
                                 'id_departement'=> $request['id_departement'],
                                 'email'=>$request['email'],
                                 'username'=>$request['username'],
@@ -100,18 +99,18 @@ class SecretaireController extends Controller
 
                             ]
                             );
-                            
-                                                    
+
+
                             $secretaires = secretaires::all();
                             $departements = departements::all();
                             return view('admin.secretaire.index', compact('secretaires', 'departements'));
-                            
+
 
                     }
                 }
 
-        
-         
+
+
     }
 
     /**
@@ -161,5 +160,5 @@ class SecretaireController extends Controller
 
 
 
-    
+
 }

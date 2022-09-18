@@ -32,7 +32,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
 
-        
+
         if($user->status == 'utilisateur')
         {
             $utilisateur = utilisateurs::where ('id_users', $user->id)->first();
@@ -43,11 +43,11 @@ class HomeController extends Controller
         {
             $courriers_reçus = courriers_entrants::count();
             $courriers_envoyes = courriers_sortants::count();
-            //$secretaires = User::where('status_as','secretaire')->count();
-        //return view('admin/dashboard',compact('courriers_reçus','courriers_envoyes','secretaires'));
+            $secretaires = secretaires::all();
+            $users = user::all();
             $admin = admins::where ('id_users', $user->id)->first();
 
-            return view ('admin.dashboard',compact('admin','courriers_reçus','courriers_envoyes'));
+            return view ('admin.dashboard',compact('admin','courriers_reçus','courriers_envoyes','secretaires','users'));
 
         }
 
@@ -61,8 +61,8 @@ class HomeController extends Controller
 
         else
         {
-          return view('home');  
+          return view('home');
         }
-        
+
     }
 }
