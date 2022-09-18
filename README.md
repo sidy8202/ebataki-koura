@@ -10,6 +10,12 @@
 
 
 ## Documentation e-bataki
+CÔTE ADMIN
+-se connecter avec son mail et son mot de passe
+-Gérer courriers (Recevoir les courriers envoyés au département, Envoyés les courriers externes)
+-Gérer départements (Ajouter un nouveau département avec le nom du département concerné et peut également les modifier en cas d'erreur de saisie)
+-Gérer utilisateurs (Ajouter des nouveaux utilisateurs, les modifiers )
+-Se deconnecter une fois terminer avec le bouton deconnection dans le navbar à gauche 
 
 
 
