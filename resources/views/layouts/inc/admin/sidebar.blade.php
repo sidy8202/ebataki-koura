@@ -15,7 +15,7 @@
             <div class="collapse" id="uiii-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="{{ url('/admin/courrierentrandd') }}">Courriers entrants</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Couriers sortants</a></li>
+                <li class="nav-item"> <a class="nav-link" href="">Couriers sortants</a></li>
               </ul>
             </div>
           </li>
@@ -27,7 +27,7 @@
             </a>
           </li> -->
 
-         
+
           <li class="nav-item">
             <a class="nav-link" href="{{ url ('/departements')}}">
               <i class="mdi mdi-circle-outline menu-icon"></i>
@@ -39,12 +39,12 @@
             <a class="nav-link" data-bs-toggle="collapse" href="" aria-expanded="false" aria-controls="uii-basic">
               <i class="mdi mdi-circle-outline menu-icon"></i>
               <span class="menu-title">Gérer départements</span>
-              <i class="menu-arrow"></i>            
+              <i class="menu-arrow"></i>
             </a>
           </li> --}}
 
-         
-        
+
+
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#gerer" aria-expanded="false" aria-controls="gerer">
               <i class="mdi mdi-chart-pie menu-icon"></i>
@@ -54,7 +54,7 @@
             <div class="collapse" id="gerer">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="">Admins</a>
-               
+
               </li>
                 <li class="nav-item"> <a class="nav-link" href="{{ url('admin/secretaire') }}">Secrétaires</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{ url('admin/utilisateursadd') }}">Simple utilisateurs</a></li>
@@ -64,7 +64,6 @@
             </div>
           </li>
 
-         
+
         </ul>
       </nav>
-      

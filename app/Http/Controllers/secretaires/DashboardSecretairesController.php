@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\courriers_entrants;
+use App\Models\courriers_sortants;
 
 class DashboardSecretairesController extends Controller
 {
     public function index()
     {
-    
-        return view('secretaire.dashboard');
+        $courriers_reçus = courriers_entrants::all();
+        $courriers_envoyes = courriers_sortants::all();
+        return view('secretaire.dashboard',compact('courriers_reçus','courriers_envoyes'));
 
     }
 }

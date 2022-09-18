@@ -53,9 +53,11 @@ class HomeController extends Controller
 
         elseif($user->status == 'secretaire')
         {
+            $courriers_reçus = courriers_entrants::all();
+            $courriers_envoyes = courriers_sortants::all();
             $secretaire = secretaires::where ('id_users', $user->id)->first();
 
-            return view ('secretaire.dashboard',compact('secretaire'));
+            return view ('secretaire.dashboard',compact('secretaire','courriers_reçus','courriers_envoyes'));
 
         }
 

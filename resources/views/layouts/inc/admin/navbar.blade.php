@@ -19,7 +19,7 @@
         <ul class="navbar-nav mr-lg-4 w-100">
         <h3 class="justify-content-center" >Dashboard Admin</h3>
         </ul>
-        
+
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item dropdown me-1">
             <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-bs-toggle="dropdown">
@@ -93,7 +93,7 @@
                   </div>
                 </div>
                 <div class="item-content">
-                  <h6 class="font-weight-normal">Settings</h6>
+                  <h6 class="font-weight-normal">Paramètres</h6>
                   <p class="font-weight-light small-text mb-0 text-muted">
                     Private message
                   </p>
@@ -122,13 +122,13 @@
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">
                 <i class="mdi mdi-settings text-primary"></i>
-                Settings
+                Paramètres
               </a>
 
               <a class="dropdown-item" href="{{ route('logout') }}"
                   onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
-                  <i class="mdi mdi-logout text-primary"></i>{{ __('Logout') }}
+                  <i class="mdi mdi-logout text-primary"></i>{{ __('Deconnexion') }}
               </a>
 
               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
