@@ -35,7 +35,7 @@ Route::prefix('admin')->group(function() {
 
     Route::get('/utilisateursadd', [App\Http\Controllers\Admin\UtilisateursKouraController::class,'index']);
     Route::post('/utilisateursadd', [App\Http\Controllers\Admin\UtilisateursKouraController::class,'store']);
-    Route::get('/utilisateurskacourriers', [App\Http\Controllers\Admin\UtilisateursKouraController::class,'voirmescourriers']);
+    Route::get('/utilisateurskacourriers', [App\Http\Controllers\Admin\UtilisateursKouraController::class,'voirmescourriers'])->name('centrantsdestinateursfinal');
 
 
 

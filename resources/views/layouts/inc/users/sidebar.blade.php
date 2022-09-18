@@ -14,8 +14,8 @@
             </a>
             <div class="collapse" id="uiii-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="#">Courriers envoyés</a></li>
-                <li class="nav-item"> <a class="nav-link" href="#">Couriers reçu</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('centrantsdestinateursfinal') }}">Courriers entrants</a></li>
+                <li class="nav-item"> <a class="nav-link" href="#">Couriers sortants</a></li>
               </ul>
             </div>
           </li>
