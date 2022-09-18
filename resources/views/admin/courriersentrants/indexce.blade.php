@@ -46,7 +46,7 @@
                     <td>{{$crs->num_reference}}</td>
                     <td>{{$crs->objet}}</td>
                     <td>{{$crs->expediteur}}</td>
-                    <td>{{$crs->id_secretaire}}</td>
+                    <td>{{$crs->secretaires->prenom}}   {{$crs->secretaires->nom}}</td>
                     <td><a href="{{ url('courriers/entrants/'.$crs->pdf_courriers) }}" download>Fichier joint:</a></td>
 
                     <td>

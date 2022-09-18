@@ -8,10 +8,11 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
+    <link rel="shortcut icon" href="{{asset('img/ebataki.png')}}" type="image/x-icon">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous" defer></script>
+
   
 
     <!-- Styles -->
@@ -27,15 +28,15 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-    /////////////////////
+    
 
 
 
 </head>
 <body>
 
-    @yield('content')
-
+@yield('content')
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous" defer></script>
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
