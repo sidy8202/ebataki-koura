@@ -52,17 +52,18 @@
     <img src="{{asset('img/user.png')}}" alt="">
     <div class="login">
         <h1 class="text-center">Connexion</h1>
-        <form class="needs-validation" action="">
+        <form method="POST" class="needs-validation" action="{{route('login')}}">
+            @csrf
             <div class="form-group was-validated">
                 <label for="email" class="form-label">Adresse Email</label>
-                <input type="email" class="form-control" name="email" id="email" required>
+                <input type="email" class="form-control"id="email" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus required>
                 <div class="invalid-feedback">
                     Entrez votre adresse E-mail
                 </div>
             </div>
             <div class="form-group was-validated">
                 <label for="password" class="form-label">Mot de passe</label>
-                <input type="password" class="form-control" name="password" id="password" required>
+                <input type="password" class="form-control"  id="password" required @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                 <div class="invalid-feedback">
                     Entrez votre mot de passe
                 </div>
