@@ -116,11 +116,7 @@
           </li>
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
-<<<<<<< HEAD
-              <img src="images/faces/face5.jpg" alt="profile"/>
-=======
               <img src="{{asset('uploads/profile/' .Auth::user()->image)}}" alt="profile"/>
->>>>>>> 3cc1e97b735cbe73efc887d13ba7ec511efb8dd9
               <span class="nav-profile-name">{{ Auth::user()->prenom }}  {{ Auth::user()->nom }}</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">

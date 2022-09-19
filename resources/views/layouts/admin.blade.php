@@ -121,12 +121,6 @@
             $('#deleteModal').modal('show');
         });
 
-<<<<<<< HEAD
-});
-
-
-
-=======
         //End Delete//
 
         });
@@ -134,4 +128,3 @@
   
 </body>
 </html>
->>>>>>> 3cc1e97b735cbe73efc887d13ba7ec511efb8dd9
