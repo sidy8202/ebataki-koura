@@ -311,7 +311,7 @@
 
 <script>
     $(document).ready( function () {
-        $('.th_1').hide();
+        $('.th_1').hide(); 
     } );
 </script>
 

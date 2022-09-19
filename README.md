@@ -7,8 +7,18 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
 
+
+## Documentation e-bataki
+CÔTE ADMIN <br/>
+-se connecter avec son mail et son mot de passe créer au préalable<br/>
+-Gestion courriers (Recevoir les courriers entrants par le biais du secretaire en au département en cliquant sur le bouton envoyé, Envoyés des courriers externes en cliquant sur le bouton envoyé qui donnera la posibilité de saisir les différentes renseignements posible à travers un formulaire)<br/>
+-Gérer départements (Ajouter des département avec le nom du département concerné en cliquant sur le bouton ajout departement qui affichera un formulaire à renseigner et peut être également les modifier en cas d'erreur de saisie avec le bouton modifier ou le supprimer)<br/>
+-Gérer utilisateurs (consiste à créer des secrétaires, des utilisateurs simples avec leurs coordonées à travers un formaulaire, et la possibilté de les modifiers en cliquant sur le bouton modifier)<br/>
+-Se deconnecter avec le bouton deconnection dans le navbar à gauche une fois terminer 
+
+
+## About Laravel
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).

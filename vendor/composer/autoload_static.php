@@ -545,6 +545,10 @@ class ComposerStaticInitfbe94b7971233c5b186005ff428c3bfb
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        
+        'App\\Http\\Requests\\SecretaireFormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/SecretaireFormRequest.php',
+        'App\\Models\\Apropos' => __DIR__ . '/../..' . '/app/Models/Apropos.php',
+
         'App\\Models\\CourriersSortantsController' => __DIR__ . '/../..' . '/app/Models/CourriersSortantsController.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\UtilisateurskouraController' => __DIR__ . '/../..' . '/app/Models/UtilisateurskouraController.php',

@@ -11,7 +11,11 @@
                     <h2>{{$courriers_reçus->count()}}</h2>
                   </div>
                   <div class="card-footer d-flex align-items-center justify-content-between">
+<<<<<<< HEAD
+                      <a class="small text-white stretched-link" href="/courriers_entrants">Plus de Détails</a>
+=======
                       <a class="small text-white stretched-link" href="{{ route('mescourriers') }}">Plus de Détails</a>
+>>>>>>> 3eb9be7baf446b234dc347d98068d100d5f80b6d
                       <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                   </div>
               </div>
@@ -23,7 +27,11 @@
                       <h2>{{$courriers_envoyes->count()}}</h2>
                   </div>
                   <div class="card-footer d-flex align-items-center justify-content-between">
+<<<<<<< HEAD
+                      <a class="small text-white stretched-link" href="/courriers_sortants">Plus de Détails</a>
+=======
                       <a class="small text-white stretched-link" href="">Plus de Détails</a>
+>>>>>>> 3eb9be7baf446b234dc347d98068d100d5f80b6d
                       <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                   </div>
               </div>

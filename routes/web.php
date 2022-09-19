@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('welcome');
 });
+             
+Route::resource('/courriers_sortants', 'CourriersSortantsController');
+Route::resource('/users/dashboard/courriers_sortants', 'CourriersSortantsController');
+
 
 Auth::routes();
 
@@ -86,4 +90,14 @@ Route::resource('/adminskoura', 'AdminsController',['only' => [ 'index', 'create
 
 
 Route::resource('/courriers_entrants', 'CourriersEntrantsController');
+
+Route::resource('/users/dashboard/courriers_entrants', 'CourriersEntrantsController');
+
+
+
+
+
+
+
+
 ?>

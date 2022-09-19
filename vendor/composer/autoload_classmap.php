@@ -35,7 +35,12 @@ return array(
     'App\\Http\\Middleware\\TrustHosts' => $baseDir . '/app/Http/Middleware/TrustHosts.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+<<<<<<< HEAD
+    'App\\Http\\Requests\\SecretaireFormRequest' => $baseDir . '/app/Http/Requests/SecretaireFormRequest.php',
+    'App\\Models\\Apropos' => $baseDir . '/app/Models/Apropos.php',
+=======
     'App\\Models\\CourriersSortantsController' => $baseDir . '/app/Models/CourriersSortantsController.php',
+>>>>>>> bcc0cc620e24b161718052c98b44e9aafe7ecbd3
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\UtilisateurskouraController' => $baseDir . '/app/Models/UtilisateurskouraController.php',
     'App\\Models\\admins' => $baseDir . '/app/Models/admins.php',

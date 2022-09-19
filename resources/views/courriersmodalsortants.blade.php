@@ -5,14 +5,31 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Interface</title>
+  <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"> 
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/af-2.4.0/datatables.min.css"/>
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+    {{-- <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"> --}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.12.1/af-2.4.0/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
 
 </head>
 <body>
-  <div class="container">
+  @if(count($errors) > 0)
+    <div class=" alert alert-danger">
+      <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>    
+        @endforeach
+      </ul>
+    </div>
+    @endif
+    @if (session('success'))
+      <div class="alert alert-success">
+          <p>{{ session('success') }}</p>
+      </div> 
+  @endif
+
+  <div class="container mt-5">
     <div class="card">
       <div class="card-header">
         <!-- <div class="container"> -->
@@ -49,8 +66,8 @@
                 <td>{{$crs->destinateur}}</td>
                 <td>{{$crs->id_utilisateurs}}</td>
                 <td>
-                  <button class="btn btn-success edit" data-bs-toggle="modal" data-bs-target="#modifcoursortants">Mod</button>
-                  <button class="btn btn-danger edit" data-bs-toggle="modal" data-bs-target="#deleteModal">Supp</button>
+                  <a href="#"class="btn btn-success editer" >Mod</a>
+                  <button class="btn btn-danger edit"data-bs-toggle="modal" data-bs-target="#Modalsup">Supp</button>
                 </td>
               </tr>
               @endforeach
@@ -62,7 +79,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Ajouter utilisateur</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Ajouter Courriers</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -106,8 +123,8 @@
       </div>
       <!-- fin modal envoyer --> 
 
-      <!-- debut Modal modifier courriers -->
-      <div class="modal fade" id="modifcoursortants" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <!-- debut Modal modifier courriers --> 
+      <div class="modal fade" id="modif" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -147,7 +164,7 @@
       <!-- fin modal modifier -->
 
       <!-- debut modal supprimer -->
-      <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="Modalsup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -174,10 +191,10 @@
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script> 
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script> 
+ <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
 
-  <script>
+ <script>
       $(document).ready( function () 
       {
           $('#datatable').DataTable();
@@ -193,6 +210,48 @@
   </script>
 
   {{-- End of hide --}}
+
+  <script type="text/javascript">
+    
+    $(document).ready(function() {
+    
+    var table = $('#datatable').DataTable();
+  
+    table.on('click','.editer', function() {
+        $tr = $(this).closest('tr');
+        if ($($tr).hasClass('child')){
+            $tr = $tr.prev('.parent');
+        }
+        var data = table.row($tr).data();
+        console.log(data);
+    
+        $('#num_reference').val(data[1]);
+        $('#objet').val(data[2]);
+        $('#destinateur').val(data[3]);
+    
+        $('#modifcoursortants').attr('action', '/courrierrs_sortants/'+data[0]);
+        $('#modif').modal('show');
+    });
+
+    // Start Delete//
+    table.on('click','.delete', function()
+     {
+        $tr = $(this).closest('tr');
+            if ($($tr).hasClass('child'))
+            {
+                $tr = $tr.prev('.parent');
+            }
+
+        var data = table.row($tr).data();
+        console.log(data);
+        $('#deleteForm').attr('action', '/courrierrs_sortants/'+data[0]);
+        $('#Modalsup').modal('show');
+    });
+
+  //End Delete//
+
+});
+</script>
 
 </body>
 

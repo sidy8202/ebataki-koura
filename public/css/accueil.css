@@ -97,4 +97,59 @@ table th img{
     height: 24px;
     top: 1000px;
 }
+/* partie A_Propos */
+.nav-apropos{
+    background-color: #0B6623;
+    height: 60px;
+    color: white;
+    text-align: center;
+}
+.saibaini{
+    position: relative;
+    top: 12px;
+    font-size: 20px;
+}
+.saibain{
+    position: relative;
+    bottom: 70px;
+    left: 120px;
+    font-size: 30px;
+    color: #0E4C92;
+}
+.img-logo{
+    width: 100px;
+    height: 100px;
+}
+.btn{
+    background-color: #0B6623;
+    position: relative;
+    left: 1200px;
+    width: 100px;
+    color: white;
+    /* font-size: 20px; */
+}
+.corps{
+    position: relative;
+    top: -80px;
+}
+.essai{
+    justify-content: center;
+    line-height: 1.5;
+    font-size: 20px;
+    color: #0E4C92;
+    padding-top: 30px;
+    margin-left: 50px;
+}
+.modal-content{
+    width: 1050px;
+    position: relative;
+    right: 150px;
+    margin-top: -30px;
+}
+.modal-header{
+    background-color: #0B6623;
+    color: white;
+    text-align: center;
+}
+/* Fin A_Propos */
 
