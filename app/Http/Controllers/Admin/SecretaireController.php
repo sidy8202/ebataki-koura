@@ -19,14 +19,8 @@ class SecretaireController extends Controller
        
 
         $secretaires = secretaires::all();
-<<<<<<< HEAD
-
-=======
-        $admin = admins::all();
-        $users = User::all();
->>>>>>> 3cc1e97b735cbe73efc887d13ba7ec511efb8dd9
         $departements = departements::all();
-        return view('admin.secretaire.index', compact('secretaires', 'departements', 'admin', 'users'));
+        return view('admin.secretaire.index', compact('secretaires', 'departements'));
         
 
     }

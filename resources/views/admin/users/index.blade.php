@@ -288,48 +288,7 @@
             </div> 
         @endif
 
-        <table id="myDataTable" class="table table-bordered table-responsive" >
-            <thead>
-              <tr>
-                <th  class="th_1">Id</th>
-                <th >Nom</th>
-                <th >Prenom</th>
-                <th >Adresse</th>
-                <th >Phone</th>
-                <th >Email</th>
-                
-                <th >Poste</th>
-                <th >Departement</th>
-                <th >Actions</th>
-              </tr>
-            </thead>
-
-            <tbody>
-               
-                @foreach ($bara as $gnouma )
-                    
-              
-              <tr>
-                <th  class="th_1">{{ $gnouma->id }}</th>
-                <th >{{ $gnouma ->nom}}</th>   
-                <td>{{ $gnouma ->prenom}}</td>
-                <td>{{ $gnouma ->adresse}}</td>
-                <td>{{ $gnouma ->phone}}</td>
-                <td>{{ $gnouma ->email}}</td>
-                
-                <td>{{ $gnouma ->poste}}</td>
-                <td>{{ $gnouma ->id_departement}}</td>
-                
-                <td>
-                    <a href="#" class="edit btn btn-primary btn-sm"  >Edit</a> 
-                    <a href="#" class="delete btn btn-danger btn-sm"  >Supp</a> 
-                    
-              {{-- <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a> --}}
-                </td>
-              </tr>
-              @endforeach
-            </tbody> 
-        </table>
+        
     </div>
    
 </div>
