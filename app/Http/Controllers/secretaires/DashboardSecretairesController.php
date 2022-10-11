@@ -13,7 +13,8 @@ class DashboardSecretairesController extends Controller
     {
         $courriers_reçus = courriers_entrants::all();
         $courriers_envoyes = courriers_sortants::all();
-        return view('secretaire.dashboard',compact('courriers_reçus','courriers_envoyes'));
+        $courriers_reçus_sec = courriers_entrants::count();
+        return view('secretaire.dashboard',compact('courriers_reçus','courriers_envoyes', 'courriers_reçus_sec'));
 
     }
 }

@@ -123,15 +123,6 @@
                 <i class="mdi mdi-settings text-primary"></i>
                 Settings
               </a>
-<<<<<<< HEAD
-
-=======
-              <a class="dropdown-item" href="{{url('admin/mon-profile')}}">
-                <i class="mdi mdi-settings text-primary"></i>
-                Profile
-              </a>
-             
->>>>>>> 3cc1e97b735cbe73efc887d13ba7ec511efb8dd9
               <a class="dropdown-item" href="{{ route('logout') }}"
                   onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">

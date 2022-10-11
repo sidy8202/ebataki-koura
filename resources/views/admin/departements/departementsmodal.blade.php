@@ -24,7 +24,7 @@
                 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
-                    <button type="submit" class="btn btn-primary">Ajouetr</button>
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
                 </div>
             </form>
 
@@ -149,7 +149,7 @@
                     <td scope="row" class="masque">{{$depart->id}}</td>
                     <th scope="row">{{$depart->nom}}</td>
                 
-                    <td>
+                    <td class="text-white">
                     <a href="#" class="edit btn btn-primary btn-sm" >Modifier</a> 
                     <a href="#" class="delete btn btn-danger btn-sm">Supprimer</a> 
                     
